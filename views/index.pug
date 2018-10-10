@@ -3,7 +3,8 @@ extends layout
 block content
 	h1= title
 	p Welcome to #{title}
-	ul
-		each entity, index in entities
-			li
-				a(href=`/entity/${entity.idtipoEntidad}`)=`${entity.nomtipoEntidad}-${entity.idtipoEntidad}`
+	each entity, index in entities
+		.circle
+			.circle__inner
+				.circle__wrapper
+					.circle__content=`${entity.nomtipoEntidad}-${entity.idtipoEntidad}`

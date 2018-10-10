@@ -1,0 +1,54 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/**
+* Circle Styles
+*/
+
+.circle {
+	position: relative;
+	display: inline-block;
+	margin: 2em;
+	background-color: transparent;
+	color: #222;
+	text-align: center;
+	width: 12vw;
+}
+
+.circle:after {
+	display: inline-block;
+	padding-bottom: 100%;
+	width: 100%;
+	height: 0;
+	border-radius: 50%;
+	background-color: #ddd;
+	content: "";
+}
+
+.circle__inner {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.circle__wrapper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.circle__content {
+	display: table-cell;
+	padding: 1em;
+	vertical-align: middle;
+	font-size: 1.5vw;
+}
