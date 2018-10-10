@@ -1,10 +1,12 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
-	each entity, index in entities
-		.circle
-			.circle__inner
-				.circle__wrapper
-					.circle__content=`${entity.nomtipoEntidad}-${entity.idtipoEntidad}`
+	h1.white-text= title
+	h3.white-text Please select one entity
+	.center-align
+		each entity, index in entities
+			.circle
+				a(href=`entity/${entity.idtipoEntidad}`)
+					.circle-inner
+						.circle-wrapper
+							.circle-content=`${entity.nomtipoEntidad}-${entity.idtipoEntidad}`
