@@ -27,7 +27,6 @@ html {
 body {
 	padding: 50px;
 	min-height: 100%;
-	font: "Lucida Grande", Helvetica, Arial, sans-serif;
 	background: linear-gradient(to right, rgba(187, 175, 221, 1), rgba(187, 175, 221, 0.8));
 }
 
@@ -56,6 +55,7 @@ a {
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size: 21vh;
+	box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 .circle-title{
@@ -76,7 +76,7 @@ a {
 	border-radius: 50%;
 	/* background-color: #001c40; */
 	content: "";
-	box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.3);
+	
 }
 
 .circle-inner {
