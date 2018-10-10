@@ -5,7 +5,7 @@ block content
 	h3.white-text Please select one entity
 	.center-align
 		each entity, index in entities
-			.circle
+			.circle(style=`background-image: url("${entity.img}");`)
 				a(href=`entity/${entity.idtipoEntidad}`)
 					.circle-inner
 						.circle-wrapper
