@@ -19,8 +19,7 @@ router.get('/', (req, res, next) => {
 	});
 	*/
 	//Fake data
-	res.render('index',
-	{ 
+	res.render('index',	{ 
 		title: 'Control IPOS',
 		entities: {"0": {"idtipoEntidad": 1, "nomtipoEntidad": "Entidad I"}, "1": {"idtipoEntidad": 2, "nomtipoEntidad": "Entidad II"}}
 	});
