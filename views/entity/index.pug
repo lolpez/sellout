@@ -1,5 +1,44 @@
-extends ../layout
-
+extends layout
 block content
-    h1.white-text= title
-    a(href="/") back
+    nav.nav-extended.main-theme
+        .nav-wrapper
+            a.brand-logo(href='#')=title
+            a.sidenav-trigger(href='#', data-target='mobile-demo')
+                i.material-icons menu
+            ul#nav-mobile.right.hide-on-med-and-down
+                li
+                    a(href='sass.html') Sass
+                li
+                    a(href='badges.html') Components
+                li
+                    a(href='collapsible.html') JavaScript
+        .nav-content
+            ul.tabs.tabs-transparent
+                li.tab
+                    a(href='#test1') Usuarios
+                li.tab
+                    a(href='#test2') Clientes
+                li.tab
+                    a(href='#test3') Test 3
+                li.tab
+                    a(href='#test4') Test 4
+                li.tab
+                    a(href='#test5') Test 5
+                li.tab
+                    a(href='#test6') Test 6
+                li.tab
+                    a(href='#test7') Test 7
+    ul#mobile-demo.sidenav
+        li
+            a(href='sass.html') Sass
+        li
+            a(href='badges.html') Components
+        li
+            a(href='collapsible.html') JavaScript
+    #test1.col.s12 Test 1
+    #test2.col.s12 Test 2
+    #test3.col.s12 Test 3
+    #test4.col.s12 Test 4
+    #test5.col.s12 Test 5
+    #test6.col.s12 Test 6
+    #test7.col.s12 Test 7
