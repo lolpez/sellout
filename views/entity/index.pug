@@ -1,143 +1,18 @@
 extends layout
 block content
-    nav.nav-extended.main-theme
-        .nav-wrapper
-            a.brand-logo(href='#')=title
-            a.sidenav-trigger(href='#', data-target='mobile-demo')
-                i.material-icons menu
-            ul#nav-mobile.right.hide-on-med-and-down
-                li
-                    a(href='#', title="cambiar de usuario")
-                        i.material-icons.right compare_arrows
-                        | Manager
-                li
-                    a(href='#', title="ayuda")
-                        i.material-icons help_outline
-                li
-                    a(href='/', title="salir")
-                        i.material-icons exit_to_app
-        .nav-content
-            ul.tabs.tabs-transparent
-                li.tab
-                    a(href='#user-tab') Usuarios
-                li.tab
-                    a(href='#customer-tab') Clientes
-                li.tab
-                    a(href='#schedule-tab') Citas
-                li.tab
-                    a(href='#card-tab') Targetas
-                li.tab
-                    a(href='#box-tab') Caja
-                li.tab
-                    a(href='#tpv-tab') TPV
-                li.tab
-                    a(href='#invoice-tab') Facturas
-                li.tab
-                    a(href='#fast-change-tab') Cambio Rapido
-    ul#mobile-demo.sidenav
-        li
-            .user-view
-                .background.main-theme
-                a(href="#")
-                    img.circle
-                a(href="#")
-                    span.white-text.name Manager
-                    span.white-text.email manager@gmail.com
-        li
-            a(href='#', title="cambiar de usuario")
-                i.material-icons compare_arrows
-                | Cambiar de usuario
-        li
-            a(href='#', title="ayuda")
-                i.material-icons help_outline
-                | Ayuda
-        li
-            a(href='/', title="salir")
-                i.material-icons exit_to_app
-                | Salir
-        li
-            .divider
-        li
-            a.subheader 10:53:11 PM
-            a.subheader Terminal 0
-    .container.app-panel
-        .row
-            .input-field.col.s12.m2
-                input#searcher.validate(type='text')
-                label(for='searcher') Nombre, móvil o ID tarjeta
-            .col.s12.m3
-                span Nº cliente:
-                br
-                span Categoría de Cliente:
-                br
-                span Móvil:
-            .col.s12.m3
-                span Nombre:
-                br
-                span Dirección:
-                br
-                span Email:
-            .col.s12.m4
-                a.waves-effect.waves-light.btn.green Puntos
-        #user-tab.col.s12
-            include user
-        #customer-tab.col.s12
-            include customer
-        #schedule-tab.col.s12
-            include schedule
-        #card-tab.col.s12
-            include card
-        #box-tab.col.s12
-            include box
-        #tpv-tab.col.s12
-            include tpv
-        #invoice-tab.col.s12
-            include invoice
-        #fast-change-tab.col.s12
-            include fast
-        .row(style="background-color: rgba(128, 128, 128, 0.34)")
-            .col.s12.m8(style="height: 200px; overflow: auto")
-                table.highlight
-                    thead
-                        tr
-                            th Nombre
-                            th Tipo
-                            th Cantidad
-                            th Precio Unitario
-                            th Precio Total
-                    tbody
-                        tr
-                            td soda
-                            td bebida
-                            td 10
-                            td 5
-                            td 50
-                        tr
-                            td soda
-                            td bebida
-                            td 10
-                            td 5
-                            td 50
-                        tr
-                            td soda
-                            td bebida
-                            td 10
-                            td 5
-                            td 50
-                        tr
-                            td soda
-                            td bebida
-                            td 10
-                            td 5
-                            td 50
-            .col.s12.m4
-                .row
-                    .col.s12.m6
-                        a.waves-effect.waves-light.btn.app-button.block Ticket en espera
-                    .col.s12.m6
-                        a.waves-effect.waves-light.btn.app-button.block Abrir cajon
-                .row
-                    .col.s12.total Total Bs. 50
-                .row
-                    .col.s12.m12
-                        a.waves-effect.waves-light.btn.app-button.block.green Pagar
+    #user-tab.col.s12
+        include user
+    #customer-tab.col.s12
+        include customer
+    #schedule-tab.col.s12
+        include schedule
+    #card-tab.col.s12
+        include card
+    #box-tab.col.s12
+        include box
+    #tpv-tab.col.s12
+        include tpv
+    #invoice-tab.col.s12
+        include invoice
+    #fast-change-tab.col.s12
+        include fast
