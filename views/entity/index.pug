@@ -61,12 +61,83 @@ block content
             a.subheader 10:53:11 PM
             a.subheader Terminal 0
     .container.app-panel
-        #user-tab.col.s12 Test 1
-        #customer-tab.col.s12 Test 2
-        #schedule-tab.col.s12 Test 3
-        #card-tab.col.s12 Test 4
-        #box-tab.col.s12 Test 5
+        .row
+            .input-field.col.s12.m2
+                input#tpv-searcher.validate(type='text')
+                label(for='tpv-searcher') Nombre, móvil o ID tarjeta
+            .col.s12.m3
+                span Nº cliente:
+                br
+                span Categoría de Cliente:
+                br
+                span Móvil:
+            .col.s12.m3
+                span Nombre:
+                br
+                span Dirección:
+                br
+                span Email:
+            .col.s12.m4
+                a.waves-effect.waves-light.btn.green Puntos
+        #user-tab.col.s12
+            include user
+        #customer-tab.col.s12
+            include customer
+        #schedule-tab.col.s12
+            include schedule
+        #card-tab.col.s12
+            include card
+        #box-tab.col.s12
+            include box
         #tpv-tab.col.s12
-            include tpv        
-        #invoice-tab.col.s12 Test 7
-        #fast-change-tab.col.s12 Test 8
+            include tpv
+        #invoice-tab.col.s12
+            include invoice
+        #fast-change-tab.col.s12
+            include fast
+        .row(style="background-color: rgba(128, 128, 128, 0.34)")
+            .col.s12.m8(style="height: 200px; overflow: auto")
+                table.highlight
+                    thead
+                        tr
+                            th Nombre
+                            th Tipo
+                            th Cantidad
+                            th Precio Unitario
+                            th Precio Total
+                    tbody
+                        tr
+                            td soda
+                            td bebida
+                            td 10
+                            td 5
+                            td 50
+                        tr
+                            td soda
+                            td bebida
+                            td 10
+                            td 5
+                            td 50
+                        tr
+                            td soda
+                            td bebida
+                            td 10
+                            td 5
+                            td 50
+                        tr
+                            td soda
+                            td bebida
+                            td 10
+                            td 5
+                            td 50
+            .col.s12.m4
+                .row
+                    .col.s12.m6
+                        a.waves-effect.waves-light.btn.app-button.block Ticket en espera
+                    .col.s12.m6
+                        a.waves-effect.waves-light.btn.app-button.block Abrir cajon
+                .row
+                    .col.s12.total Total Bs. 50
+                .row
+                    .col.s12.m12
+                        a.waves-effect.waves-light.btn.app-button.block.green Pagar
