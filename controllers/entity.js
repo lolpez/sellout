@@ -1,4 +1,3 @@
-var rp = require('request-promise');
 var controller = {};
 
 controller.index = (req, res, next) => {
