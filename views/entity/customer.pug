@@ -1,19 +1,59 @@
 .row
     .col.s12.m3
+        div(style="height: 490px; overflow: auto")
+            .input-field
+                input#customer-number.validate(type='text')
+                label(for='customer-number') Nº cliente
+            .input-field
+                input#customer-card.validate(type='text')
+                label(for='customer-card') ID tarjeta
+            .input-field
+                input#customer-email.validate(type='text')
+                label(for='customer-email') Email
+            .input-field
+                input#customer-name.validate(type='text')
+                label(for='customer-name') Nombre
+            .input-field
+                input#customer-last-name.validate(type='text')
+                label(for='customer-last-name') Apellido 1
+            .input-field
+                input#customer-phone.validate(type='text')
+                label(for='customer-phone') Móvil
+            .input-field
+                input#customer-id.validate(type='text')
+                label(for='customer-id') DNI
+            .input-field
+                input#customer-country.validate(type='text')
+                label(for='customer-country') País
+            .input-field
+                input#customer-city.validate(type='text')
+                label(for='customer-city') Provincia
+            .input-field
+                input#customer-address.validate(type='text')
+                label(for='customer-address') Dirección
+        a.waves-effect.waves-light.btn.app-button.block Buscar
+    .col.s12.m6
+        table.highlight
+            thead
+                tr
+                    th Nº CLiente
+                    th Móvil
+                    th Apellido 1
+                    th Apellido 2
+                    th Nombre
+            tbody
+        a.waves-effect.waves-light.btn.app-button.block Seleccionar
+    .col.s12.m3
+        a.waves-effect.waves-light.btn.app-button.block Seleccionar cliente
+        a.waves-effect.waves-light.btn.app-button.block Alta cliente
+        a.waves-effect.waves-light.btn.app-button.block Editar datos cliente
+        a.waves-effect.waves-light.btn.app-button.block Recargar saldo
+        a.waves-effect.waves-light.btn.app-button.block Presupuestos
+        a.waves-effect.waves-light.btn.app-button.block Histórico de ventas
+        a.waves-effect.waves-light.btn.app-button.block Histórico de deudas
+        a.waves-effect.waves-light.btn.app-button.block Histórico de facturas
+        a.waves-effect.waves-light.btn.app-button.block Histórico de albaranes
+        a.waves-effect.waves-light.btn.app-button.block Bonos
+        a.waves-effect.waves-light.btn.app-button.block Imprimir consentimiento
+        a.waves-effect.waves-light.btn.app-button.block Imprimir actividad reciente
         
-        
-    .col.s12.m4
-        a.waves-effect.waves-light.btn.app-button.block Empleados presentes
-        a.waves-effect.waves-light.btn.app-button.block Entrada
-        a.waves-effect.waves-light.btn.app-button.block Salida
-        p(style="text-align: center")
-            |Empleado Actual:
-            br
-            |Manager
-            br
-            |Empleado
-        a.waves-effect.waves-light.btn.app-button.block Informe de produccion
-        a.waves-effect.waves-light.btn.app-button.block Resumen de ventas
-        a.waves-effect.waves-light.btn.app-button.block Objetivos de empleado
-        a.waves-effect.waves-light.btn.app-button.block Mensajería interna
-        a.waves-effect.waves-light.btn.app-button.block Alta producto
