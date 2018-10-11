@@ -58,14 +58,15 @@ a {
 	box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
+.circle:hover {
+	width: 21vh;
+	box-shadow: 0 0 20px 20px rgb(217, 255, 0);
+}
+
 .circle-title{
 	color: white;
 	margin-top: 15px;
 	font-size: 2.5vh;
-}
-
-.circle:hover {
-	width: 21vh;
 }
 
 .circle:after {
