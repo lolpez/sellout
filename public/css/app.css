@@ -34,11 +34,37 @@ a {
 }
 
 .main-theme{
-	background: linear-gradient(to bottom, rgba(187, 175, 221, 1), rgba(187, 175, 221, 1));
+	background: linear-gradient(to bottom, rgba(187, 175, 221, 1), rgba(187, 130, 221, 1));
 }
 
 /*tabs*/
 
 .tabs .tab a.active {
-    background-color: #222 !important;
+    background-color: #8c0000 !important;
+}
+
+/*app panel*/
+
+.app-panel{
+    margin-top: 10px
+}
+
+.app-button{
+    text-align: center;
+    background-color: darkgray
+}
+
+.app-button.block{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+.app-button:hover{
+    background-color: rgba(187, 175, 221)
+}
+
+/* tpv */
+.total{
+    border: solid #4CAF50;
 }

@@ -7,38 +7,66 @@ block content
                 i.material-icons menu
             ul#nav-mobile.right.hide-on-med-and-down
                 li
-                    a(href='sass.html') Sass
+                    a(href='#', title="cambiar de usuario")
+                        i.material-icons.right compare_arrows
+                        | Manager
                 li
-                    a(href='badges.html') Components
+                    a(href='#', title="ayuda")
+                        i.material-icons help_outline
                 li
-                    a(href='collapsible.html') JavaScript
+                    a(href='/', title="salir")
+                        i.material-icons exit_to_app
         .nav-content
             ul.tabs.tabs-transparent
                 li.tab
-                    a(href='#test1') Usuarios
+                    a(href='#user-tab') Usuarios
                 li.tab
-                    a(href='#test2') Clientes
+                    a(href='#customer-tab') Clientes
                 li.tab
-                    a(href='#test3') Test 3
+                    a(href='#schedule-tab') Citas
                 li.tab
-                    a(href='#test4') Test 4
+                    a(href='#card-tab') Targetas
                 li.tab
-                    a(href='#test5') Test 5
+                    a(href='#box-tab') Caja
                 li.tab
-                    a(href='#test6') Test 6
+                    a(href='#tpv-tab') TPV
                 li.tab
-                    a(href='#test7') Test 7
+                    a(href='#invoice-tab') Facturas
+                li.tab
+                    a(href='#fast-change-tab') Cambio Rapido
     ul#mobile-demo.sidenav
         li
-            a(href='sass.html') Sass
+            .user-view
+                .background.main-theme
+                a(href="#")
+                    img.circle
+                a(href="#")
+                    span.white-text.name Manager
+                    span.white-text.email manager@gmail.com
         li
-            a(href='badges.html') Components
+            a(href='#', title="cambiar de usuario")
+                i.material-icons compare_arrows
+                | Cambiar de usuario
         li
-            a(href='collapsible.html') JavaScript
-    #test1.col.s12 Test 1
-    #test2.col.s12 Test 2
-    #test3.col.s12 Test 3
-    #test4.col.s12 Test 4
-    #test5.col.s12 Test 5
-    #test6.col.s12 Test 6
-    #test7.col.s12 Test 7
+            a(href='#', title="ayuda")
+                i.material-icons help_outline
+                | Ayuda
+        li
+            a(href='/', title="salir")
+                i.material-icons exit_to_app
+                | Salir
+        li
+            .divider
+        li
+            a.subheader 10:53:11 PM
+            a.subheader Terminal 0
+    .container.app-panel
+        #user-tab.col.s12 Test 1
+        #customer-tab.col.s12 Test 2
+        #schedule-tab.col.s12 Test 3
+        #card-tab.col.s12 Test 4
+        #box-tab.col.s12 Test 5
+        #tpv-tab.col.s12
+            include tpv        
+        #invoice-tab.col.s12 Test 7
+        #fast-change-tab.col.s12 Test 8
