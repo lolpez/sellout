@@ -3,11 +3,11 @@ html
     head
         title=title
         link(type='text/css', rel='stylesheet', href='/css/materialize.min.css', media='screen,projection')
-        link(type='text/css', rel='stylesheet', href='/css/app.css', media='screen,projection')
+        link(type='text/css', rel='stylesheet', href='/css/login.css', media='screen,projection')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
     body
-    .containter
-        .valign-wrapper
+    .containter(style="height: 100%; position: absolute; width: 100%")
+        .valign-wrapper(style="height: 100%;")
             .row
                 form.col.s12(action='/entity', method='get')
                     .input-field
