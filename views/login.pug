@@ -9,8 +9,7 @@ html
     .containter
         .valign-wrapper
             .row
-                form.col.s12(action='/entity', method='post')
-                    input(type='hidden', value=entityId, name='id')
+                form.col.s12(action='/entity', method='get')
                     .input-field
                         input#username.validate(type='text', name='user')
                         label(for='username') Usuario

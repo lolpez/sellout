@@ -3,7 +3,7 @@ var router = express.Router();
 var entityController = require('../controllers/entity');
 
 /* GET home page. */
-router.post('/', entityController.index);
-router.get('/login/:id', entityController.login);
+router.get('/', entityController.index);
+router.get('/:id', entityController.app);
 
 module.exports = router;
