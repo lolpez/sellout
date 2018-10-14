@@ -45,7 +45,7 @@
         a.waves-effect.waves-light.btn.app-button.block Seleccionar
     .col.s12.m3
         a.waves-effect.waves-light.btn.app-button.block Seleccionar cliente
-        a#customer-create.waves-effect.waves-light.btn.app-button.block Alta cliente
+        a#customer-modal-create.waves-effect.waves-light.btn.app-button.block Alta cliente
         a.waves-effect.waves-light.btn.app-button.block Editar datos cliente
         a.waves-effect.waves-light.btn.app-button.block Recargar saldo
         a.waves-effect.waves-light.btn.app-button.block Presupuestos
@@ -56,18 +56,75 @@
         a.waves-effect.waves-light.btn.app-button.block Bonos
         a.waves-effect.waves-light.btn.app-button.block Imprimir consentimiento
         a.waves-effect.waves-light.btn.app-button.block Imprimir actividad reciente
-#customer-modal.modal
+#customer-modal.modal.modal-fixed-footer
     .modal-content
-        h4#customer-title
+        h4#customer-modal-title
         .row
-            .input-field.col.s12.m6
+            .col.s12                
+                | Categoria:
                 label
-                    input.validate(type='radio', name='customer-category', checked)
+                    input.validate(type='radio', name='customer-modal-category', checked)
                     span Particular
                 label
-                    input.validate(type='radio', name='customer-category')
+                    input.validate(type='radio', name='customer-modal-category')
                     span Empresa
+            .input-field.col.s12.m6 
+                input#customer-modal-name.validate(type='text')
+                label(for='customer-modal-name') Nombre
+            .input-field.col.s12.m6 
+                input#customer-modal-first-last-name.validate(type='text')
+                label(for='customer-modal-first-last-name') Primer apellido
+            .input-field.col.s12.m6 
+                input#customer-modal-second-last-name.validate(type='text')
+                label(for='customer-modal-second-last-name') Segundo apellido
+            .input-field.col.s12.m6 
+                input#customer-modal-address.validate(type='text')
+                label(for='customer-modal-address') Dirección
+            .input-field.col.s12.m6 
+                input#customer-modal-city.validate(type='text')
+                label(for='customer-modal-city') Provincia
+            .input-field.col.s12.m6 
+                input#customer-modal-country.validate.autocomplete(type='text', value='Bolivia')
+                label(for='customer-modal-country') País
+            .col.s12
+                | Sexo:
+                label
+                    input.validate(type='radio', name='customer-modal-sex', checked)
+                    span Masculino
+                label
+                    input.validate(type='radio', name='customer-modal-sex')
+                    span Femenino
+                label
+                    input.validate(type='radio', name='customer-modal-sex')
+                    span Otro
+            .input-field.col.s12.m6 
+                input#customer-modal-refer.validate(type='text')
+                label(for='customer-modal-refer') Referido de
+            .input-field.col.s10.m4 
+                input#customer-modal-phone.validate(type='text')
+                label(for='customer-modal-phone') Teléfono
+            .input-field.col.s2.m2
+                label
+                    input#customer-modal-nodelivery(type='checkbox')
+                    span No entrega
+            .input-field.col.s12.m6 
+                input#customer-modal-cellphone.validate(type='text')
+                label(for='customer-modal-cellphone') Teléfono móvil
+            .input-field.col.s12.m6 
+                input#customer-modal-email.validate(type='email')
+                label(for='customer-modal-email') Email
+            .input-field.col.s12.m6 
+                input#customer-modal-dni.validate(type='text')
+                label(for='customer-modal-dni') DNI
+            .col.s12.m3
+                label
+                    input#customer-modal-print-profile(type='checkbox')
+                    span Imprimir datos de acceso del usuario
+            .col.s12.m3
+                label
+                    input#customer-modal-print-consent(type='checkbox')
+                    span Imprimir concentimiento
     .modal-footer
         a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
-        a#customer-submit.waves-effect.waves-green.btn-flat(href='#!')
+        a#customer-modal-submit.waves-effect.waves-green.btn-flat(href='#!')
         
