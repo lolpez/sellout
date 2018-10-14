@@ -56,4 +56,21 @@
         a.waves-effect.waves-light.btn.app-button.block Bonos
         a.waves-effect.waves-light.btn.app-button.block Imprimir consentimiento
         a.waves-effect.waves-light.btn.app-button.block Imprimir actividad reciente
+#customer-modal.modal
+    .modal-content
+        h4#customer-title
+        .row
+            input#inputId.validate(type='hidden')
+            .input-field.col.s12.m6
+                input#inputName.validate(type='text')
+                label(for='inputName') First Name
+            .input-field.col.s12.m6
+                input#inputLastName.validate(type='text')
+                label(for='inputLastName') Last Name
+            .input-field.col.s12.m6
+                input#inputBirthday.datepicker(type='text')
+                label(for='inputBirthday') Birthday
+    .modal-footer
+        a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
+        a#modalSubmit.waves-effect.waves-green.btn-flat(href='#!')
         
