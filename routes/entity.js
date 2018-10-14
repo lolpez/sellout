@@ -6,7 +6,7 @@ var entityController = require('../controllers/entity');
 /* GET home page. */
 router.get('/', requiresUserLogged, entityController.entitySelectionPage);
 
-router.get('/:id',  requiresUserLogged, entityController.appPage);
+router.get('/:id', requiresUserLogged, entityController.appPage);
 
 function requiresUserLogged(req, res, next) {
     if (req.user) {
