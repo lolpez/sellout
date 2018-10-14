@@ -16,7 +16,7 @@ module.exports = {
 		});
 		*/
 		//Fake data
-		res.render('index',	{ 
+		res.render('entity/entity selector/index',	{ 
 			title: 'Control IPOS',
 			user: req.user,
 			entities: {
@@ -30,7 +30,7 @@ module.exports = {
 		});
 	},
 	appPage: (req, res, next) => {
-		res.render('entity/index', {
+		res.render('entity/app/index', {
 			entityId: req.params.id,
 			user: req.user
 		})
