@@ -13,9 +13,9 @@ html
 					i.material-icons menu
 				ul#nav-mobile.right.hide-on-med-and-down
 					li
-						a(href='#', title="cambiar de usuario")
-							i.material-icons.right compare_arrows
-							| Manager
+						a(href='#', title="mi cuenta")
+							i.material-icons.right person
+							| #{user.name}
 					li
 						a(href='#', title="ayuda")
 							i.material-icons help_outline
@@ -45,8 +45,8 @@ html
 					a(href="#")
 						img.circle
 					a(href="#")
-						span.white-text.name Manager
-						span.white-text.email manager@gmail.com
+						span.white-text.name=`${user.name} ${user.lastName}`
+						span.white-text.email=`${user.email}`
 			li
 				a(href='#', title="cambiar de usuario")
 					i.material-icons compare_arrows

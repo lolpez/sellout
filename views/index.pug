@@ -1,7 +1,8 @@
 extends layout
 
 block content
-	h1.white-text= title
+	h1.white-text=title
+	h3.white-text=`Welcome back ${user.name} ${user.lastName}`
 	h3.white-text Please select one entity
 	.center-align
 		each entity, index in entities

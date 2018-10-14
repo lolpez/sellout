@@ -8,7 +8,7 @@ var Strategy = require('passport-local').Strategy;
 
 passport.use(new Strategy(function (username, password, callback) {
 	if (username == 'admin' && password == 'password') {
-		return callback(null, { id: 666, name: "Luis", lastName: "lopez" });
+		return callback(null, { id: 666, name: "Jose", lastName: "Luis", email: "luis@gmail.com" });
 	} else {
 		return callback(null, false)
 	}
@@ -20,7 +20,7 @@ passport.serializeUser(function (user, callback) {
 
 passport.deserializeUser(function (id, callback) {
 	if (id == 666) {
-		callback(null, { id: 666, name: "Luis", lastName: "lopez" });
+		callback(null, { id: 666, name: "Jose", lastName: "Luis", email: "luis@gmail.com" });
 	} else {
 		callback(new Error())
 	}

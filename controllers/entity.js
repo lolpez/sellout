@@ -30,8 +30,9 @@ module.exports = {
 		});
 	},
 	appPage: (req, res, next) => {
-		res.render('entity/index',	{ 
-			title: `Entity N.${req.params.id}`
+		res.render('entity/index', { 
+			title: `Entity N.${req.params.id}`,
+			user: req.user
 		})
 	}
 };
