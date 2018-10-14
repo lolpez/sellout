@@ -1,7 +1,7 @@
 var rp = require('request-promise');
 
 module.exports = {
-	index: (req, res, next) => {
+	entitySelectionPage: (req, res, next) => {
 		/*
 		var options = {
 			method: 'POST',
@@ -18,6 +18,7 @@ module.exports = {
 		//Fake data
 		res.render('index',	{ 
 			title: 'Control IPOS',
+			user: req.user,
 			entities: {
 				"0": {"idtipoEntidad": 1, "nomtipoEntidad": "Entidad I", imgtipoEntidad: "/img/cinemark.png"},
 				"1": {"idtipoEntidad": 2, "nomtipoEntidad": "Entidad II", imgtipoEntidad: "/img/hard rock.png"},
@@ -28,7 +29,7 @@ module.exports = {
 			}
 		});
 	},
-	app: (req, res, next) => {
+	appPage: (req, res, next) => {
 		res.render('entity/index',	{ 
 			title: `Entity N.${req.params.id}`
 		})

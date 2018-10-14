@@ -1,5 +1,8 @@
 module.exports = {
-	login: (req, res, next) => {
+	loginPage: (req, res, next) => {
 		res.render('login');
-	}
+	},
+	authenticate: (req, res, next) => {
+		res.redirect("/entity");
+	},
 };
