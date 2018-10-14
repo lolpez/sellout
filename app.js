@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
+var flash = require('connect-flash');
 
 passport.use(new Strategy(function (username, password, callback) {
 	if (username == 'admin' && password == 'password') {
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/entity', entityRouter);

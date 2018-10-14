@@ -6,7 +6,7 @@ var indexController = require('../controllers/index');
 /* GET home page. */
 router.get('/', indexController.loginPage);
 router.get('/logout', requiresUserLogged, indexController.logout);
-router.post('/', passport.authenticate('local', { failureRedirect: '/',  failureFlash : true }), indexController.authenticate);
+router.post('/', passport.authenticate('local', { failureRedirect: '/', failureFlash: true, failureFlash: 'Datos incorrectos.' }), indexController.authenticate);
 
 function requiresUserLogged(req, res, next) {
     if (req.user) {

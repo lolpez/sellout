@@ -21,6 +21,8 @@ html
                                 input#password.validate(type='password', name='password', value="password")
                                 label(for='password') Contraseña
                             button(type="submit").waves-effect.waves-light.btn.login-button Aceptar
+                        if error
+                            h6.red-text=error
                     .login-subtitle
                         a(href="/") ¿Problemas en el acceso?
                         a(href="www.tpvenlanube.com").login-url www.tpvenlanube.com

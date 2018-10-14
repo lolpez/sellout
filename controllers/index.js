@@ -5,7 +5,9 @@ module.exports = {
 			res.redirect("/entity");
 		} else {
 			//user not logged
-			res.render('login');
+			res.render('login', {
+				error: req.flash('error')
+			});
 		}
 	},
 	authenticate: (req, res, next) => {
