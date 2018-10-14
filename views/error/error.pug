@@ -19,8 +19,9 @@ html
 				.col.s12.m4.offset-m4
 					.login-form
 						.login-title Ops! Algo malo acaba de pasar!
-						div(style="max-height: 70vh; overflow-x: scroll")
-							h1(style="word-wrap: break-word")=`${message} ${error.status}`						
-							pre #{error.stack}
+						h1(style="word-wrap: break-word")=`${(error.status) ? error.status : ""} ${message}`
+						if error.stack
+							div(style="max-height: 70vh; overflow-x: scroll")
+								pre #{error.stack}
 						a(href="/") Volver
 		script(src='/js/materialize.min.js')

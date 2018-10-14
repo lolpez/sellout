@@ -30,9 +30,18 @@ module.exports = {
 		});
 	},
 	appPage: (req, res, next) => {
-		res.render('entity/app/index', {
-			entityId: req.params.id,
-			user: req.user
-		})
+		var id = req.params.id;
+		//Fake validation
+		if (isNaN(parseInt(id)) || parseInt(id) > 6 || parseInt(id) < 1){
+			res.locals.message = `Entidad ${id} no encontrada`;
+			res.locals.error = req.app.get('env') === 'development' ? "ID de entidad no válida" : {};
+			res.status(500);
+			res.render('error/error');
+		}else{
+			res.render('entity/app/index', {
+				entityId: id,
+				user: req.user
+			})
+		}
 	}
 };

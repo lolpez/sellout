@@ -1,4 +1,5 @@
 (function() {
+    console.log("yolo")
     var model = "customer";
     var newButton = document.getElementById(`${model}-create`);
     var modal = M.Modal.getInstance(document.getElementById(`${model}-modal`));
