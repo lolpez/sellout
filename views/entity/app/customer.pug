@@ -45,7 +45,7 @@
         a.waves-effect.waves-light.btn.app-button.block Seleccionar
     .col.s12.m3
         a.waves-effect.waves-light.btn.app-button.block Seleccionar cliente
-        a.waves-effect.waves-light.btn.app-button.block Alta cliente
+        a#customer-create.waves-effect.waves-light.btn.app-button.block Alta cliente
         a.waves-effect.waves-light.btn.app-button.block Editar datos cliente
         a.waves-effect.waves-light.btn.app-button.block Recargar saldo
         a.waves-effect.waves-light.btn.app-button.block Presupuestos
@@ -60,16 +60,13 @@
     .modal-content
         h4#customer-title
         .row
-            input#inputId.validate(type='hidden')
             .input-field.col.s12.m6
-                input#inputName.validate(type='text')
-                label(for='inputName') First Name
-            .input-field.col.s12.m6
-                input#inputLastName.validate(type='text')
-                label(for='inputLastName') Last Name
-            .input-field.col.s12.m6
-                input#inputBirthday.datepicker(type='text')
-                label(for='inputBirthday') Birthday
+                label
+                    input#customer-category.validate(type='radio', name='customer-category', checked)
+                    span Particular
+                label
+                    input#customer-category.validate(type='radio', name='customer-category')
+                    span Empresa
     .modal-footer
         a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
         a#modalSubmit.waves-effect.waves-green.btn-flat(href='#!')
