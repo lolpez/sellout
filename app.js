@@ -22,7 +22,8 @@ passport.deserializeUser(function (id, callback) {
 	if (id == 666) {
 		callback(null, { id: 666, name: "Jose", lastName: "Luis", email: "luis@gmail.com" });
 	} else {
-		callback(new Error())
+		//The user does not exists
+		return callback(null, false)
 	}
 });
 
