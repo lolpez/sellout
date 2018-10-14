@@ -6,6 +6,7 @@
     var modalSumbit = document.getElementById(`${model}-submit`);
     
     newButton.addEventListener('click', () => {
+        console.log("yolo")
         modalTitle.innerHTML = 'Nuevo cliente';
         modalSumbit.innerHTML = 'Guardar';
         modal.open();
