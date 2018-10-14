@@ -3,6 +3,34 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+/*Passpor bullshit*/
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
+
+passport.use(new Strategy(function(username, password, callback) {
+	console.log(username, password)
+	if (username == 'luis' && password == '123'){
+		return callback(null, {id: 666, name: "Luis", lastName: "lopez"});
+	}else{
+		return callback(null, false)
+	}
+}));
+
+passport.serializeUser(function(user, callback) {
+	console.log(user)
+	callback(null, user.id);
+});
+  
+passport.deserializeUser(function(id, callback) {
+	console.log(id)
+	if (id == "666"){
+		callback(null, user);
+	}else{
+		callback(new Error())
+	}
+});
+
+
 
 var indexRouter = require('./routes/index');
 var entityRouter = require('./routes/entity');
@@ -18,6 +46,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/entity', entityRouter);

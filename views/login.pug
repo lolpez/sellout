@@ -13,14 +13,14 @@ html
                         img(src="/img/starbucks.png")
                     .login-form
                         .login-title Login de TPV
-                        form(action='/entity', method='get')
+                        form(action='/entity', method='post')
                             .input-field
                                 input#username.validate(type='text', name='user')
                                 label(for='username') Usuario
                             .input-field
                                 input#password.validate(type='password', name='password')
                                 label(for='password') Contraseña
-                            a(href="/entity").waves-effect.waves-light.btn.login-button Aceptar
+                            button(type="submit").waves-effect.waves-light.btn.login-button Aceptar
                     .login-subtitle
                         a(href="/") ¿Problemas en el acceso?
                         a(href="www.tpvenlanube.com").login-url www.tpvenlanube.com

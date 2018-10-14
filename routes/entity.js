@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 var entityController = require('../controllers/entity');
 
 /* GET home page. */
