@@ -6,22 +6,22 @@
     var modalSumbit = document.getElementById(`${model}-submit`);
 
     var form = {
-        category :          {ele: `input[name="${model}-category"]:checked`, value: "value",    selector: "querySelector"   },
-        name :              {ele: `${model}-name`                          , value: "value",    selector: "getElementById"  },
-        firstLastName :     {ele: `${model}-first-last-name`               , value: "value",    selector: "getElementById"  },
-        secondLastName :    {ele: `${model}-second-last-name`              , value: "value",    selector: "getElementById"  },
-        address :           {ele: `${model}-address`                       , value: "value",    selector: "getElementById"  },
-        city :              {ele: `${model}-city`                          , value: "value",    selector: "getElementById"  },
-        country :           {ele: `${model}-country`                       , value: "value",    selector: "getElementById"  },
-        sex :               {ele: `input[name="${model}-sex"]:checked`     , value: "value",    selector: "querySelector"   },
-        refer :             {ele: `${model}-refer`                         , value: "value",    selector: "getElementById"  },
-        phone :             {ele: `${model}-phone`                         , value: "value",    selector: "getElementById"  },
-        delivery :          {ele: `${model}-delivery`                      , value: "checked",  selector: "getElementById"  },
-        cellphone :         {ele: `${model}-cellphone`                     , value: "value",    selector: "getElementById"  },   
-        email :             {ele: `${model}-email`                         , value: "value",    selector: "getElementById"  },
-        dni :               {ele: `${model}-dni`                           , value: "value",    selector: "getElementById"  },
-        printProfile :      {ele: `${model}-print-profile`                 , value: "checked",  selector: "getElementById"  },
-        printConsent :      {ele: `${model}-print-consent`                 , value: "checked",  selector: "getElementById"  },
+        category :          {ele: `input[name="${model}-category"]:checked`, value: "value",    selector: "querySelector"   ,required: true},
+        name :              {ele: `${model}-name`                          , value: "value",    selector: "getElementById"  ,required: true},
+        firstLastName :     {ele: `${model}-first-last-name`               , value: "value",    selector: "getElementById"  ,required: false},
+        secondLastName :    {ele: `${model}-second-last-name`              , value: "value",    selector: "getElementById"  ,required: false},
+        address :           {ele: `${model}-address`                       , value: "value",    selector: "getElementById"  ,required: false},
+        city :              {ele: `${model}-city`                          , value: "value",    selector: "getElementById"  ,required: false},
+        country :           {ele: `${model}-country`                       , value: "value",    selector: "getElementById"  ,required: false},
+        sex :               {ele: `input[name="${model}-sex"]:checked`     , value: "value",    selector: "querySelector"   ,required: false},
+        refer :             {ele: `${model}-refer`                         , value: "value",    selector: "getElementById"  ,required: false},
+        phone :             {ele: `${model}-phone`                         , value: "value",    selector: "getElementById"  ,required: false},
+        delivery :          {ele: `${model}-delivery`                      , value: "checked",  selector: "getElementById"  ,required: false},
+        cellphone :         {ele: `${model}-cellphone`                     , value: "value",    selector: "getElementById"  ,required: true},   
+        email :             {ele: `${model}-email`                         , value: "value",    selector: "getElementById"  ,required: false},
+        dni :               {ele: `${model}-dni`                           , value: "value",    selector: "getElementById"  ,required: false},
+        printProfile :      {ele: `${model}-print-profile`                 , value: "checked",  selector: "getElementById"  ,required: false},
+        printConsent :      {ele: `${model}-print-consent`                 , value: "checked",  selector: "getElementById"  ,required: false},
     }
 
     M.Autocomplete.init(document[form.city.selector](form.city.ele), {
@@ -44,14 +44,20 @@
     });
 
     modalSumbit.addEventListener('click', () => {
-        console.log(getForm())
-        //modal.close();
+        //Print Form Values ready to be sent
+        console.log(getForm());
+        modal.close();
     });
 
     function getForm(){
         var result = {}
         for (var key in form) {
-            result[key] = (document[form[key].selector](form[key].ele))[form[key].value]
+            var ele = document[form[key].selector](form[key].ele);
+            var value = ele[form[key].value];
+            if (form[key].required && !value){
+                alert(`${ele.dataset.name} no puede estar vacío`)
+            }
+            result[key] = value
         }
         return result
     }

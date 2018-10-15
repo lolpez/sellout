@@ -63,66 +63,66 @@
             .col.s12                
                 | Categoria:
                 label
-                    input.validate(type='radio', name='customer-modal-category', checked, value='particular')
+                    input.validate(type='radio', name='customer-modal-category', checked, data-name='Categoria', value='particular')
                     span Particular
                 label
-                    input.validate(type='radio', name='customer-modal-category', value='empresa')
+                    input.validate(type='radio', name='customer-modal-category', data-name='Categoria', value='empresa')
                     span Empresa
             .input-field.col.s12.m6 
-                input#customer-modal-name.validate(type='text')
+                input#customer-modal-name.validate(type='text', data-name='Nombre')
                 label(for='customer-modal-name') Nombre
             .input-field.col.s12.m6 
-                input#customer-modal-first-last-name.validate(type='text')
+                input#customer-modal-first-last-name.validate(type='text', data-name='Primer apellido')
                 label(for='customer-modal-first-last-name') Primer apellido
             .input-field.col.s12.m6 
-                input#customer-modal-second-last-name.validate(type='text')
+                input#customer-modal-second-last-name.validate(type='text', data-name='Segundo apellido')
                 label(for='customer-modal-second-last-name') Segundo apellido
             .input-field.col.s12.m6 
-                input#customer-modal-address.validate(type='text')
+                input#customer-modal-address.validate(type='text', data-name='Dirección')
                 label(for='customer-modal-address') Dirección
             .input-field.col.s12.m6 
-                input#customer-modal-city.validate(type='text')
+                input#customer-modal-city.validate(type='text', data-name='Provincia')
                 label(for='customer-modal-city') Provincia
             .input-field.col.s12.m6 
-                input#customer-modal-country.validate.autocomplete(type='text', value='Bolivia')
+                input#customer-modal-country.validate.autocomplete(type='text', data-name='País', value='Bolivia')
                 label(for='customer-modal-country') País
             .col.s12
                 | Sexo:
                 label
-                    input.validate(type='radio', name='customer-modal-sex', value='m', checked)
+                    input.validate(type='radio', name='customer-modal-sex', value='m', data-name='Sexo', checked)
                     span Masculino
                 label
-                    input.validate(type='radio', name='customer-modal-sex', value='f')
+                    input.validate(type='radio', name='customer-modal-sex', value='f', data-name='Sexo')
                     span Femenino
                 label
-                    input.validate(type='radio', name='customer-modal-sex', value='otro')
+                    input.validate(type='radio', name='customer-modal-sex', value='otro', data-name='Sexo')
                     span Otro
             .input-field.col.s12.m6 
-                input#customer-modal-refer.validate(type='text')
+                input#customer-modal-refer.validate(type='text', data-name='Referido')
                 label(for='customer-modal-refer') Referido de
             .input-field.col.s10.m4 
-                input#customer-modal-phone.validate(type='text')
+                input#customer-modal-phone.validate(type='text', data-name='Teléfono')
                 label(for='customer-modal-phone') Teléfono
             .input-field.col.s2.m2
                 label
-                    input#customer-modal-delivery(type='checkbox')
+                    input#customer-modal-delivery(type='checkbox', data-name='No entrega')
                     span No entrega
             .input-field.col.s12.m6 
-                input#customer-modal-cellphone.validate(type='text')
+                input#customer-modal-cellphone.validate(type='text', data-name='Teléfono móvil')
                 label(for='customer-modal-cellphone') Teléfono móvil
             .input-field.col.s12.m6 
-                input#customer-modal-email.validate(type='email')
+                input#customer-modal-email.validate(type='email', data-name='Email')
                 label(for='customer-modal-email') Email
             .input-field.col.s12.m6 
-                input#customer-modal-dni.validate(type='text')
+                input#customer-modal-dni.validate(type='text', data-name='DNI')
                 label(for='customer-modal-dni') DNI
             .col.s12.m3
                 label
-                    input#customer-modal-print-profile(type='checkbox')
+                    input#customer-modal-print-profile(type='checkbox', data-name='Imprimir datos de acceso del usuario')
                     span Imprimir datos de acceso del usuario
             .col.s12.m3
                 label
-                    input#customer-modal-print-consent(type='checkbox')
+                    input#customer-modal-print-consent(type='checkbox', data-name='Imprimir concentimiento')
                     span Imprimir concentimiento
     .modal-footer
         a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
