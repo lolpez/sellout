@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var entityController = require('../controllers/entity');
+var customerController = require('../controllers/customer');
 
 /* GET home page. */
-router.get('/', requiresUserLogged, entityController.entitySelectionPage);
-router.get('/:id', requiresUserLogged, entityController.appPage);
+router.post('/', requiresUserLogged, customerController.addCustomer);
 
 function requiresUserLogged(req, res, next) {
     if (req.user) {

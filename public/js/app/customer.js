@@ -46,16 +46,16 @@
     modalSumbit.addEventListener('click', () => {
         var data = getForm();
         if (!data.success) return;
-        fetch("/entity/addCustomer", {
+        fetch("/customer", {
             method: 'POST',
             body: JSON.stringify({data: data.result}),
             headers:{
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             }
         }).then(res => res.json())
         .then((response) => {
-            console.log(response)
-            alert(response.message)
+            console.log(response);
+            alert(`${response.message}, más información en la consola.`);
         }).catch((error) => {
             alert(error)
         });

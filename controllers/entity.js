@@ -43,9 +43,5 @@ module.exports = {
 				user: req.user
 			})
 		}
-	},
-	addCustomer: (req, res, next) => {
-		console.log(req.body.data);
-		res.send({message: "exito", object: req.body.data})
 	}
 };

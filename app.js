@@ -30,6 +30,7 @@ passport.deserializeUser(function (id, callback) {
 
 var indexRouter = require('./routes/index');
 var entityRouter = require('./routes/entity');
+var customerRouter = require('./routes/customer');
 
 var app = express();
 
@@ -49,6 +50,7 @@ app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/entity', entityRouter);
+app.use('/customer', customerRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
