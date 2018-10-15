@@ -63,10 +63,10 @@
             .col.s12                
                 | Categoria:
                 label
-                    input.validate(type='radio', name='customer-modal-category', checked)
+                    input.validate(type='radio', name='customer-modal-category', checked, value='particular')
                     span Particular
                 label
-                    input.validate(type='radio', name='customer-modal-category')
+                    input.validate(type='radio', name='customer-modal-category', value='empresa')
                     span Empresa
             .input-field.col.s12.m6 
                 input#customer-modal-name.validate(type='text')
@@ -89,13 +89,13 @@
             .col.s12
                 | Sexo:
                 label
-                    input.validate(type='radio', name='customer-modal-sex', checked)
+                    input.validate(type='radio', name='customer-modal-sex', value='m', checked)
                     span Masculino
                 label
-                    input.validate(type='radio', name='customer-modal-sex')
+                    input.validate(type='radio', name='customer-modal-sex', value='f')
                     span Femenino
                 label
-                    input.validate(type='radio', name='customer-modal-sex')
+                    input.validate(type='radio', name='customer-modal-sex', value='otro')
                     span Otro
             .input-field.col.s12.m6 
                 input#customer-modal-refer.validate(type='text')
@@ -105,7 +105,7 @@
                 label(for='customer-modal-phone') Teléfono
             .input-field.col.s2.m2
                 label
-                    input#customer-modal-nodelivery(type='checkbox')
+                    input#customer-modal-delivery(type='checkbox')
                     span No entrega
             .input-field.col.s12.m6 
                 input#customer-modal-cellphone.validate(type='text')
@@ -126,5 +126,4 @@
                     span Imprimir concentimiento
     .modal-footer
         a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
-        a#customer-modal-submit.waves-effect.waves-green.btn-flat(href='#!')
-        
+        a#customer-modal-submit.waves-effect.waves-green.btn-flat(href='#')
