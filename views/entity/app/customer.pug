@@ -61,7 +61,7 @@
         h4#customer-modal-title
         .row
             .col.s12                
-                | Categoria:
+                | Categoria *:
                 label
                     input.validate(type='radio', name='customer-modal-category', checked, data-name='Categoria', value='particular')
                     span Particular
@@ -70,7 +70,8 @@
                     span Empresa
             .input-field.col.s12.m6 
                 input#customer-modal-name.validate(type='text', data-name='Nombre')
-                label(for='customer-modal-name') Nombre
+                label(for='customer-modal-name') Nombre *
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
                 input#customer-modal-first-last-name.validate(type='text', data-name='Primer apellido')
                 label(for='customer-modal-first-last-name') Primer apellido
@@ -109,7 +110,8 @@
                     span No entrega
             .input-field.col.s12.m6 
                 input#customer-modal-cellphone.validate(type='text', data-name='Teléfono móvil')
-                label(for='customer-modal-cellphone') Teléfono móvil
+                label(for='customer-modal-cellphone') Teléfono móvil *
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
                 input#customer-modal-email.validate(type='email', data-name='Email')
                 label(for='customer-modal-email') Email
@@ -125,5 +127,6 @@
                     input#customer-modal-print-consent(type='checkbox', data-name='Imprimir concentimiento')
                     span Imprimir concentimiento
     .modal-footer
+        strong.left * Campos obligatorios
         a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
         a#customer-modal-submit.waves-effect.waves-green.btn-flat(href='#')

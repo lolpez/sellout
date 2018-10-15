@@ -46,7 +46,7 @@
     modalSumbit.addEventListener('click', () => {
         //Print Form Values ready to be sent
         console.log(getForm());
-        modal.close();
+        //modal.close();
     });
 
     function getForm(){
@@ -55,7 +55,7 @@
             var ele = document[form[key].selector](form[key].ele);
             var value = ele[form[key].value];
             if (form[key].required && !value){
-                alert(`${ele.dataset.name} no puede estar vacío`)
+                ele.className += " invalid";
             }
             result[key] = value
         }
