@@ -68,3 +68,15 @@ a {
 .total{
     border: solid #4CAF50;
 }
+
+/* modal */
+.modal-footer .info{
+    height: 36px;
+    line-height: 36px;
+    padding: 0 16px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    margin: 6px 0;
+    float: left;
+}

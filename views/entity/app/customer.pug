@@ -75,18 +75,23 @@
             .input-field.col.s12.m6 
                 input#customer-modal-first-last-name.validate(type='text', data-name='Primer apellido')
                 label(for='customer-modal-first-last-name') Primer apellido
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
                 input#customer-modal-second-last-name.validate(type='text', data-name='Segundo apellido')
                 label(for='customer-modal-second-last-name') Segundo apellido
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
                 input#customer-modal-address.validate(type='text', data-name='Dirección')
                 label(for='customer-modal-address') Dirección
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
                 input#customer-modal-city.validate(type='text', data-name='Provincia')
                 label(for='customer-modal-city') Provincia
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
                 input#customer-modal-country.validate.autocomplete(type='text', data-name='País', value='Bolivia')
                 label(for='customer-modal-country') País
+                span.helper-text(data-error='Campo requerido')
             .col.s12
                 | Sexo:
                 label
@@ -101,9 +106,11 @@
             .input-field.col.s12.m6 
                 input#customer-modal-refer.validate(type='text', data-name='Referido')
                 label(for='customer-modal-refer') Referido de
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s10.m4 
                 input#customer-modal-phone.validate(type='text', data-name='Teléfono')
                 label(for='customer-modal-phone') Teléfono
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s2.m2
                 label
                     input#customer-modal-delivery(type='checkbox', data-name='No entrega')
@@ -115,9 +122,11 @@
             .input-field.col.s12.m6 
                 input#customer-modal-email.validate(type='email', data-name='Email')
                 label(for='customer-modal-email') Email
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
                 input#customer-modal-dni.validate(type='text', data-name='DNI')
                 label(for='customer-modal-dni') DNI
+                span.helper-text(data-error='Campo requerido')
             .col.s12.m3
                 label
                     input#customer-modal-print-profile(type='checkbox', data-name='Imprimir datos de acceso del usuario')
@@ -127,6 +136,6 @@
                     input#customer-modal-print-consent(type='checkbox', data-name='Imprimir concentimiento')
                     span Imprimir concentimiento
     .modal-footer
-        strong.left(style="margin-top: 5px") * Campos obligatorios
+        span.info * Campos obligatorios
         a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
         button#customer-modal-submit.waves-effect.waves-green.btn-flat(href='#')
