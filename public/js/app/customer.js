@@ -44,21 +44,35 @@
     });
 
     modalSumbit.addEventListener('click', () => {
-        //Print Form Values ready to be sent
-        console.log(getForm());
-        //modal.close();
+        var data = getForm();
+        if (!data.success) return;
+        fetch("/entity/addCustomer", {
+            method: 'POST',
+            body: JSON.stringify({data: data.result}),
+            headers:{
+              'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .then((response) => {
+            console.log(response)
+            alert(response.message)
+        }).catch((error) => {
+            alert(error)
+        });
     });
 
     function getForm(){
-        var result = {}
+        var result = {};
+        var success = true;
         for (var key in form) {
             var ele = document[form[key].selector](form[key].ele);
             var value = ele[form[key].value];
             if (form[key].required && !value){
                 ele.className += " invalid";
+                success = false;
             }
             result[key] = value
         }
-        return result
+        return {result: result, success: success}
     }
 })();
