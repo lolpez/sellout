@@ -16,10 +16,10 @@ module.exports = {
 				data: req.body.data
 			},
 		};	
-		rp(options).then((object) => {
-			res.send({message: "exito", object: object})
+		rp(options).then((response) => {
+			res.send({message: "exito", object: JSON.parse(response).response})
 		}).catch(function (err) {
-		});*/		
+		});*/
 
 		//Fake response
 		console.log(req.body.data);

@@ -33,15 +33,21 @@
                 label(for='customer-address') Dirección
         a.waves-effect.waves-light.btn.app-button.block Buscar
     .col.s12.m6
-        table.highlight
-            thead
-                tr
-                    th Nº CLiente
-                    th Móvil
-                    th Apellido 1
-                    th Apellido 2
-                    th Nombre
-            tbody
+        div(style="height: 490px; overflow: auto")
+            table.highlight
+                thead
+                    tr
+                        th ID CLiente
+                        th Apellido Paterno
+                        th Apellido Materno
+                        th Nombre
+                tbody
+                    each customer, index in customers
+                        tr
+                            td=customer.idCliente
+                            td=customer.patCliente
+                            td=customer.matCliente
+                            td=customer.nomCliente
         a.waves-effect.waves-light.btn.app-button.block Seleccionar
     .col.s12.m3
         a.waves-effect.waves-light.btn.app-button.block Seleccionar cliente
