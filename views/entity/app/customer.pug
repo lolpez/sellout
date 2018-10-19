@@ -67,80 +67,68 @@
         h4#customer-modal-title
         .row
             .col.s12                
-                | Categoria *:
+                | Tipo de Cliente * :
                 label
-                    input.validate(type='radio', name='customer-modal-category', checked, data-name='Categoria', value='particular')
-                    span Particular
+                    input.validate(type='radio', name='customer-modal-tipCliente', checked, data-name='Categoria', value='N')
+                    span Natural
                 label
-                    input.validate(type='radio', name='customer-modal-category', data-name='Categoria', value='empresa')
-                    span Empresa
+                    input.validate(type='radio', name='customer-modal-tipCliente', data-name='Categoria', value='J')
+                    span Juridico
             .input-field.col.s12.m6 
-                input#customer-modal-name.validate(type='text', data-name='Nombre')
-                label(for='customer-modal-name') Nombre *
+                input#customer-modal-nomCliente.validate(type='text', data-name='Nombre')
+                label(for='customer-modal-nomCliente') Nombre (s)*
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
-                input#customer-modal-first-last-name.validate(type='text', data-name='Primer apellido')
-                label(for='customer-modal-first-last-name') Primer apellido
+                input#customer-modal-patCliente.validate(type='text', data-name='Primer apellido')
+                label(for='customer-modal-patCliente') Apellido Paterno
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
-                input#customer-modal-second-last-name.validate(type='text', data-name='Segundo apellido')
-                label(for='customer-modal-second-last-name') Segundo apellido
+                input#customer-modal-matCliente.validate(type='text', data-name='Segundo apellido')
+                label(for='customer-modal-matCliente') Apellido Materno
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
-                input#customer-modal-address.validate(type='text', data-name='Dirección')
-                label(for='customer-modal-address') Dirección
+                input#customer-modal-dirCliente.validate(type='text', data-name='Dirección')
+                label(for='customer-modal-dirCliente') Dirección
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
-                input#customer-modal-city.validate(type='text', data-name='Provincia')
-                label(for='customer-modal-city') Provincia
+                input#customer-modal-idtipoDpto.validate(type='text', data-name='Provincia')
+                label(for='customer-modal-idtipoDpto') Departamento
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
-                input#customer-modal-country.validate.autocomplete(type='text', data-name='País', value='Bolivia')
-                label(for='customer-modal-country') País
+                input#customer-modal-idtipoPais.validate.autocomplete(type='text', data-name='País', value='Bolivia')
+                label(for='customer-modal-idtipoPais') País
                 span.helper-text(data-error='Campo requerido')
             .col.s12
                 | Sexo:
                 label
-                    input.validate(type='radio', name='customer-modal-sex', value='m', data-name='Sexo', checked)
+                    input.validate(type='radio', name='customer-modal-tipoGenero', value='M', data-name='Sexo', checked)
                     span Masculino
                 label
-                    input.validate(type='radio', name='customer-modal-sex', value='f', data-name='Sexo')
+                    input.validate(type='radio', name='customer-modal-tipoGenero', value='F', data-name='Sexo')
                     span Femenino
                 label
-                    input.validate(type='radio', name='customer-modal-sex', value='otro', data-name='Sexo')
+                    input.validate(type='radio', name='customer-modal-tipoGenero', value='otro', data-name='Sexo')
                     span Otro
             .input-field.col.s12.m6 
-                input#customer-modal-refer.validate(type='text', data-name='Referido')
-                label(for='customer-modal-refer') Referido de
+                input#customer-modal-refCliente.validate(type='text', data-name='Referido')
+                label(for='customer-modal-refCliente') Referido de
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s10.m4 
-                input#customer-modal-phone.validate(type='text', data-name='Teléfono')
-                label(for='customer-modal-phone') Teléfono
+                input#customer-modal-telCliente.validate(type='text', data-name='Teléfono')
+                label(for='customer-modal-telCliente') Teléfono
                 span.helper-text(data-error='Campo requerido')
-            .input-field.col.s2.m2
-                label
-                    input#customer-modal-delivery(type='checkbox', data-name='No entrega')
-                    span No entrega
-            .input-field.col.s12.m6 
-                input#customer-modal-cellphone.validate(type='text', data-name='Teléfono móvil')
-                label(for='customer-modal-cellphone') Teléfono móvil *
+            .input-field.col.s12.m6
+                input#customer-modal-celCliente.validate(type='text', data-name='Teléfono móvil')
+                label(for='customer-modal-celCliente') Teléfono móvil *
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
-                input#customer-modal-email.validate(type='email', data-name='Email')
-                label(for='customer-modal-email') Email
+                input#customer-modal-mailCliente.validate(type='email', data-name='Email')
+                label(for='customer-modal-mailCliente') Email
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
-                input#customer-modal-dni.validate(type='text', data-name='DNI')
-                label(for='customer-modal-dni') DNI
+                input#customer-modal-ciCliente.validate(type='text', data-name='DNI')
+                label(for='customer-modal-ciCliente') C.I.
                 span.helper-text(data-error='Campo requerido')
-            .col.s12.m3
-                label
-                    input#customer-modal-print-profile(type='checkbox', data-name='Imprimir datos de acceso del usuario')
-                    span Imprimir datos de acceso del usuario
-            .col.s12.m3
-                label
-                    input#customer-modal-print-consent(type='checkbox', data-name='Imprimir concentimiento')
-                    span Imprimir concentimiento
     .modal-footer
         span.info * Campos obligatorios
         a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel

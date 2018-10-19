@@ -33,7 +33,7 @@ module.exports = {
 	},
 	appPage: (req, res, next) => {
 		//Call Python API for customer get
-		/*var id = req.params.id;
+		var id = req.params.id;
 		//Fake validation
 		if (isNaN(parseInt(id)) || parseInt(id) > 6 || parseInt(id) < 1){
 			res.locals.message = `Entidad ${id} no encontrada`;
@@ -46,8 +46,13 @@ module.exports = {
 				uri: `${nconf.get("url")}/${nconf.get("apiUrl")}/${nconf.get("apiVersion")}/${nconf.get("customer").get}`,
 				headers: {
 					'Content-Type': 'application/json',
-				}
+				},
+				body: JSON.stringify({
+                    'idUsuario': '1',
+					'idtipoDpto': '1'
+				})
 			};
+
 			rp(options).then((response) => {
 				res.render('entity/app/index', {
 					entityId: id,
@@ -57,9 +62,9 @@ module.exports = {
 				res.render('index', {title: 'Control IPOS', entities: JSON.parse(response).response});
 			}).catch(function (err) {
 			});
-		}*/
+		}
 
-
+		/*
 		var id = req.params.id;
 		//Fake validation
 		if (isNaN(parseInt(id)) || parseInt(id) > 6 || parseInt(id) < 1){
@@ -86,6 +91,6 @@ module.exports = {
 					"9": {"idCliente": 9, "patCliente": "Paterno 9", "matCliente": "Materno 9", "nomCliente": "Nombre 9"}
 				}
 			});
-		}
+		}*/
 	}
 };
