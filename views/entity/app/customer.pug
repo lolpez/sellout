@@ -43,7 +43,7 @@
                         th Nombre
                 tbody
                     each customer, index in customers
-                        tr
+                        tr.customer-tr(data-id=customer.idCliente)
                             td=customer.idCliente
                             td=customer.patCliente
                             td=customer.matCliente

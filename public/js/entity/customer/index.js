@@ -4,7 +4,9 @@
     var modal = M.Modal.getInstance(document.getElementById(`${model}`));
     var modalTitle = document.getElementById(`${model}-title`);
     var modalSumbit = document.getElementById(`${model}-submit`);
+    var customerTableRows = document.querySelectorAll('.customer-tr');
 
+    /*Customer Form*/
     var form = {
         tipCliente  : {ele: `input[name="${model}-tipCliente"]:checked` , value: "value",    selector: "querySelector"   ,required: true},
         nomCliente  : {ele: `${model}-nomCliente`                       , value: "value",    selector: "getElementById"  ,required: true},
@@ -72,4 +74,21 @@
         }
         return {result: result, success: success}
     }
+
+    /*Customer Get Information*/
+    customerTableRows.forEach(customerTableRow => customerTableRow.addEventListener("click", function() {
+        fetch("/customer/get", {
+            method: 'POST',
+            body: JSON.stringify({id:  this.dataset.id}),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .then((response) => {
+            console.log(response);
+            alert(`${response.message}, más información en la consola.`);
+        }).catch((error) => {
+            alert(error)
+        });
+    }));
 })();

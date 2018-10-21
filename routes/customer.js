@@ -4,6 +4,7 @@ var customerController = require('../controllers/customer');
 
 /* GET home page. */
 router.post('/', requiresUserLogged, customerController.addCustomer);
+router.post('/get', requiresUserLogged, customerController.getCustomer);
 
 function requiresUserLogged(req, res, next) {
     if (req.user) {
