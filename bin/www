@@ -86,5 +86,5 @@ function onListening() {
 	var bind = typeof addr === 'string'
 		? 'pipe ' + addr
 		: 'port ' + addr.port;
-	console.log(`Server listening ${addr.address == '::' ? 'localhost' : addr.address}:${addr.port}`);
+	console.log(`Server listening ${addr.address == '::' ? 'localhost' : addr.address}:${addr.port} in ${app.get('env')} mode.`);
 }
