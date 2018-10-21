@@ -44,13 +44,24 @@ module.exports = {
 					'idtipoDpto': '1'
 				})
 			};
+			//options for getting a entity
+			var options = {
+				method: 'POST',
+				uri: req.app.get('webServices').customer.get,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+                    'idEntidad': '1'
+				})
+			};
 			rp(options).then((response) => {
 				res.render('entity/app/index', {
-					entityId: id,
+					app: req.app.get('config'),
+					//entity: entity,	<--Get entity object by WS, the entity must have {id:"", name:""}
 					user: req.user,
 					customers: JSON.parse(response).response
 				})
-				res.render('index', {title: 'Control IPOS', entities: JSON.parse(response).response});
 			}).catch(function (err) {
 				//Show error
 			});
