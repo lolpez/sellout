@@ -69,6 +69,19 @@ a {
     border: solid #4CAF50;
 }
 
+.app-li{
+    padding: 0 15px !important;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.0vh;
+}
+
+@media only screen and (max-width: 992px) {
+    .app-time-nav{
+        display: none
+    }    
+}
+
 /* modal */
 .modal-footer .info{
     height: 36px;

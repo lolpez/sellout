@@ -16,7 +16,7 @@ module.exports = {
 				//Show error
 			});
 		}else{
-			//Fake data
+			//FAKE DATA FOR DEV PURPOSES 
 			res.render('entity/entity selector/index',	{ 
 				title: 'Control IPOS',
 				user: req.user,
@@ -55,19 +55,21 @@ module.exports = {
 				//Show error
 			});
 		}else{
+			//FAKE DATA FOR DEV PURPOSES
 			var id = req.params.id;
-			//Fake validation
 			if (isNaN(parseInt(id)) || parseInt(id) > 6 || parseInt(id) < 1){
 				res.locals.message = `Entidad ${id} no encontrada`;
 				res.locals.error = req.app.get('env') === 'development' ? "ID de entidad no válida" : {};
 				res.status(500);
 				res.render('error/error');
 			}else{
-				//Fake data
+				var entity = {
+					id: id,
+					name: "STARBUCKS"
+				}
 				res.render('entity/app/index', {
-					title: req.app.get('config').appName,
-					entity: `Entity ${id}`,
-					entityId: id,
+					app: req.app.get('config'),
+					entity: entity,
 					user: req.user,
 					customers: {
 						"0": {"idCliente": 0, "patCliente": "Paterno 0", "matCliente": "Materno 0", "nomCliente": "Nombre 0"},
