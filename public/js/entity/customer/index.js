@@ -1,5 +1,6 @@
 (function() {
     var model = "customer-modal";
+    var modelApp = "customer-app";
     var newButton = document.getElementById(`${model}-create`);
     var modal = M.Modal.getInstance(document.getElementById(`${model}`));
     var modalTitle = document.getElementById(`${model}-title`);
@@ -86,7 +87,14 @@
         }).then(res => res.json())
         .then((response) => {
             console.log(response);
-            alert(`${response.message}, más información en la consola.`);
+            alert(`${response.message}, más información sobre el cliente en la consola.`);
+            var customer = response.object;
+            document.getElementById(`${modelApp}-id`).innerHTML = customer.idCliente;
+            document.getElementById(`${modelApp}-category`).innerHTML = customer.nomtipoGenero;
+            document.getElementById(`${modelApp}-phone`).innerHTML = customer.numeroCel;
+            document.getElementById(`${modelApp}-name`).innerHTML = `${customer.nomCliente} ${customer.patCliente} ${customer.matCliente}`;
+            document.getElementById(`${modelApp}-address`).innerHTML = customer.detalleDir;
+            document.getElementById(`${modelApp}-email`).innerHTML = "NO EMAIL";
         }).catch((error) => {
             alert(error)
         });
