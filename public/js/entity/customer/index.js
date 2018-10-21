@@ -77,6 +77,7 @@
 
     /*Customer Get Information*/
     var modelApp = "customer-app";
+    var selectedCustomer =  null;
     customerTableRows.forEach(customerTableRow => customerTableRow.addEventListener("click", function() {
         fetch("/customer/get", {
             method: 'POST',
@@ -88,12 +89,12 @@
         .then((response) => {
             console.log(response);
             alert(`${response.message}, más información sobre el cliente en la consola.`);
-            var customer = response.object;
-            document.getElementById(`${modelApp}-id`).innerHTML = customer.idCliente;
-            document.getElementById(`${modelApp}-category`).innerHTML = customer.nomtipoGenero;
-            document.getElementById(`${modelApp}-phone`).innerHTML = customer.numeroCel;
-            document.getElementById(`${modelApp}-name`).innerHTML = `${customer.nomCliente} ${customer.patCliente} ${customer.matCliente}`;
-            document.getElementById(`${modelApp}-address`).innerHTML = customer.detalleDir;
+            selectedCustomer = response.object;
+            document.getElementById(`${modelApp}-id`).innerHTML = selectedCustomer.idCliente;
+            document.getElementById(`${modelApp}-category`).innerHTML = selectedCustomer.nomtipoGenero;
+            document.getElementById(`${modelApp}-phone`).innerHTML = selectedCustomer.numeroCel;
+            document.getElementById(`${modelApp}-name`).innerHTML = `${selectedCustomer.nomCliente} ${selectedCustomer.patCliente} ${selectedCustomer.matCliente}`;
+            document.getElementById(`${modelApp}-address`).innerHTML = selectedCustomer.detalleDir;
             document.getElementById(`${modelApp}-email`).innerHTML = "NO EMAIL";
         }).catch((error) => {
             alert(error)
