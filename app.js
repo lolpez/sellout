@@ -6,6 +6,8 @@ var logger = require('morgan');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
+var nconf = require('nconf');
+nconf.argv().env().file({file: path.join(__dirname, 'config.json')});
 
 passport.use(new Strategy(function (username, password, callback) {
 	if (username == 'admin' && password == 'password') {
@@ -37,6 +39,8 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+// get app config file
+app.set('config', nconf.get('configurations'));
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -1,13 +1,19 @@
 {
-    "url": "http://127.0.0.1:8081",
-    "apiUrl": "api",
-    "apiVersion": "v1",
-    "entity": {
-        "get": "get_entidades",
-        "add": "add_entidades"
-    },
-    "customer": {
-        "get": "get_clientes",
-        "add": "add_clientes"
+    "configurations": {
+        "appName": "iPos",
+        "appVersion": "0.1.0",
+        "webService": {
+            "url": "http://127.0.0.1:8081",
+            "apiPath": "api",
+            "apiVersion": "v1",
+            "entity": {
+                "get": "get_entidades",
+                "add": "add_entidades"
+            },
+            "customer": {
+                "get": "get_clientes",
+                "add": "add_clientes"
+            }
+        }
     }
 }
