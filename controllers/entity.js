@@ -11,7 +11,11 @@ module.exports = {
 				}
 			};
 			rp(options).then((response) => {
-				res.render('index', {title: 'Control IPOS', entities: JSON.parse(response).response});
+				res.render('entity/entity selector/index', {
+					title: 'Control IPOS',
+					user: req.user,
+					entities: JSON.parse(response).response
+				});
 			}).catch(function (err) {
 				//Show error
 			});

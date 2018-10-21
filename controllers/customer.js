@@ -30,7 +30,24 @@ module.exports = {
 	getCustomer: (req, res, next) => {
 		if (req.app.get('env') == 'production'){
 			//Call Python API for get customer
-			
+			/*
+			var options = {
+				method: 'POST',
+				uri: req.app.get('webServices').customer.get,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: {
+					data: JSON.stringify (req.body.id)
+				},
+			};
+			print (options)
+			rp(options).then((response) => {
+				res.send({message: "exito", object: JSON.parse(response).response})
+			}).catch(function (err) {
+				//Show error
+			});
+			*/
 		}else{
 			//Fake response
 			var id = req.body.id;
