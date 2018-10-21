@@ -39,8 +39,23 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-// get app config file
+// set app configurations from json file
 app.set('config', nconf.get('configurations'));
+var webServiceUrl = [
+	app.get('config').webService.url,
+	app.get('config').webService.apiPath,
+	app.get('config').webService.apiVersion
+].join('/');
+
+var webServices = {}
+Object.keys(app.get('config').webService.paths).forEach(function(key) {
+	var methods = {};
+	Object.keys(app.get('config').webService.paths[key]).forEach(function(method) {
+		methods[method] = [webServiceUrl, app.get('config').webService.paths[key][method]].join('/');
+	})
+	webServices[key] = methods;
+});
+app.set('webServices', webServices);
 
 app.use(logger('dev'));
 app.use(express.json());

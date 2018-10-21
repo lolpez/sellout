@@ -6,13 +6,15 @@
             "url": "http://127.0.0.1:8081",
             "apiPath": "api",
             "apiVersion": "v1",
-            "entity": {
-                "get": "get_entidades",
-                "add": "add_entidades"
-            },
-            "customer": {
-                "get": "get_clientes",
-                "add": "add_clientes"
+            "paths": {
+                "entity": {
+                    "get": "get_entidades",
+                    "add": "add_entidades"
+                },
+                "customer": {
+                    "get": "get_clientes",
+                    "add": "add_clientes"
+                }
             }
         }
     }

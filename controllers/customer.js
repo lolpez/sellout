@@ -1,15 +1,12 @@
 var rp = require('request-promise');
-var path = require('path');
-var nconf = require('nconf');
-nconf.argv().env().file({file: path.join(__dirname, '..', 'config.json')});
 
 module.exports = {
 	addCustomer: (req, res, next) => {
-		if (process.env.NODE_ENV == 'production'){
+		if (req.app.get('env') == 'production'){
 			//Call Python API for customer insert
 			var options = {
 				method: 'POST',
-				uri: `${nconf.get("url")}/${nconf.get("apiUrl")}/${nconf.get("apiVersion")}/${nconf.get("customer").add}`,
+				uri: req.app.get('webServices').customer.add,
 				headers: {
 					'Content-Type': 'application/json',
 				},

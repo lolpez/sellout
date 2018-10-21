@@ -1,14 +1,11 @@
 var rp = require('request-promise');
-var path = require('path');
-var nconf = require('nconf');
-nconf.argv().env().file({file: path.join(__dirname, '..', 'config.json')});
 
 module.exports = {
 	entitySelectionPage: (req, res, next) => {
-		if (process.env.NODE_ENV == 'production'){
+		if (req.app.get('env') == 'production'){
 			var options = {
 				method: 'POST',
-				uri: `${nconf.get("url")}/${nconf.get("apiUrl")}/${nconf.get("apiVersion")}/${nconf.get("entity").get}`,
+				uri: req.app.get('webServices').entity.get,
 				headers: {
 					'Content-Type': 'application/json',
 				}
@@ -35,10 +32,10 @@ module.exports = {
 		}	
 	},
 	appPage: (req, res, next) => {
-		if (process.env.NODE_ENV == 'production'){
+		if (req.app.get('env') == 'production'){
 			var options = {
 				method: 'POST',
-				uri: `${nconf.get("url")}/${nconf.get("apiUrl")}/${nconf.get("apiVersion")}/${nconf.get("customer").get}`,
+				uri: req.app.get('webServices').customer.get,
 				headers: {
 					'Content-Type': 'application/json',
 				},
@@ -68,7 +65,8 @@ module.exports = {
 			}else{
 				//Fake data
 				res.render('entity/app/index', {
-					title: `Entity ${id}`,
+					title: req.app.get('config').appName,
+					entity: `Entity ${id}`,
 					entityId: id,
 					user: req.user,
 					customers: {
