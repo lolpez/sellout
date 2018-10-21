@@ -1,9 +1,10 @@
 (function() {
     var model = "customer-modal";
     var newButton = document.getElementById(`${model}-create`);
+    var editButton = document.getElementById(`${model}-edit`);
     var modal = M.Modal.getInstance(document.getElementById(`${model}`));
     var modalTitle = document.getElementById(`${model}-title`);
-    var modalSumbit = document.getElementById(`${model}-submit`);
+    var modalSumbit = document.getElementById(`${model}-submit`); 
     var customerTableRows = document.querySelectorAll('.customer-tr');
 
     /*Customer Form*/
@@ -42,6 +43,13 @@
         modal.open();
     });
 
+    editButton.addEventListener('click', () => {
+        modalTitle.innerHTML = 'Editar Cliente';
+        modalSumbit.innerHTML = 'Guardar';
+        setForm();
+        modal.open();
+    });
+
     modalSumbit.addEventListener('click', () => {
         var data = getForm();
         if (!data.success) return;
@@ -75,6 +83,14 @@
         return {result: result, success: success}
     }
 
+    function setForm(){
+        for (var key in form) {
+            var ele = document[form[key].selector](form[key].ele);
+            ele[form[key].value] = selectedCustomer[key]
+        }
+        M.updateTextFields();
+    }
+
     /*Customer Get Information*/
     var modelApp = "customer-app";
     var selectedCustomer =  null;
@@ -96,6 +112,7 @@
             document.getElementById(`${modelApp}-name`).innerHTML = `${selectedCustomer.nomCliente} ${selectedCustomer.patCliente} ${selectedCustomer.matCliente}`;
             document.getElementById(`${modelApp}-address`).innerHTML = selectedCustomer.detalleDir;
             document.getElementById(`${modelApp}-email`).innerHTML = "NO EMAIL";
+            editButton.removeAttribute("disabled") = false;
         }).catch((error) => {
             alert(error)
         });
