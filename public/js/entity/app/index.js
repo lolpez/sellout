@@ -1,4 +1,5 @@
 (function() {
+    /* UI initialization */
     var modals = document.querySelectorAll('.modal');
     var navs = document.querySelectorAll('.sidenav');
     var tabs = document.getElementById('tabs');
