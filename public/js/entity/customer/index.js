@@ -1,6 +1,5 @@
 (function() {
     var model = "customer-modal";
-    var modelApp = "customer-app";
     var newButton = document.getElementById(`${model}-create`);
     var modal = M.Modal.getInstance(document.getElementById(`${model}`));
     var modalTitle = document.getElementById(`${model}-title`);
@@ -77,6 +76,7 @@
     }
 
     /*Customer Get Information*/
+    var modelApp = "customer-app";
     customerTableRows.forEach(customerTableRow => customerTableRow.addEventListener("click", function() {
         fetch("/customer/get", {
             method: 'POST',
