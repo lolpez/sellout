@@ -56,7 +56,8 @@ module.exports = {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-                    'idEntidad': '1'
+                    'idUsuario': '1',
+                    'idtipoDpto': '1'
 				})
 			};
 			rp(options).then((response) => {
@@ -64,7 +65,11 @@ module.exports = {
 					app: req.app.get('config'),
 					//entity: entity,	<--Get entity object by WS, the entity must have {id:"", name:""}
 					user: req.user,
-					customers: JSON.parse(response).response
+					customers: JSON.parse(response).response,
+                    entity : {
+                        id: response.idtipoEntidad,
+                        name: response.nomtipoEntidad
+                    }
 				})
 			}).catch(function (err) {
 				//Show error
