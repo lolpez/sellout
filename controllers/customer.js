@@ -18,6 +18,7 @@ module.exports = {
 				res.send({message: "exito", object: JSON.parse(response).response})
 			}).catch(function (err) {
 				//THE ERROR MESSAGE SHOULD BE HERE
+				//test
 				console.log(err)
 			});
 		}else{
