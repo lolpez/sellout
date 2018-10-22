@@ -110,6 +110,7 @@
             document.getElementById(`${modelApp}-name`).innerHTML = `${selectedCustomer.nomCliente} ${selectedCustomer.patCliente} ${selectedCustomer.matCliente}`;
             document.getElementById(`${modelApp}-address`).innerHTML = selectedCustomer.dirCliente;
             document.getElementById(`${modelApp}-email`).innerHTML = selectedCustomer.mailCliente;
+            editButton.removeAttribute("disabled");
         }).catch((error) => {
             alert(error)
         });
