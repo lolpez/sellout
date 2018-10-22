@@ -11,14 +11,15 @@ module.exports = {
 					'Content-Type': 'application/json',
 				},
 				body: {
-					data: JSON.stringify (req.body.data)
+					data: JSON.stringify(req.body.data)
 				},
 			};
-			print (options)
 			rp(options).then((response) => {
 				res.send({message: "exito", object: JSON.parse(response).response})
 			}).catch(function (err) {
-				//Show error
+				//THE ERROR MESSAGE SHOULD BE HERE
+				//test git message 2
+				console.log(err)
 			});
 		}else{
 			//Fake response
