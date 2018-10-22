@@ -27,20 +27,19 @@ module.exports = {
 	},
 	getCustomer: (req, res, next) => {
 		if (req.app.get('env') == 'production'){
-			//Call Python API for get customer
 			var options = {
 				method: 'POST',
-				uri: req.app.get('webServices').customer.get_by_id, //<-- Add the url for Pyhon Get Customer By ID
+				uri: req.app.get('webServices').customer.getById,
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({			//<--Fixed from previous error
+				body: JSON.stringify({
 					data: {idCliente: req.body.id}
 				}),
 			};
 			console.log('Hola:' + options)
 			rp(options).then((response) => {
-				res.send({message: "exito", object: JSON.parse(response).response}) //<--Return the customer object
+				res.send({message: "exito", object: JSON.parse(response).response})
 			}).catch(function (err) {
 			});
 		}else{

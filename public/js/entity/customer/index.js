@@ -95,7 +95,7 @@
     var modelApp = "customer-app";
     var selectedCustomer =  null;
     customerTableRows.forEach(customerTableRow => customerTableRow.addEventListener("click", function() {
-        fetch("/customer/get_by_id", {
+        fetch("/customer/get", {
             method: 'POST',
             body: JSON.stringify({id: this.dataset.id.toString()}),
             headers:{
