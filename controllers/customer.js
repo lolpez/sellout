@@ -18,7 +18,7 @@ module.exports = {
 				res.send({message: "exito", object: JSON.parse(response).response})
 			}).catch(function (err) {
 				//THE ERROR MESSAGE SHOULD BE HERE
-				//test
+				//test git
 				console.log(err)
 			});
 		}else{
