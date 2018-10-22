@@ -51,12 +51,12 @@ module.exports = {
 			rp(options).then((response) => {
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
+					user: req.user,
+					customers: JSON.parse(response).response,
 					entity : {
 						id: response.idtipoEntidad,
 						name: response.nomtipoEntidad
 					},
-					user: req.user,
-					customers: JSON.parse(response).response
 				})
 			}).catch(function (err) {
 				//Show error
