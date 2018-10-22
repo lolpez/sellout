@@ -28,24 +28,22 @@ module.exports = {
 	getCustomer: (req, res, next) => {
 		if (req.app.get('env') == 'production'){
 			//Call Python API for get customer
-			/*
 			var options = {
 				method: 'POST',
-				uri: req.app.get('webServices').customer.get,
+				uri: req.app.get('webServices').customer.get, //<-- Add the url for Pyhon Get Customer By ID
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: {
-					data: JSON.stringify (req.body.id)
-				},
+				body: JSON.stringify({			//<--Fixed from previous error
+					data: req.body.id
+				}),
 			};
 			print (options)
 			rp(options).then((response) => {
-				res.send({message: "exito", object: JSON.parse(response).response})
+				res.send({message: "exito", object: JSON.parse(response).response}) //<--Return the customer object
 			}).catch(function (err) {
 				//Show error
 			});
-			*/
 		}else{
 			//Fake response
 			var id = req.body.id;

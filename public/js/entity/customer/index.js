@@ -64,7 +64,7 @@
             console.log(response);
             alert(`${response.message}, más información en la consola.`);
         }).catch((error) => {
-            alert(error)
+
         });
     });
 
