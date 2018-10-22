@@ -97,10 +97,10 @@
     customerTableRows.forEach(customerTableRow => customerTableRow.addEventListener("click", function() {
         fetch("/customer/get_by_id", {
             method: 'POST',
+            body: JSON.stringify({id: this.dataset.id.toString()}),
             headers:{
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify ({ data: {id: this.dataset.id}})
+            }
         }).then(res => res.json())
         .then((response) => {
             console.log('Respuesta:' + response);

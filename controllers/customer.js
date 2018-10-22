@@ -26,9 +26,7 @@ module.exports = {
 		}
 	},
 	getCustomer: (req, res, next) => {
-        Console.log('Llego')
 		if (req.app.get('env') == 'production'){
-			Console.log("Llego");
 			//Call Python API for get customer
 			var options = {
 				method: 'POST',
@@ -37,14 +35,13 @@ module.exports = {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({			//<--Fixed from previous error
-					idCliente: req.body.id
+					data: {idCliente: req.body.id}
 				}),
 			};
-			print ('Opciones:' + options)
+			console.log('Hola:' + options)
 			rp(options).then((response) => {
 				res.send({message: "exito", object: JSON.parse(response).response}) //<--Return the customer object
 			}).catch(function (err) {
-				alert ('Error... al invocar el servicio get_clientes_by_id' + err)
 			});
 		}else{
 			//Fake response
