@@ -64,7 +64,7 @@
             console.log(response);
             alert(`${response.message}, más información en la consola.`);
         }).catch((error) => {
-
+            alert(error)
         });
     });
 
@@ -107,14 +107,14 @@
             alert(`${response.message}, más información sobre el cliente en la consola.`);
             selectedCustomer = response.object;
             document.getElementById(`${modelApp}-id`).innerHTML = selectedCustomer.idCliente;
-            document.getElementById(`${modelApp}-category`).innerHTML = selectedCustomer.nomtipoGenero;
-            document.getElementById(`${modelApp}-phone`).innerHTML = selectedCustomer.numeroCel;
+            document.getElementById(`${modelApp}-category`).innerHTML = "";
+            document.getElementById(`${modelApp}-phone`).innerHTML = selectedCustomer.celCliente;
             document.getElementById(`${modelApp}-name`).innerHTML = `${selectedCustomer.nomCliente} ${selectedCustomer.patCliente} ${selectedCustomer.matCliente}`;
-            document.getElementById(`${modelApp}-address`).innerHTML = selectedCustomer.detalleDir;
-            document.getElementById(`${modelApp}-email`).innerHTML = "NO EMAIL";
+            document.getElementById(`${modelApp}-address`).innerHTML = selectedCustomer.dirCliente;
+            document.getElementById(`${modelApp}-email`).innerHTML = selectedCustomer.mailCliente;
             editButton.removeAttribute("disabled") = false;
         }).catch((error) => {
-            alert(error)
+            
         });
     }));
 })();

@@ -35,7 +35,7 @@ module.exports = {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({			//<--Fixed from previous error
-					data: req.body.id
+					idCliente: req.body.id
 				}),
 			};
 			print (options)
@@ -50,21 +50,25 @@ module.exports = {
 			console.log(`Returning information of customer ${id}`);
 			res.send({message: "exito",
 				object: {
-					"idCliente": id,
+					"tipCliente": "N",
+					"idCliente": 2,
 					"patCliente": "Duran",
 					"matCliente": "Soto",
 					"nomCliente": "Valeria",
-					"idtipoGenero": 2,
-					"nomtipoGenero": "Femenino",
-					"idCliDir": 2, "idtipoDireccion": 2,
-					"detalleDir": "Hacienda Santa Maria Casa 12",
 					"canpuntoCliente": "200",
+					"tipoGenero": 2,
+					"nomtipoGenero": "Femenino",
+					"idCliDir": 2,
+					"idtipoDireccionD": 2,
+					"dirCliente": "Hacienda Santa Maria Casa 12",
+					"idCliMail": 1, "idtipoDireccionM": 1,
+					"mailCliente": "vsoto@gmail.com",
 					"idcliTel": 2,
-					"numeroTel": "3328818",
+					"telCliente": "3328818",
 					"idcliCel": 1,
-					"numeroCel": "77345939",
+					"celCliente": "77345939",
 					"idcliId": "1",
-					"numId":"12387699SC",
+					"ciCliente": "12387699SC",
 					"idtipoPais": "1",
 					"nomtipoPais": "Bolivia",
 					"idtipoDpto": "1",
