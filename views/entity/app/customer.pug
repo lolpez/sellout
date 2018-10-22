@@ -88,28 +88,28 @@
                 input#customer-modal-dirCliente.validate(type='text', data-name='Dirección')
                 label(for='customer-modal-dirCliente') Dirección
                 span.helper-text(data-error='Campo requerido')
+            .input-field.col.s12.m6
+                input#customer-modal-idtipoPais.validate.autocomplete(type='text', data-name='País', value='Bolivia')
+                label(for='customer-modal-idtipoPais') País
+                span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
                 input#customer-modal-idtipoDpto.validate(type='text', data-name='Provincia')
                 label(for='customer-modal-idtipoDpto') Departamento
                 span.helper-text(data-error='Campo requerido')
-            .input-field.col.s12.m6 
-                input#customer-modal-idtipoPais.validate.autocomplete(type='text', data-name='País', value='Bolivia')
-                label(for='customer-modal-idtipoPais') País
-                span.helper-text(data-error='Campo requerido')
             .col.s12
-                | Sexo:
+                | Género:
                 label
-                    input.validate(type='radio', name='customer-modal-tipoGenero', value='M', data-name='Sexo', checked)
+                    input.validate(type='radio', name='customer-modal-idtipoGenero', value='M', data-name='Sexo', checked)
                     span Masculino
                 label
-                    input.validate(type='radio', name='customer-modal-tipoGenero', value='F', data-name='Sexo')
+                    input.validate(type='radio', name='customer-modal-idtipoGenero', value='F', data-name='Sexo')
                     span Femenino
                 label
                     input.validate(type='radio', name='customer-modal-tipoGenero', value='otro', data-name='Sexo')
                     span Otro
             .input-field.col.s12.m6 
-                input#customer-modal-refCliente.validate(type='text', data-name='Referido')
-                label(for='customer-modal-refCliente') Referido de
+                input#customer-modal-fnaCliente.validate(type='text', data-name='Referido')
+                label(for='customer-modal-fnaCliente') Fecha de Nacimiento
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s10.m4 
                 input#customer-modal-telCliente.validate(type='text', data-name='Teléfono')
