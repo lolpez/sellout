@@ -3,27 +3,20 @@ var rp = require('request-promise');
 module.exports = {
 	addCustomer: (req, res, next) => {
 		if (req.app.get('env') == 'production'){
-			console.log(`Making post to ${req.app.get('webServices').customer.add}`)
-			console.log(`Using this data:`)
-			console.log(req.body.data)
-			console.log(`As JSON:`)
-			console.log(JSON.stringify(req.body.data))
-			
 			var options = {
 				method: 'POST',
 				uri: req.app.get('webServices').customer.add,
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: {
-					data: JSON.stringify(req.body.data)
-				},
+				body: JSON.stringify({
+					data: req.body.data
+				})
 			};
 			rp(options).then((response) => {
 				res.send({message: "exito", object: JSON.parse(response).response})
 			}).catch(function (err) {
-				console.log("CUSTOM ERROR: ")
-				console.log(err.message)
+				//Show erro page
 			});
 		}else{
 			//Fake response
