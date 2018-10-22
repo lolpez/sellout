@@ -13,6 +13,7 @@
                 },
                 "customer": {
                     "get": "get_clientes",
+                    "get_by_id": "get_clientes_by_id",
                     "add": "add_clientes"
                 }
             }

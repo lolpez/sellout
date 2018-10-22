@@ -26,11 +26,13 @@ module.exports = {
 		}
 	},
 	getCustomer: (req, res, next) => {
+        Console.log('Llego')
 		if (req.app.get('env') == 'production'){
+			Console.log("Llego");
 			//Call Python API for get customer
 			var options = {
 				method: 'POST',
-				uri: req.app.get('webServices').customer.get, //<-- Add the url for Pyhon Get Customer By ID
+				uri: req.app.get('webServices').customer.get_by_id, //<-- Add the url for Pyhon Get Customer By ID
 				headers: {
 					'Content-Type': 'application/json',
 				},
@@ -38,11 +40,11 @@ module.exports = {
 					idCliente: req.body.id
 				}),
 			};
-			print (options)
+			print ('Opciones:' + options)
 			rp(options).then((response) => {
 				res.send({message: "exito", object: JSON.parse(response).response}) //<--Return the customer object
 			}).catch(function (err) {
-				//Show error
+				alert ('Error... al invocar el servicio get_clientes_by_id' + err)
 			});
 		}else{
 			//Fake response

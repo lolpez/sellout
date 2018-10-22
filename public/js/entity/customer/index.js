@@ -95,15 +95,15 @@
     var modelApp = "customer-app";
     var selectedCustomer =  null;
     customerTableRows.forEach(customerTableRow => customerTableRow.addEventListener("click", function() {
-        fetch("/customer/get", {
+        fetch("/customer/get_by_id", {
             method: 'POST',
-            body: JSON.stringify({id:  this.dataset.id}),
             headers:{
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify ({ data: {id: this.dataset.id}})
         }).then(res => res.json())
         .then((response) => {
-            console.log(response);
+            console.log('Respuesta:' + response);
             alert(`${response.message}, más información sobre el cliente en la consola.`);
             selectedCustomer = response.object;
             document.getElementById(`${modelApp}-id`).innerHTML = selectedCustomer.idCliente;
@@ -112,9 +112,8 @@
             document.getElementById(`${modelApp}-name`).innerHTML = `${selectedCustomer.nomCliente} ${selectedCustomer.patCliente} ${selectedCustomer.matCliente}`;
             document.getElementById(`${modelApp}-address`).innerHTML = selectedCustomer.dirCliente;
             document.getElementById(`${modelApp}-email`).innerHTML = selectedCustomer.mailCliente;
-            editButton.removeAttribute("disabled") = false;
         }).catch((error) => {
-            
+            alert(error)
         });
     }));
 })();
