@@ -33,11 +33,9 @@ module.exports = {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({
-					data: {idCliente: req.body.id}
+				body: JSON.stringify({idCliente: req.body.id
 				}),
 			};
-			console.log('Hola:' + options)
 			rp(options).then((response) => {
 				res.send({message: "exito", object: JSON.parse(response).response})
 			}).catch(function (err) {

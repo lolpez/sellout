@@ -60,7 +60,6 @@ module.exports = {
                     'idtipoDpto': '1'
 				})
 			};
-			console.log("Bueno:" + options)
 			rp(options).then((response) => {
 				res.render('entity/app/index', {
 					app: req.app.get('config'),

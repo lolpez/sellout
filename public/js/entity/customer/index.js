@@ -97,14 +97,12 @@
     customerTableRows.forEach(customerTableRow => customerTableRow.addEventListener("click", function() {
         fetch("/customer/get", {
             method: 'POST',
-            body: JSON.stringify({id: this.dataset.id.toString()}),
+            body: JSON.stringify({id: this.dataset.id}),
             headers:{
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
         .then((response) => {
-            console.log('Respuesta:' + response);
-            alert(`${response.message}, más información sobre el cliente en la consola.`);
             selectedCustomer = response.object;
             document.getElementById(`${modelApp}-id`).innerHTML = selectedCustomer.idCliente;
             document.getElementById(`${modelApp}-category`).innerHTML = "";
