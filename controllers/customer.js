@@ -3,7 +3,12 @@ var rp = require('request-promise');
 module.exports = {
 	addCustomer: (req, res, next) => {
 		if (req.app.get('env') == 'production'){
-			//Call Python API for customer insert
+			console.log(`Making post to ${req.app.get('webServices').customer.add}`)
+			console.log(`Using this data:`)
+			console.log(req.body.data)
+			console.log(`As JSON:`)
+			console.log(JSON.stringify(req.body.data))
+			
 			var options = {
 				method: 'POST',
 				uri: req.app.get('webServices').customer.add,
@@ -17,9 +22,8 @@ module.exports = {
 			rp(options).then((response) => {
 				res.send({message: "exito", object: JSON.parse(response).response})
 			}).catch(function (err) {
-				//THE ERROR MESSAGE SHOULD BE HERE
-				//test git message 2
-				console.log(err)
+				console.log("CUSTOM ERROR: ")
+				console.log(err.message)
 			});
 		}else{
 			//Fake response
