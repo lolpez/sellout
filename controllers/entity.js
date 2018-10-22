@@ -56,20 +56,15 @@ module.exports = {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-                    'idUsuario': '1',
-					'idtipoDpto': '1'
+                    'idEntidad': '1'
 				})
 			};
-
 			rp(options).then((response) => {
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
+					//entity: entity,	<--Get entity object by WS, the entity must have {id:"", name:""}
 					user: req.user,
-					customers: JSON.parse(response).response,
-                    entity : {
-						id: response.idtipoEntidad,
-						name: response.nomtipoEntidad
-					}
+					customers: JSON.parse(response).response
 				})
 			}).catch(function (err) {
 				//Show error
