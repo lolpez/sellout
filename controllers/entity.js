@@ -37,7 +37,9 @@ module.exports = {
 	},
 	appPage: (req, res, next) => {
 		if (req.app.get('env') == 'production'){
-			//Get Customers
+			//Entity ID captured by selecting the Entity
+			var entityId = req.params.id;
+			//Get Customers request
 			var requestCustomer = rp({
 				method: 'POST',
 				uri: req.app.get('webServices').customer.get,
@@ -49,9 +51,17 @@ module.exports = {
 					'idtipoDpto': '1'
 				})
 			});
-			//Get Entity in inside get customers?
+			//Get Entity request
+			var requestEntity = rp({
+				method: 'POST',
+				uri: req.app.get('webServices').entity.getById,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({id: entityId})
+			});
 			
-			//Get Countries
+			//Get Countries request
 			var requestCountry = rp({
 				method: 'POST',
 				uri: req.app.get('webServices').country.get,
@@ -59,7 +69,7 @@ module.exports = {
 					'Content-Type': 'application/json',
 				}
 			});
-			//Get Cities
+			//Get Cities request
 			var requestCity = rp({
 				method: 'POST',
 				uri: req.app.get('webServices').city.getByCountry,
@@ -78,7 +88,10 @@ module.exports = {
 				var cities =JSON.parse(responses[3]).response;
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
-					entity: entity,
+					entity: {
+						id: entity.Id,
+                        name: entity.NombreEntidad
+					},
 					user: req.user,
 					customers: customers,
 					countries: countries,
