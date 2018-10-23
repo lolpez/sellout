@@ -68,6 +68,7 @@
         .then((response) => {
             console.log(response);
             alert(`${response.message}, más información en la consola.`);
+            modal.close();
         }).catch((error) => {
             alert(error)
         });
