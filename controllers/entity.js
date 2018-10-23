@@ -83,27 +83,79 @@ module.exports = {
 				res.status(500);
 				res.render('error/error');
 			}else{
-				var entity = {
-					id: id,
-					name: "STARBUCKS"
-				}
-				res.render('entity/app/index', {
-					app: req.app.get('config'),
-					entity: entity,
-					user: req.user,
-					customers: {
-						"0": {"idCliente": 0, "patCliente": "Paterno 0", "matCliente": "Materno 0", "nomCliente": "Nombre 0"},
-						"1": {"idCliente": 1, "patCliente": "Paterno 1", "matCliente": "Materno 1", "nomCliente": "Nombre 1"},
-						"2": {"idCliente": 2, "patCliente": "Paterno 2", "matCliente": "Materno 2", "nomCliente": "Nombre 2"},
-						"3": {"idCliente": 3, "patCliente": "Paterno 3", "matCliente": "Materno 3", "nomCliente": "Nombre 3"},
-						"4": {"idCliente": 4, "patCliente": "Paterno 4", "matCliente": "Materno 4", "nomCliente": "Nombre 4"},
-						"5": {"idCliente": 5, "patCliente": "Paterno 5", "matCliente": "Materno 5", "nomCliente": "Nombre 5"},
-						"6": {"idCliente": 6, "patCliente": "Paterno 6", "matCliente": "Materno 6", "nomCliente": "Nombre 6"},
-						"7": {"idCliente": 7, "patCliente": "Paterno 7", "matCliente": "Materno 7", "nomCliente": "Nombre 7"},
-						"8": {"idCliente": 8, "patCliente": "Paterno 8", "matCliente": "Materno 8", "nomCliente": "Nombre 8"},
-						"9": {"idCliente": 9, "patCliente": "Paterno 9", "matCliente": "Materno 9", "nomCliente": "Nombre 9"}
-					}
+				//Simulating 3 requests at the same time
+
+				//Request for get Customers takes 3 seconds
+				var request1 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							"0": {"idCliente": 0, "patCliente": "Paterno 0", "matCliente": "Materno 0", "nomCliente": "Nombre 0"},
+							"1": {"idCliente": 1, "patCliente": "Paterno 1", "matCliente": "Materno 1", "nomCliente": "Nombre 1"},
+							"2": {"idCliente": 2, "patCliente": "Paterno 2", "matCliente": "Materno 2", "nomCliente": "Nombre 2"},
+							"3": {"idCliente": 3, "patCliente": "Paterno 3", "matCliente": "Materno 3", "nomCliente": "Nombre 3"},
+							"4": {"idCliente": 4, "patCliente": "Paterno 4", "matCliente": "Materno 4", "nomCliente": "Nombre 4"},
+							"5": {"idCliente": 5, "patCliente": "Paterno 5", "matCliente": "Materno 5", "nomCliente": "Nombre 5"},
+							"6": {"idCliente": 6, "patCliente": "Paterno 6", "matCliente": "Materno 6", "nomCliente": "Nombre 6"},
+							"7": {"idCliente": 7, "patCliente": "Paterno 7", "matCliente": "Materno 7", "nomCliente": "Nombre 7"},
+							"8": {"idCliente": 8, "patCliente": "Paterno 8", "matCliente": "Materno 8", "nomCliente": "Nombre 8"},
+							"9": {"idCliente": 9, "patCliente": "Paterno 9", "matCliente": "Materno 9", "nomCliente": "Nombre 9"}
+						})
+					}, 1000);
 				});
+				//Request for get Entity takes 2 seconds
+				var request2 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							id: id,
+							name: "STARBUCKS"
+						})
+					}, 1000);
+				});
+				//Request for get Country takes 1 seconds
+				var request3 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							"0": {"idtipoPais": 1, "nomtipoPais": "Bolivia"},
+							"1": {"idtipoPais": 2, "nomtipoPais": "Argentina"},
+							"2": {"idtipoPais": 3, "nomtipoPais": "Brasil"},
+							"3": {"idtipoPais": 4, "nomtipoPais": "Peru"},
+							"4": {"idtipoPais": 5, "nomtipoPais": "Chile"}
+						})
+					}, 1000);
+				});
+				//Request for get City takes 1 seconds
+				var request4 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							"0": {"idtipoDpto": 1, "nomtipoDpto": "SCZ"},
+							"1": {"idtipoDpto": 2, "nomtipoDpto": "LPZ"},
+							"2": {"idtipoDpto": 3, "nomtipoDpto": "CBBA"},
+							"3": {"idtipoDpto": 4, "nomtipoDpto": "TAR"}, 
+							"4": {"idtipoDpto": 5, "nomtipoDpto": "BEN"},
+							"5": {"idtipoDpto": 6, "nomtipoDpto": "PAN"},
+							"6": {"idtipoDpto": 7, "nomtipoDpto": "OR"},
+							"7": {"idtipoDpto": 8, "nomtipoDpto": "POT"},
+							"8": {"idtipoDpto": 9, "nomtipoDpto": "CHU"}
+						});
+					}, 1000);
+				});
+
+				//Make all requests in parallel and wait for everyone
+				Promise.all([request1, request2, request3, request4]).then(function(responses) {
+					//Al requests completed
+					var customers = responses[0];
+					var entity = responses[1];
+					var contries = responses[2];
+					var cities = responses[3];
+					res.render('entity/app/index', {
+						app: req.app.get('config'),
+						entity: entity,
+						user: req.user,
+						customers: customers,
+						contries: contries,
+						cities: cities
+					});
+				});				
 			}
 		}
 	}

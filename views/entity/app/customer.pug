@@ -42,7 +42,7 @@
                         th Apellido Materno
                         th Nombre
                 tbody
-                    each customer, index in customers
+                    each customer in customers
                         tr.customer-tr(data-id=customer.idCliente)
                             td=customer.idCliente
                             td=customer.patCliente
@@ -90,11 +90,19 @@
                 label(for='customer-modal-dirCliente') Dirección
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6
-                input#customer-modal-idtipoPais.validate.autocomplete(type='text', data-name='País', value='Bolivia')
+                select#customer-modal-idtipoPais(data-name='País')
+                    -var first=true
+                    each contry in contries
+                        option(value=contry.idtipoPais, selected=first)=contry.nomtipoPais
+                        -first=false
                 label(for='customer-modal-idtipoPais') País
                 span.helper-text(data-error='Campo requerido')
             .input-field.col.s12.m6 
-                input#customer-modal-idtipoDpto.validate(type='text', data-name='Provincia')
+                select#customer-modal-idtipoDpto(data-name='Provincia')
+                    -var first=true
+                    each city in cities
+                        option(value=city.idtipoDpto, selected=first)=city.nomtipoDpto
+                        -first=false
                 label(for='customer-modal-idtipoDpto') Departamento
                 span.helper-text(data-error='Campo requerido')
             .col.s12
@@ -112,7 +120,7 @@
                 input#customer-modal-fnaCliente.validate(type='text', data-name='Referido')
                 label(for='customer-modal-fnaCliente') Fecha de Nacimiento
                 span.helper-text(data-error='Campo requerido')
-            .input-field.col.s10.m4 
+            .input-field.col.s10.m6 
                 input#customer-modal-telCliente.validate(type='text', data-name='Teléfono')
                 label(for='customer-modal-telCliente') Teléfono
                 span.helper-text(data-error='Campo requerido')

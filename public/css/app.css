@@ -93,3 +93,7 @@ a {
     margin: 6px 0;
     float: left;
 }
+
+.dropdown-content.select-dropdown{
+    max-height: 260px
+}
