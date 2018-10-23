@@ -147,6 +147,7 @@
         }).then(res => res.json())
         .then((response) => {
             var cities = response.object;
+            selectCity.innerHTML = "";
             for (var key in cities) {
                 var city = cities[key];
                 var option = document.createElement("option");
