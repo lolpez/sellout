@@ -3,6 +3,8 @@
     var editingMode = false;
     var newButton = document.getElementById(`${model}-create`);
     var editButton = document.getElementById(`${model}-edit`);
+    var selectCountry = document.getElementById(`${model}-idtipoPais`)
+    var selectCity = document.getElementById(`${model}-idtipoDpto`)
     var modal = M.Modal.getInstance(document.getElementById(`${model}`));
     var modalTitle = document.getElementById(`${model}-title`);
     var modalSumbit = document.getElementById(`${model}-submit`); 
@@ -38,8 +40,8 @@
         },
         limit: 5
     });*/
-    M.FormSelect.init(document[form.idtipoPais.selector](form.idtipoPais.ele));
-    M.FormSelect.init(document[form.idtipoDpto.selector](form.idtipoDpto.ele));
+    M.FormSelect.init(selectCountry);
+    M.FormSelect.init(selectCity);
     
     newButton.addEventListener('click', () => {
         modalTitle.innerHTML = 'Nuevo cliente';
@@ -132,4 +134,30 @@
             alert(error)
         });
     }));
+
+    /*City  Get Information*/    
+    selectCountry.onchange = function(){
+        var id = this.value;
+        fetch(`/city/get`, {
+            method: 'POST',
+            body: JSON.stringify({id: id}),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .then((response) => {
+            var cities = response.object;
+            for (var key in cities) {
+                var city = cities[key];
+                var option = document.createElement("option");
+                option.text = city.nomtipoDpto;
+                option.value = city.idtipoDpto;
+                selectCity.appendChild(option);
+            }
+            M.FormSelect.getInstance(selectCity).destroy();
+            M.FormSelect.init(selectCity);
+        }).catch((error) => {
+            alert(error)
+        });
+    }
 })();
