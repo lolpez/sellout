@@ -58,9 +58,8 @@ module.exports = {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({id: entityId})
-			});
-			
+				body: JSON.stringify({idtipoEntidad: entityId})
+			});			
 			//Get Countries request
 			var requestCountry = rp({
 				method: 'POST',

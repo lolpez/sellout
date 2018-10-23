@@ -10,7 +10,7 @@
                 "entity": {
                     "get": "get_entidades",
                     "add": "add_entidades",
-                    "getById": "get_entidat_by_id"
+                    "getById": "get_entidad_by_id"
                 },
                 "customer": {
                     "get": "get_clientes",
