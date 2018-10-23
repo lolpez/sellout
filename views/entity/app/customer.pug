@@ -92,8 +92,8 @@
             .input-field.col.s12.m6
                 select#customer-modal-idtipoPais(data-name='País')
                     -var first=true
-                    each contry in contries
-                        option(value=contry.idtipoPais, selected=first)=contry.nomtipoPais
+                    each country in countries
+                        option(value=country.idtipoPais, selected=first)=country.nomtipoPais
                         -first=false
                 label(for='customer-modal-idtipoPais') País
                 span.helper-text(data-error='Campo requerido')

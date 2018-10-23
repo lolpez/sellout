@@ -37,7 +37,8 @@ module.exports = {
 	},
 	appPage: (req, res, next) => {
 		if (req.app.get('env') == 'production'){
-			var options = {
+			//Get Customers
+			var requestCustomer = rp({
 				method: 'POST',
 				uri: req.app.get('webServices').customer.get,
 				headers: {
@@ -47,30 +48,42 @@ module.exports = {
                     'idUsuario': '1',
 					'idtipoDpto': '1'
 				})
-			};
-			//options for getting a entity
-			var options = {
+			});
+			//Get Entity in inside get customers?
+			
+			//Get Countries
+			var requestCountry = rp({
 				method: 'POST',
-				uri: req.app.get('webServices').customer.get,
+				uri: req.app.get('webServices').country.get,
+				headers: {
+					'Content-Type': 'application/json',
+				}
+			});
+			//Get Cities
+			var requestCity = rp({
+				method: 'POST',
+				uri: req.app.get('webServices').city.getByCountry,
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({
-                    'idUsuario': '1',
-                    'idtipoDpto': '1'
-				})
-			};
-			rp(options).then((response) => {
+				body: JSON.stringify({idtipoPais: "1"}),
+			});
+
+			//Make all requests in parallel and wait for everyone
+			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity]).then(function(responses) {
+				//Al requests completed
+				var customers = JSON.parse(responses[0]).response;
+				var entity = JSON.parse(responses[1]).response;
+				var countries = JSON.parse(responses[2]).response;
+				var cities =JSON.parse(responses[3]).response;
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
-					//entity: entity,	<--Get entity object by WS, the entity must have {id:"", name:""}
+					entity: entity,
 					user: req.user,
-					customers: JSON.parse(response).response,
-                    entity : {
-                        id: response.idtipoEntidad,
-                        name: response.nomtipoEntidad
-                    }
-				})
+					customers: customers,
+					countries: countries,
+					cities: cities
+				});
 			}).catch(function (err) {
 				//Show error
 			});
@@ -145,17 +158,17 @@ module.exports = {
 					//Al requests completed
 					var customers = responses[0];
 					var entity = responses[1];
-					var contries = responses[2];
+					var countries = responses[2];
 					var cities = responses[3];
 					res.render('entity/app/index', {
 						app: req.app.get('config'),
 						entity: entity,
 						user: req.user,
 						customers: customers,
-						contries: contries,
+						countries: countries,
 						cities: cities
 					});
-				});				
+				});
 			}
 		}
 	}

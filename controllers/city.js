@@ -5,7 +5,7 @@ module.exports = {
 		if (req.app.get('env') == 'production'){
 			var options = {
 				method: 'POST',
-				uri: req.app.get('webServices').city.get,
+				uri: req.app.get('webServices').city.getByCountry,
 				headers: {
 					'Content-Type': 'application/json',
 				},

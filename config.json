@@ -17,8 +17,11 @@
                     "update": "pdate_cliente",
                     "getById": "get_clientes_by_id"                    
                 },
+                "country": {
+                    "get": "get_paises"
+                },
                 "city": {
-                    "get": "get_departamentos"
+                    "getByCountry": "get_departamentos"
                 }
             }
         }
