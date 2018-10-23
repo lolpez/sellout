@@ -21,7 +21,7 @@ module.exports = {
 			});
 		}else{
 			//FAKE DATA FOR DEV PURPOSES 
-			res.render('entity/entity selector/index',	{ 
+			res.render('entity/entity selector/index',{ 
 				title: 'Control IPOS',
 				user: req.user,
 				entities: {
@@ -78,18 +78,18 @@ module.exports = {
 				body: JSON.stringify({idtipoPais: "1"}),
 			});
 
-			//Make all requests in parallel and wait for everyone
+			//Make all requests in parallel and wait for all of them
 			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity]).then(function(responses) {
 				//Al requests completed
 				var customers = JSON.parse(responses[0]).response;
-				var entity = JSON.parse(responses[1]).response;
+				var entity = 	JSON.parse(responses[1]).response;
 				var countries = JSON.parse(responses[2]).response;
-				var cities =JSON.parse(responses[3]).response;
+				var cities =	JSON.parse(responses[3]).response;
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
 					entity: {
-						id: entity.Id,
-                        name: entity.NombreEntidad
+						id: entity.idtipoentidad,
+                        name: entity.nomtipoEntidad
 					},
 					user: req.user,
 					customers: customers,
@@ -165,7 +165,7 @@ module.exports = {
 					}, 1000);
 				});
 
-				//Make all requests in parallel and wait for everyone
+				//Make all requests in parallel and wait for all of them
 				Promise.all([request1, request2, request3, request4]).then(function(responses) {
 					//Al requests completed
 					var customers = responses[0];
