@@ -11,7 +11,7 @@
     /*Customer Form*/
     var form = {
         idCliente       : {ele: `${model}-idCliente`                            , value: "value",    selector: "getElementById"  ,required: false   },
-        tipCliente      : {ele: `input[name="${model}-tipCliente"]:checked`     , value: "value",    selector: "querySelector"   ,required: false    },
+        tipCliente      : {ele: `input[name="${model}-tipCliente"]:checked`     , value: "value",    selector: "querySelector"   ,required: false   },
         nomCliente      : {ele: `${model}-nomCliente`                           , value: "value",    selector: "getElementById"  ,required: true    },
         patCliente      : {ele: `${model}-patCliente`                           , value: "value",    selector: "getElementById"  ,required: false   },
         matCliente      : {ele: `${model}-matCliente`                           , value: "value",    selector: "getElementById"  ,required: false   },
@@ -24,7 +24,7 @@
         celCliente      : {ele: `${model}-celCliente`                           , value: "value",    selector: "getElementById"  ,required: true    },
         mailCliente     : {ele: `${model}-mailCliente`                          , value: "value",    selector: "getElementById"  ,required: false   },
         ciCliente       : {ele: `${model}-ciCliente`                            , value: "value",    selector: "getElementById"  ,required: false   }
-    }   
+    }
 
    /* M.Autocomplete.init(document[form.idtipoDpto.selector](form.idtipoDpto.ele), {
         data: {

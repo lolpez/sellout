@@ -14,8 +14,11 @@
                 "customer": {
                     "get": "get_clientes",
                     "add": "add_clientes",
-                    "update": "update_clientes",
+                    "update": "pdate_cliente",
                     "getById": "get_clientes_by_id"                    
+                },
+                "city": {
+                    "get": "get_departamentos"
                 }
             }
         }
