@@ -47,7 +47,7 @@ module.exports = {
 			res.send({message: "exito",
 				object: {
 					"tipCliente": "N",
-					"idCliente": 2,
+					"idCliente": id,
 					"patCliente": "Duran",
 					"matCliente": "Soto",
 					"nomCliente": "Valeria",

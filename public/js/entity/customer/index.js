@@ -9,20 +9,21 @@
 
     /*Customer Form*/
     var form = {
-        tipCliente  : {ele: `input[name="${model}-tipCliente"]:checked` , value: "value",    selector: "querySelector"   ,required: true},
-        nomCliente  : {ele: `${model}-nomCliente`                       , value: "value",    selector: "getElementById"  ,required: true},
-        patCliente  : {ele: `${model}-patCliente`                       , value: "value",    selector: "getElementById"  ,required: false},
-        matCliente  : {ele: `${model}-matCliente`                       , value: "value",    selector: "getElementById"  ,required: false},
-        dirCliente  : {ele: `${model}-dirCliente`                       , value: "value",    selector: "getElementById"  ,required: false},
-        idtipoDpto  : {ele: `${model}-idtipoDpto`                       , value: "value",    selector: "getElementById"  ,required: false},
-        idtipoPais  : {ele: `${model}-idtipoPais`                       , value: "value",    selector: "getElementById"  ,required: false},
-        idtipoGenero  : {ele: `input[name="${model}-idtipoGenero"]:checked` , value: "value",    selector: "querySelector"   ,required: false},
-        fnaCliente  : {ele: `${model}-fnaCliente`                       , value: "value",    selector: "getElementById"  ,required: false},
-        telCliente  : {ele: `${model}-telCliente`                       , value: "value",    selector: "getElementById"  ,required: false},
-        celCliente  : {ele: `${model}-celCliente`                       , value: "value",    selector: "getElementById"  ,required: true},
-        mailCliente : {ele: `${model}-mailCliente`                      , value: "value",    selector: "getElementById"  ,required: false},
-        ciCliente   : {ele: `${model}-ciCliente`                        , value: "value",    selector: "getElementById"  ,required: false},
-    }
+        idCliente       : {ele: `${model}-idCliente`                            , value: "value",    selector: "getElementById"  ,required: false},
+        tipCliente      : {ele: `input[name="${model}-tipCliente"]:checked`     , value: "value",    selector: "querySelector"   ,required: true},
+        nomCliente      : {ele: `${model}-nomCliente`                           , value: "value",    selector: "getElementById"  ,required: true},
+        patCliente      : {ele: `${model}-patCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
+        matCliente      : {ele: `${model}-matCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
+        dirCliente      : {ele: `${model}-dirCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
+        idtipoDpto      : {ele: `${model}-idtipoDpto`                           , value: "value",    selector: "getElementById"  ,required: false},
+        idtipoPais      : {ele: `${model}-idtipoPais`                           , value: "value",    selector: "getElementById"  ,required: false},
+        idtipoGenero    : {ele: `input[name="${model}-idtipoGenero"]:checked`   , value: "value",    selector: "querySelector"   ,required: false},
+        fnaCliente      : {ele: `${model}-fnaCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
+        telCliente      : {ele: `${model}-telCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
+        celCliente      : {ele: `${model}-celCliente`                           , value: "value",    selector: "getElementById"  ,required: true},
+        mailCliente     : {ele: `${model}-mailCliente`                          , value: "value",    selector: "getElementById"  ,required: false},
+        ciCliente       : {ele: `${model}-ciCliente`                            , value: "value",    selector: "getElementById"  ,required: false},
+    }   
 
     M.Autocomplete.init(document[form.idtipoDpto.selector](form.idtipoDpto.ele), {
         data: {
@@ -40,6 +41,7 @@
     newButton.addEventListener('click', () => {
         modalTitle.innerHTML = 'Nuevo cliente';
         modalSumbit.innerHTML = 'Guardar';
+        clearForm();
         modal.open();
     });
 
@@ -72,13 +74,15 @@
         var result = {};
         var success = true;
         for (var key in form) {
-            var ele = document[form[key].selector](form[key].ele);
-            var value = ele[form[key].value];
-            if (form[key].required && !value){
-                ele.className += " invalid";
-                success = false;
-            }
-            result[key] = value
+            if (key != "idCliente") {   //Do not set idCliente
+                var ele = document[form[key].selector](form[key].ele);
+                var value = ele[form[key].value];
+                if (form[key].required && !value){
+                    ele.className += " invalid";
+                    success = false;
+                }
+                result[key] = value
+            };
         }
         return {result: result, success: success}
     }
@@ -87,6 +91,14 @@
         for (var key in form) {
             var ele = document[form[key].selector](form[key].ele);
             ele[form[key].value] = selectedCustomer[key]
+        }
+        M.updateTextFields();
+    }
+
+    function clearForm(){
+        for (var key in form) {
+            var ele = document[form[key].selector](form[key].ele);
+            ele[form[key].value] = "";
         }
         M.updateTextFields();
     }

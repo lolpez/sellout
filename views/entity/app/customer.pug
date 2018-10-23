@@ -64,7 +64,8 @@
     .modal-content
         h4#customer-modal-title
         .row
-            .col.s12                
+            input#customer-modal-idCliente(type='hidden')
+            .col.s12
                 | Tipo de Cliente * :
                 label
                     input.validate(type='radio', name='customer-modal-tipCliente', checked, data-name='Categoria', value='N')
