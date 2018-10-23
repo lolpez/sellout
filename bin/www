@@ -87,6 +87,6 @@ function onListening() {
 		? 'pipe ' + addr
 		: 'port ' + addr.port;
 	console.log(`Server listening ${addr.address == '::' ? 'localhost' : addr.address}:${addr.port} in ${app.get('env')} mode.`);
-	console.log('Available web services:');
-	console.log(app.get('webServices'));
+	console.log('Web services available:');
+	console.log(JSON.stringify(app.get('webServices'), null, 4));
 }
