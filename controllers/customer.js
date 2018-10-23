@@ -14,7 +14,7 @@ module.exports = {
 				})
 			};
 			rp(options).then((response) => {
-				res.send({message: "exito", object: JSON.parse(response).response})
+				res.send({message: "Exito al guardar cliente.", object: JSON.parse(response).response})
 			}).catch(function (err) {
 				//Show erro page
 			});
@@ -22,7 +22,31 @@ module.exports = {
 			//Fake response
 			console.log(`Add customer with the following data:`);
 			console.log(req.body.data);
-			res.send({message: "exito", object: req.body.data})
+			res.send({message: "Exito al guardar cliente.", object: req.body.data})
+		}
+	},
+	updateCustomer: (req, res, next) => {
+		if (req.app.get('env') == 'production'){
+			var options = {
+				method: 'POST',
+				uri: req.app.get('webServices').customer.update,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					data: req.body.data
+				})
+			};
+			rp(options).then((response) => {
+				res.send({message: "Exito al editar cliente.", object: JSON.parse(response).response})
+			}).catch(function (err) {
+				//Show erro page
+			});
+		}else{
+			//Fake response
+			console.log(`Update customer with the following data:`);
+			console.log(req.body.data);
+			res.send({message: "Exito al editar cliente.", object: req.body.data})
 		}
 	},
 	getCustomer: (req, res, next) => {
@@ -37,14 +61,14 @@ module.exports = {
 				}),
 			};
 			rp(options).then((response) => {
-				res.send({message: "exito", object: JSON.parse(response).response})
+				res.send({message: "Exito al obtener cliente.", object: JSON.parse(response).response})
 			}).catch(function (err) {
 			});
 		}else{
 			//Fake response
 			var id = req.body.id;
 			console.log(`Returning information of customer ${id}`);
-			res.send({message: "exito",
+			res.send({message: "Exito al obtener cliente.",
 				object: {
 					"tipCliente": "N",
 					"idCliente": id,

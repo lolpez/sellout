@@ -13,8 +13,9 @@
                 },
                 "customer": {
                     "get": "get_clientes",
-                    "getById": "get_clientes_by_id",
-                    "add": "add_clientes"
+                    "add": "add_clientes",
+                    "update": "update_clientes",
+                    "getById": "get_clientes_by_id"                    
                 }
             }
         }

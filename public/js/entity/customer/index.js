@@ -1,5 +1,6 @@
 (function() {
     var model = "customer-modal";
+    var editingMode = false;
     var newButton = document.getElementById(`${model}-create`);
     var editButton = document.getElementById(`${model}-edit`);
     var modal = M.Modal.getInstance(document.getElementById(`${model}`));
@@ -41,6 +42,7 @@
     newButton.addEventListener('click', () => {
         modalTitle.innerHTML = 'Nuevo cliente';
         modalSumbit.innerHTML = 'Guardar';
+        editingMode = false;
         clearForm();
         modal.open();
     });
@@ -48,6 +50,7 @@
     editButton.addEventListener('click', () => {
         modalTitle.innerHTML = 'Editar Cliente';
         modalSumbit.innerHTML = 'Guardar';
+        editingMode = true;
         setForm();
         modal.open();
     });
@@ -55,7 +58,7 @@
     modalSumbit.addEventListener('click', () => {
         var data = getForm();
         if (!data.success) return;
-        fetch("/customer", {
+        fetch(`/customer/${(editingMode) ? "update" : "add"}`, {
             method: 'POST',
             body: JSON.stringify({data: data.result}),
             headers:{
@@ -74,16 +77,15 @@
         var result = {};
         var success = true;
         for (var key in form) {
-            if (key != "idCliente") {   //Do not set idCliente
-                var ele = document[form[key].selector](form[key].ele);
-                var value = ele[form[key].value];
-                if (form[key].required && !value){
-                    ele.className += " invalid";
-                    success = false;
-                }
-                result[key] = value
-            };
+            var ele = document[form[key].selector](form[key].ele);
+            var value = ele[form[key].value];
+            if (form[key].required && !value){
+                ele.className += ' invalid';
+                success = false;
+            }
+            result[key] = value;
         }
+        if (!editingMode) delete result['idCliente'];  //Remove idCliente when in "adding new customer mode"
         return {result: result, success: success}
     }
 

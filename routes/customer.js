@@ -3,7 +3,8 @@ var router = express.Router();
 var customerController = require('../controllers/customer');
 
 /* GET home page. */
-router.post('/', requiresUserLogged, customerController.addCustomer);
+router.post('/add', requiresUserLogged, customerController.addCustomer);
+router.post('/update', requiresUserLogged, customerController.updateCustomer);
 router.post('/get', requiresUserLogged, customerController.getCustomer);
 
 function requiresUserLogged(req, res, next) {
