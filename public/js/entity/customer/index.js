@@ -10,20 +10,20 @@
 
     /*Customer Form*/
     var form = {
-        idCliente       : {ele: `${model}-idCliente`                            , value: "value",    selector: "getElementById"  ,required: false},
-        tipCliente      : {ele: `input[name="${model}-tipCliente"]:checked`     , value: "value",    selector: "querySelector"   ,required: true},
-        nomCliente      : {ele: `${model}-nomCliente`                           , value: "value",    selector: "getElementById"  ,required: true},
-        patCliente      : {ele: `${model}-patCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
-        matCliente      : {ele: `${model}-matCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
-        dirCliente      : {ele: `${model}-dirCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
-        idtipoDpto      : {ele: `${model}-idtipoDpto`                           , value: "value",    selector: "getElementById"  ,required: false},
-        idtipoPais      : {ele: `${model}-idtipoPais`                           , value: "value",    selector: "getElementById"  ,required: false},
-        idtipoGenero    : {ele: `input[name="${model}-idtipoGenero"]:checked`   , value: "value",    selector: "querySelector"   ,required: false},
-        fnaCliente      : {ele: `${model}-fnaCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
-        telCliente      : {ele: `${model}-telCliente`                           , value: "value",    selector: "getElementById"  ,required: false},
-        celCliente      : {ele: `${model}-celCliente`                           , value: "value",    selector: "getElementById"  ,required: true},
-        mailCliente     : {ele: `${model}-mailCliente`                          , value: "value",    selector: "getElementById"  ,required: false},
-        ciCliente       : {ele: `${model}-ciCliente`                            , value: "value",    selector: "getElementById"  ,required: false},
+        idCliente       : {ele: `${model}-idCliente`                            , value: "value",    selector: "getElementById"  ,required: false   },
+        tipCliente      : {ele: `input[name="${model}-tipCliente"]:checked`     , value: "value",    selector: "querySelector"   ,required: false    },
+        nomCliente      : {ele: `${model}-nomCliente`                           , value: "value",    selector: "getElementById"  ,required: true    },
+        patCliente      : {ele: `${model}-patCliente`                           , value: "value",    selector: "getElementById"  ,required: false   },
+        matCliente      : {ele: `${model}-matCliente`                           , value: "value",    selector: "getElementById"  ,required: false   },
+        dirCliente      : {ele: `${model}-dirCliente`                           , value: "value",    selector: "getElementById"  ,required: false   },
+        idtipoDpto      : {ele: `${model}-idtipoDpto`                           , value: "value",    selector: "getElementById"  ,required: false   },
+        idtipoPais      : {ele: `${model}-idtipoPais`                           , value: "value",    selector: "getElementById"  ,required: false   },
+        idtipoGenero    : {ele: `input[name="${model}-idtipoGenero"]:checked`   , value: "value",    selector: "querySelector"   ,required: false   },
+        fnaCliente      : {ele: `${model}-fnaCliente`                           , value: "value",    selector: "getElementById"  ,required: false   },
+        telCliente      : {ele: `${model}-telCliente`                           , value: "value",    selector: "getElementById"  ,required: false   },
+        celCliente      : {ele: `${model}-celCliente`                           , value: "value",    selector: "getElementById"  ,required: true    },
+        mailCliente     : {ele: `${model}-mailCliente`                          , value: "value",    selector: "getElementById"  ,required: false   },
+        ciCliente       : {ele: `${model}-ciCliente`                            , value: "value",    selector: "getElementById"  ,required: false   }
     }   
 
     M.Autocomplete.init(document[form.idtipoDpto.selector](form.idtipoDpto.ele), {
