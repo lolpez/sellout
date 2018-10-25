@@ -77,14 +77,27 @@ module.exports = {
 				},
 				body: JSON.stringify({idtipoPais: "1"}),
 			});
+            //Get Product by Entity
+            var requestProduct = rp({
+                method: 'POST',
+                uri: req.app.get('webServices').product.get,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+					idUsuario: 1,
+					idtipoEntidad: entityId
+                })
+            });
 
-			//Make all requests in parallel and wait for all of them
-			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity]).then(function(responses) {
+            //Make all requests in parallel and wait for all of them
+			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct]).then(function(responses) {
 				//Al requests completed
 				var customers = JSON.parse(responses[0]).response;
 				var entity = 	JSON.parse(responses[1]).response;
 				var countries = JSON.parse(responses[2]).response;
 				var cities =	JSON.parse(responses[3]).response;
+                var products =	JSON.parse(responses[4]).response;
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
 					entity: {
@@ -94,7 +107,8 @@ module.exports = {
 					user: req.user,
 					customers: customers,
 					countries: countries,
-					cities: cities
+					cities: cities,
+					products: products
 				});
 			}).catch(function (err) {
 				//Show error

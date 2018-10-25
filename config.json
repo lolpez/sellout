@@ -23,6 +23,9 @@
                 },
                 "city": {
                     "getByCountry": "get_departamentos"
+                },
+                "product": {
+                    "get": "get_productos"
                 }
             }
         }
