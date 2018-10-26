@@ -4,7 +4,9 @@
             .col.s12(style="height: 300px; overflow: auto; margin-bottom: 10px")
                 each product, index in products
                     .product
-                        .col.s3(style=`background-image:url("${product.imgtipoProducto}");height:120px;width:120px`) span="${product.nomtipoProducto}"
+                        .col.s12.m3
+                            img(src=product.imgtipoProducto, style="width: 120px, height: 120px")
+                            span=product.nomtipoProducto
             .col.s12
                 .row
                     .col.s2.m1
