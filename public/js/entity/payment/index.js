@@ -33,9 +33,9 @@ Cart.prototype.addProduct = function(product) {
     //add button
     var addButton = this.createButtonControl("add", this.products[id].name, id)
     //subtrac button
-    var subtractButton = this.createButtonControl("subtract", this.products[id].name, id)
+    var subtractButton = this.createButtonControl("remove", this.products[id].name, id)
     //remove button
-    var removeButton = this.createButtonControl("remove", this.products[id].name, id)
+    var removeButton = this.createButtonControl("delete", this.products[id].name, id)
     //add to table
     buttonContainer.appendChild(addButton);
     buttonContainer.appendChild(subtractButton);
@@ -48,27 +48,19 @@ Cart.prototype.addProduct = function(product) {
 Cart.prototype.createButtonControl = function(buttonType, productName, id) {
     var button = document.createElement("button");
     button.className = this.controlButtonClass;
+    button.innerHTML = `<i class="material-icons">${buttonType}</i>`;
+    button.addEventListener('click', () => {
+        this.doAction(buttonType, id)
+    });
     switch(buttonType) {
         case "add":
             button.title = `agregar ${productName}`;
-            button.innerHTML = `<i class="material-icons">add</i>`;
-            button.addEventListener('click', () => {
-                this.doAction("add", id)
-            });
             break;
         case "subtract":
             button.title = `disminuir ${productName}`;
-            button.innerHTML = `<i class="material-icons">remove</i>`;
-            button.addEventListener('click', () => {
-                this.doAction("subtract", id)
-            });
             break;
         case "remove":
-            button.title = `quitar ${productName}`;    
-            button.innerHTML = `<i class="material-icons">delete</i>`;
-            button.addEventListener('click', () => {
-                this.doAction("remove", id)
-            });
+            button.title = `quitar ${productName}`;
             break;
     }
     return button;
@@ -92,13 +84,13 @@ Cart.prototype.add = function(id) {
     quantityText.innerHTML = this.products[id].quantity;
 }
 
-Cart.prototype.subtract = function(id) {
+Cart.prototype.remove = function(id) {
     this.products[id].quantity --;
     var quantityText = document.getElementById(`quantity-${id}`);
     quantityText.innerHTML = this.products[id].quantity;
 }
 
-Cart.prototype.remove = function(id) {
+Cart.prototype.delete = function(id) {
     var row = document.getElementById(`row-${id}`);
     row.parentNode.removeChild(row);
     delete this.products[id];
