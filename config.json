@@ -25,7 +25,8 @@
                     "getByCountry": "get_departamentos"
                 },
                 "product": {
-                    "get": "get_productos"
+                    "get": "get_productos",
+                    "getById": "get_producto_by_id"                    
                 }
             }
         }
