@@ -13,8 +13,11 @@
             }
         }).then(res => res.json())
         .then((response) => {
-            selectedCustomer = response.object;
-            console.log(response)
+            selectedProduct = response.object;
+            document.getElementById(`${modelApp}-details`).style.display = "block";
+            document.getElementById(`${modelApp}-name`).innerHTML = selectedProduct.nomtipoProducto;
+            document.getElementById(`${modelApp}-price`).innerHTML = selectedProduct.pretipoProducto;
+            document.getElementById(`${modelApp}-stock`).innerHTML = selectedProduct.saltipoProducto;
         }).catch((error) => {
             alert(error)
         });

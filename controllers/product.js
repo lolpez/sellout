@@ -22,7 +22,7 @@ module.exports = {
 			console.log(`Returning information of product ${id}`);
 			res.send({message: "Exito al obtener producto.",
 				object: {
-					"idtipoProducto": 1,
+					"idtipoProducto": id,
 					"nomtipoProducto": "Jeans",
 					"pretipoProducto": 100.0,
 					"saltipoProducto": 0.0,
