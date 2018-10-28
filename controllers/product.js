@@ -9,8 +9,7 @@ module.exports = {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({idtipoProducto: req.body.id
-				}),
+				body: JSON.stringify({idtipoProducto: req.body.id}),
 			};
 			rp(options).then((response) => {
 				res.send({message: "Exito al obtener producto.", object: JSON.parse(response).response})

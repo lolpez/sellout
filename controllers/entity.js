@@ -182,15 +182,15 @@ module.exports = {
 				var request5 = new Promise(function(resolve, reject) {
 					setTimeout(() => {
 						resolve({
-							"0": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 1"},
-							"1": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 2"},
-							"2": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 3"},
-							"3": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 4"}, 
-							"4": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 5"},
-							"5": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 6"},
-							"6": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 7"},
-							"7": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 8"},
-							"8": {"imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 9"}
+							"0": {"idtipoProducto": 0, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 1"},
+							"1": {"idtipoProducto": 1, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 2"},
+							"2": {"idtipoProducto": 2, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 3"},
+							"3": {"idtipoProducto": 3, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 4"}, 
+							"4": {"idtipoProducto": 4, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 5"},
+							"5": {"idtipoProducto": 5, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 6"},
+							"6": {"idtipoProducto": 6, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 7"},
+							"7": {"idtipoProducto": 7, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 8"},
+							"8": {"idtipoProducto": 8, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 9"}
 						});
 					}, 1000);
 				});
