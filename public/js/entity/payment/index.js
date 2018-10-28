@@ -85,9 +85,13 @@ Cart.prototype.add = function(id) {
 }
 
 Cart.prototype.remove = function(id) {
-    this.products[id].quantity --;
-    var quantityText = document.getElementById(`quantity-${id}`);
-    quantityText.innerHTML = this.products[id].quantity;
+    if (this.products[id].quantity - 1 == 0){
+        this.delete(id);
+    }else{
+        this.products[id].quantity --;
+        var quantityText = document.getElementById(`quantity-${id}`);
+        quantityText.innerHTML = this.products[id].quantity;
+    }
 }
 
 Cart.prototype.delete = function(id) {
