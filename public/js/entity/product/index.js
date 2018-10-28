@@ -1,9 +1,11 @@
 (function() {
-    var productItems = document.querySelectorAll('.product');
-
-    /*Product Get Information*/
     var modelApp = "product-app";
     var selectedProduct =  null;
+    var productItems = document.querySelectorAll('.product');
+    var confirmButton = document.getElementById(`${modelApp}-confirm`);
+    var cart = new Cart("table")
+
+    /*Product Get Information*/    
     productItems.forEach(productItem => productItem.addEventListener("click", function() {
         fetch("/product/get", {
             method: 'POST',
@@ -22,4 +24,8 @@
             alert(error)
         });
     }));
+
+    confirmButton.addEventListener('click', () => {
+        cart.addProduct(selectedProduct);
+    });
 })();
