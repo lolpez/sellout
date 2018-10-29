@@ -1,12 +1,11 @@
 .row
     .col.s12.m8
         .row
-            .col.s12(style="height: 300px; overflow: auto; margin-bottom: 10px")
-                each product, index in products
-                    .product
-                        .col.s12.m3
-                            img(src=product.imgtipoProducto, style="width: 120px, height: 120px")
-                            span=product.nomtipoProducto
+            .col.s12.products
+                each product in products
+                    .col.s12.m3.product(data-id=product.idtipoProducto)
+                        img(src=product.imgtipoProducto)
+                        span=product.nomtipoProducto
             .col.s12
                 .row
                     .col.s2.m1
@@ -30,3 +29,13 @@
         a.waves-effect.waves-light.btn.app-button.block Reducir stock
         a.waves-effect.waves-light.btn.app-button.block Recuperar ticket
         a.waves-effect.waves-light.btn.app-button.block Cambio rápido
+        span#product-app-details(style="display: none")
+            span(style="font-weight: bold") Nombre: 
+            span#product-app-name
+            br
+            span(style="font-weight: bold") Precio: 
+            span#product-app-price
+            br
+            span(style="font-weight: bold") Stock: 
+            span#product-app-stock
+            a#product-app-confirm.waves-effect.waves-light.btn.app-button.block Confirmar

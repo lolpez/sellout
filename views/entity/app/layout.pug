@@ -97,7 +97,7 @@ html
 			block content
 			.row(style="background-color: rgba(128, 128, 128, 0.34)")
 				.col.s12.m8(style="height: 200px; overflow: auto")
-					table.highlight
+					table.highlight#payment-app-table
 						thead
 							tr
 								th Nombre
@@ -106,30 +106,6 @@ html
 								th Precio Unitario
 								th Precio Total
 						tbody
-							tr
-								td soda
-								td bebida
-								td 10
-								td 5
-								td 50
-							tr
-								td soda
-								td bebida
-								td 10
-								td 5
-								td 50
-							tr
-								td soda
-								td bebida
-								td 10
-								td 5
-								td 50
-							tr
-								td soda
-								td bebida
-								td 10
-								td 5
-								td 50
 				.col.s12.m4
 					.row
 						.col.s12.m6
@@ -137,10 +113,12 @@ html
 						.col.s12.m6
 							a.waves-effect.waves-light.btn.app-button.block Abrir cajon
 					.row
-						.col.s12.total Total Bs. 50
+						.col.s12.total#payment-total
 					.row
 						.col.s12.m12
 							a.waves-effect.waves-light.btn.app-button.block.green Pagar
 		script(src='/js/materialize.min.js')
 		script(src='/js/entity/app/index.js')
 		script(src='/js/entity/customer/index.js')
+		script(src='/js/entity/payment/index.js')
+		script(src='/js/entity/product/index.js')

@@ -178,21 +178,39 @@ module.exports = {
 						});
 					}, 1000);
 				});
+				//Request for get Products takes 1 seconds
+				var request5 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							"0": {"idtipoProducto": 0, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 1"},
+							"1": {"idtipoProducto": 1, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 2"},
+							"2": {"idtipoProducto": 2, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 3"},
+							"3": {"idtipoProducto": 3, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 4"}, 
+							"4": {"idtipoProducto": 4, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 5"},
+							"5": {"idtipoProducto": 5, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 6"},
+							"6": {"idtipoProducto": 6, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 7"},
+							"7": {"idtipoProducto": 7, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 8"},
+							"8": {"idtipoProducto": 8, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 9"}
+						});
+					}, 1000);
+				});
 
 				//Make all requests in parallel and wait for all of them
-				Promise.all([request1, request2, request3, request4]).then(function(responses) {
+				Promise.all([request1, request2, request3, request4, request5]).then(function(responses) {
 					//Al requests completed
 					var customers = responses[0];
 					var entity = responses[1];
 					var countries = responses[2];
 					var cities = responses[3];
+					var products = responses[4];
 					res.render('entity/app/index', {
 						app: req.app.get('config'),
 						entity: entity,
 						user: req.user,
 						customers: customers,
 						countries: countries,
-						cities: cities
+						cities: cities,
+						products: products
 					});
 				});
 			}
