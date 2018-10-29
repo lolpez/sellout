@@ -1,9 +1,20 @@
 (function() {
     var modelApp = "product-app";
     var selectedProduct =  null;
+    var productList = document.getElementById('product-list');
     var productItems = document.querySelectorAll('.product');
+    var productControls = document.querySelectorAll('.product-control');    
     var confirmButton = document.getElementById(`${modelApp}-confirm`);
-    var cart = new Cart("table")
+    var cart = new Cart("table");
+
+    productControls.forEach(productControl => productControl.addEventListener("click", function() {
+        var go = this.dataset.go;
+        if (go == "down"){
+            productList.scrollTop += 50;
+        }else{
+            productList.scrollTop -= 50;
+        }
+    }));
 
     /*Product Get Information*/    
     productItems.forEach(productItem => productItem.addEventListener("click", function() {
