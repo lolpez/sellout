@@ -12,7 +12,7 @@ html
                     .login-logo
                         img(src="/img/starbucks.png")
                     .login-form
-                        .login-title Login de TPV
+                        .login-title Login de CONTROL iPOS
                         form(action='/', method='post')
                             .input-field
                                 input#username.validate(type='text', name='username', value="admin")
@@ -23,7 +23,7 @@ html
                             button(type="submit").waves-effect.waves-light.btn.login-button Aceptar
                         if error
                             h6.red-text=error
-                    .login-subtitle
-                        a(href="/") ¿Problemas en el acceso?
-                        a(href="www.tpvenlanube.com").login-url www.tpvenlanube.com
+                    //.login-subtitle
+                    //    a(href="/") ¿Problemas en el acceso?
+                    //    a(href="www.tpvenlanube.com").login-url www.tpvenlanube.com
         script(src='/js/materialize.min.js')
