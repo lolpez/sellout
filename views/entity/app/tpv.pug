@@ -9,7 +9,7 @@
             .col.s1.product-controls
                 a.waves-effect.waves-light.btn.app-button.product-control(data-go="up")
                     i.material-icons keyboard_arrow_up
-                a.waves-effect.waves-light.btn.app-button.product-control(data-go="down")
+                a.waves-effect.waves-light.btn.app-button.product-control.valign-wrapper(data-go="down")
                     i.material-icons keyboard_arrow_down
             .col.s12
                 .row
@@ -33,12 +33,12 @@
         a.waves-effect.waves-light.btn.app-button.block Recuperar ticket
         a.waves-effect.waves-light.btn.app-button.block Cambio rápido
         span#product-app-details(style="display: none")
-            span(style="font-weight: bold") Nombre: 
+            span(style="font-weight: bold") Ítem:
             span#product-app-name
             br
-            span(style="font-weight: bold") Precio: 
+            span(style="font-weight: bold") Precio:
             span#product-app-price
             br
-            span(style="font-weight: bold") Stock: 
-            span#product-app-stock
+            span(style="font-weight: bold") Stock:
+            span(style="color:blue")#product-app-stock
             a#product-app-confirm.waves-effect.waves-light.btn.app-button.block Confirmar

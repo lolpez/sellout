@@ -28,6 +28,7 @@
         .then((response) => {
             selectedProduct = response.object;
             document.getElementById(`${modelApp}-details`).style.display = "block";
+            document.getElementById(`${modelApp}-details`).style.textAlign = "center";
             document.getElementById(`${modelApp}-name`).innerHTML = selectedProduct.nomtipoProducto;
             document.getElementById(`${modelApp}-price`).innerHTML = selectedProduct.pretipoProducto;
             document.getElementById(`${modelApp}-stock`).innerHTML = selectedProduct.saltipoProducto;
