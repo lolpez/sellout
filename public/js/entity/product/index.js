@@ -5,6 +5,7 @@
     var productItems = document.querySelectorAll('.product');
     var productControls = document.querySelectorAll('.product-control');
     var refreshButton = document.getElementById(`${modelApp}-refresh`);
+    var goTopButton = document.getElementById(`${modelApp}-go-top`);
     var confirmButton = document.getElementById(`${modelApp}-confirm`);
     var nameSpan = document.getElementById(`${modelApp}-name`);
     var priceSpan = document.getElementById(`${modelApp}-price`);
@@ -20,6 +21,10 @@
             productList.scrollTop -= 50;
         }
     }));
+
+    goTopButton.addEventListener('click', () => {
+        productList.scrollTop = 0;
+    });
 
     /*Product Get Information*/
     addEventListenerToProducts();
