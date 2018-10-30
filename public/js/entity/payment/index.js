@@ -7,7 +7,11 @@ function Cart(tableId) {
 }
 
 Cart.prototype.addProduct = function(product) {
-    var id = this.generateID();
+    var id = product.idtipoProducto;
+    if (this.products[id]) { 
+        alert("Producto Seleccionado, modifique la cantidad");
+        return;
+    }
     this.products[id] = {
         id: product.idtipoProducto,
         name: product.nomtipoProducto,
