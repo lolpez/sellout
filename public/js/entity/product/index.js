@@ -31,7 +31,7 @@
     refreshButton.addEventListener('click', () => {
         fetch("/product/list", {
             method: 'POST',
-            body: JSON.stringify({entityId: 1}),
+            body: JSON.stringify({entityId: entityId}),
             headers: {
                 'Content-Type': 'application/json'
             }
