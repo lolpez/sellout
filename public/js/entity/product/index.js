@@ -3,8 +3,12 @@
     var selectedProduct =  null;
     var productList = document.getElementById('product-list');
     var productItems = document.querySelectorAll('.product');
-    var productControls = document.querySelectorAll('.product-control');    
+    var productControls = document.querySelectorAll('.product-control');
     var confirmButton = document.getElementById(`${modelApp}-confirm`);
+    var nameSpan = document.getElementById(`${modelApp}-name`);
+    var priceSpan = document.getElementById(`${modelApp}-price`);
+    var stockSpan = document.getElementById(`${modelApp}-stock`);
+
     var cart = new Cart("table");
 
     productControls.forEach(productControl => productControl.addEventListener("click", function() {
@@ -29,9 +33,9 @@
             selectedProduct = response.object;
             document.getElementById(`${modelApp}-details`).style.display = "block";
             document.getElementById(`${modelApp}-details`).style.textAlign = "center";
-            document.getElementById(`${modelApp}-name`).innerHTML = selectedProduct.nomtipoProducto;
-            document.getElementById(`${modelApp}-price`).innerHTML = selectedProduct.pretipoProducto;
-            document.getElementById(`${modelApp}-stock`).innerHTML = selectedProduct.saltipoProducto;
+            nameSpan.innerHTML = selectedProduct.nomtipoProducto;
+            priceSpan.innerHTML = selectedProduct.pretipoProducto;
+            stockSpan.innerHTML = selectedProduct.saltipoProducto;
         }).catch((error) => {
             alert(error)
         });
@@ -39,5 +43,8 @@
 
     confirmButton.addEventListener('click', () => {
         cart.addProduct(selectedProduct);
+        nameSpan.innerHTML = "";
+        priceSpan.innerHTML = "";
+        stockSpan.innerHTML = "";
     });
 })();

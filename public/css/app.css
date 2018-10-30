@@ -103,6 +103,14 @@ a {
 
 .product-control{
     height: 50%;
+    width: 100%;
+}
+
+.product-control i{
+    top: 40%;
+    position: absolute;
+    text-align: center;
+    left: 33%;
 }
 
 @media only screen and (max-width: 992px) {
