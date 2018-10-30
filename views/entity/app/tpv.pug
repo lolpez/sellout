@@ -1,30 +1,12 @@
-.row
-    .col.s12.m8
-        .row
-            #product-list.col.s11.products
-                include products
-            .col.s1.product-controls
-                a.waves-effect.waves-light.btn.app-button.product-control(data-go="up")
-                    i.material-icons keyboard_arrow_up
-                a.waves-effect.waves-light.btn.app-button.product-control(data-go="down")
-                    i.material-icons keyboard_arrow_down
-            .col.s12
-                .row
-                    .col.s2.m1
-                        a.waves-effect.waves-light.btn.app-button
-                            i.material-icons home
-                    .col.s2.m1
-                        a.waves-effect.waves-light.btn.app-button
-                            i.material-icons arrow_back
-                    .col.s3.m2
-                        span Inicio
-                    .col.s12.m4
-                        a.waves-effect.waves-light.btn.app-button Otros productos
-                .row
-                    .input-field.col.s12.m3
-                        input#tpv-ean.validate(type='text')
-                        label(for='tpv-ean') Nombre o EAN
-    .col.s12.m4
+.row    
+    #product-list.col.s11.m8.products
+        include products
+    .col.s1.m1.product-controls
+        a.waves-effect.waves-light.btn.app-button.product-control(data-go="up")
+            i.material-icons keyboard_arrow_up
+        a.waves-effect.waves-light.btn.app-button.product-control(data-go="down")
+            i.material-icons keyboard_arrow_down
+    .col.s12.m3
         a#product-app-refresh.waves-effect.waves-light.btn.app-button.block Productos
         a.waves-effect.waves-light.btn.app-button.block Servicios
         a.waves-effect.waves-light.btn.app-button.block Recuperar ticket
@@ -39,3 +21,21 @@
             span(style="font-weight: bold") Stock:
             span#product-app-stock(style="color: green")
             a#product-app-confirm.waves-effect.waves-light.btn.app-button.block Confirmar
+.row
+    .col.s12
+        .row
+            .col.s2.m1
+                a.waves-effect.waves-light.btn.app-button
+                    i.material-icons home
+            .col.s2.m1
+                a.waves-effect.waves-light.btn.app-button
+                    i.material-icons arrow_back
+            .col.s3.m2
+                span Inicio
+            .col.s12.m4
+                a.waves-effect.waves-light.btn.app-button Otros productos
+        .row
+            .input-field.col.s12.m3
+                input#tpv-ean.validate(type='text')
+                label(for='tpv-ean') Nombre o EAN
+    
