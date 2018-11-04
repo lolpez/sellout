@@ -93,13 +93,17 @@
         categoryItems.forEach(categoryItem => categoryItem.addEventListener("click", function() {
             fetch("/product/get_by_category", {
                 method: 'POST',
-                body: JSON.stringify({id: this.dataset.id}),
+                body: JSON.stringify({
+                    entityId: entityId,
+                    CategoryId: this.dataset.id
+                }),
                 headers:{
                     'Content-Type': 'application/json'
                 }
             }).then(res => res.json())
             .then((response) => {
                 productList.innerHTML = response.object.html;
+                addEventListenerToProducts();
             }).catch((error) => {
                 alert(error)
             });

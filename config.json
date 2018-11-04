@@ -26,7 +26,11 @@
                 },
                 "product": {
                     "get": "get_productos",
-                    "getById": "get_producto_by_id"                    
+                    "getById": "get_producto_by_id",
+                    "getByCategory": "get_productos_by_categoria"
+                },
+                "category":{
+                    "get": "get_categorias"
                 }
             }
         }
