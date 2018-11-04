@@ -38,7 +38,7 @@
             #category-list.col.s12.m5.categories
                 each category in categories
                     .col.s12.m3
-                        span.waves-effect.waves-light.btn.app-button.category(data-id=category.idtipoCategoria)=category.nomtipoCategoria
+                        span.waves-effect.waves-light.btn.app-button.category(data-id=category.idtipoCategoria, title=category.nomtipoCategoria)=category.nomtipoCategoria
             .col.s1.m1.category-controls
                 a.waves-effect.waves-light.btn.app-button.category-control(data-go="up")
                     i.material-icons keyboard_arrow_up
