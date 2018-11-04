@@ -35,7 +35,7 @@
             .input-field.col.s12.m3
                 input#tpv-ean.validate(type='text')
                 label(for='tpv-ean') Nombre o EAN
-            .col.s12.m5.categories
+            #category-list.col.s12.m5.categories
                 each category in categories
                     .col.s12.m3
                         span.waves-effect.waves-light.btn.app-button.category=category.nomtipoCategoria

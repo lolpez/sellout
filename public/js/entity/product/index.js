@@ -11,6 +11,10 @@
     var priceSpan = document.getElementById(`${modelApp}-price`);
     var stockSpan = document.getElementById(`${modelApp}-stock`);
 
+    var categoryList = document.getElementById('category-list');
+    var categoryItems = document.querySelectorAll('.category');    
+    var categoryControls = document.querySelectorAll('.category-control');
+
     var cart = new Cart("table");
 
     productControls.forEach(productControl => productControl.addEventListener("click", function() {
@@ -22,12 +26,22 @@
         }
     }));
 
+    categoryControls.forEach(categoryControl => categoryControl.addEventListener("click", function() {
+        var go = this.dataset.go;
+        if (go == "down"){
+            categoryList.scrollTop += 50;
+        }else{
+            categoryList.scrollTop -= 50;
+        }
+    }));
+
     goTopButton.addEventListener('click', () => {
         productList.scrollTop = 0;
     });
 
     /*Product Get Information*/
     addEventListenerToProducts();
+    addEventListenerToCategories()
     refreshButton.addEventListener('click', () => {
         fetch("/product/list", {
             method: 'POST',
@@ -68,6 +82,24 @@
                 nameSpan.innerHTML = selectedProduct.nomtipoProducto;
                 priceSpan.innerHTML = selectedProduct.pretipoProducto;
                 stockSpan.innerHTML = selectedProduct.saltipoProducto;
+            }).catch((error) => {
+                alert(error)
+            });
+        }));
+    }
+
+    function addEventListenerToCategories() {
+        categoryItems = document.querySelectorAll('.category');
+        categoryItems.forEach(categoryItem => categoryItem.addEventListener("click", function() {
+            fetch("/product/get_by_category", {
+                method: 'POST',
+                body: JSON.stringify({id: this.dataset.id}),
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .then((response) => {
+                productList.innerHTML = response.object.html;
             }).catch((error) => {
                 alert(error)
             });
