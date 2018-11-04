@@ -112,7 +112,37 @@ a {
     top: 40%;
     position: absolute;
     text-align: center;
-    left: 33%;
+    left: 40%;
+}
+
+.product-options{
+    height: 7vh
+}
+
+.categories{
+    height: 100%;
+    overflow: hidden;
+}
+
+.category{
+    margin: auto;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.category-controls{
+    height: 67px;
+}
+
+.category-control{
+    height: 50%;
+    width: 100%;
+}
+
+.category-control i{
+    position: absolute;
+    text-align: center;
+    left: 40%;
 }
 
 @media only screen and (max-width: 992px) {

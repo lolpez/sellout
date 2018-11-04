@@ -88,16 +88,28 @@ module.exports = {
 					idUsuario: 1,
 					idtipoEntidad: entityId
                 })
-            });
-
+			});
+			//Get Categories by User and Entity
+			var requestCategory = rp({
+                method: 'POST',
+                uri: req.app.get('webServices').category.get,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+					idUsuario : 1,
+					idtipoEntidad: entityId
+				})
+			});
             //Make all requests in parallel and wait for all of them
-			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct]).then(function(responses) {
+			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory]).then(function(responses) {
 				//Al requests completed
-				var customers = JSON.parse(responses[0]).response;
-				var entity = 	JSON.parse(responses[1]).response;
-				var countries = JSON.parse(responses[2]).response;
-				var cities =	JSON.parse(responses[3]).response;
-                var products =	JSON.parse(responses[4]).response;
+				var customers	= 	JSON.parse(responses[0]).response;
+				var entity 		=	JSON.parse(responses[1]).response;
+				var countries 	= 	JSON.parse(responses[2]).response;
+				var cities 		=	JSON.parse(responses[3]).response;
+                var products 	=	JSON.parse(responses[4]).response;
+                var categories	=	JSON.parse(responses[5]).response;
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
 					entity: {
@@ -108,7 +120,8 @@ module.exports = {
 					customers: customers,
 					countries: countries,
 					cities: cities,
-					products: products
+					products: products,
+					categories: categories
 				});
 			}).catch(function (err) {
 				//Show error
@@ -122,9 +135,7 @@ module.exports = {
 				res.status(500);
 				res.render('error/error');
 			}else{
-				//Simulating 3 requests at the same time
-
-				//Request for get Customers takes 3 seconds
+				//Request for get Customers takes 0.5 seconds
 				var request1 = new Promise(function(resolve, reject) {
 					setTimeout(() => {
 						resolve({
@@ -139,18 +150,18 @@ module.exports = {
 							"8": {"idCliente": 8, "patCliente": "Paterno 8", "matCliente": "Materno 8", "nomCliente": "Nombre 8"},
 							"9": {"idCliente": 9, "patCliente": "Paterno 9", "matCliente": "Materno 9", "nomCliente": "Nombre 9"}
 						})
-					}, 1000);
+					}, 0.5);
 				});
-				//Request for get Entity takes 2 seconds
+				//Request for get Entity takes 0.5 seconds
 				var request2 = new Promise(function(resolve, reject) {
 					setTimeout(() => {
 						resolve({
 							id: id,
 							name: "STARBUCKS"
 						})
-					}, 1000);
+					}, 0.5);
 				});
-				//Request for get Country takes 1 seconds
+				//Request for get Country takes 0.5 seconds
 				var request3 = new Promise(function(resolve, reject) {
 					setTimeout(() => {
 						resolve({
@@ -160,9 +171,9 @@ module.exports = {
 							"3": {"idtipoPais": 4, "nomtipoPais": "Peru"},
 							"4": {"idtipoPais": 5, "nomtipoPais": "Chile"}
 						})
-					}, 1000);
+					}, 0.5);
 				});
-				//Request for get City takes 1 seconds
+				//Request for get City takes 0.5 seconds
 				var request4 = new Promise(function(resolve, reject) {
 					setTimeout(() => {
 						resolve({
@@ -176,9 +187,9 @@ module.exports = {
 							"7": {"idtipoDpto": 8, "nomtipoDpto": "POT"},
 							"8": {"idtipoDpto": 9, "nomtipoDpto": "CHU"}
 						});
-					}, 1000);
+					}, 0.5);
 				});
-				//Request for get Products takes 1 seconds
+				//Request for get Products takes 0.5 seconds
 				var request5 = new Promise(function(resolve, reject) {
 					setTimeout(() => {
 						resolve({
@@ -192,17 +203,34 @@ module.exports = {
 							"7": {"idtipoProducto": 7, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 8"},
 							"8": {"idtipoProducto": 8, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 9"}
 						});
-					}, 1000);
+					}, 500);
 				});
-
+				//Request for get Categories takes 0.5 seconds
+				var request6 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							"0": {"idtipoCategoria": 2, "nomtipoCategoria"	: "Pantalones"	},
+							"1": {"idtipoCategoria": 3, "nomtipoCategoria"	: "Blusas"		},
+							"2": {"idtipoCategoria": 5, "nomtipoCategoria"	: "Poleras"		},
+							"3": {"idtipoCategoria": 6, "nomtipoCategoria"	: "Ropa InterIo"},
+							"4": {"idtipoCategoria": 7, "nomtipoCategoria"	: "Bijouteria"	},
+							"5": {"idtipoCategoria": 8, "nomtipoCategoria"	: "Pantalones"	},
+							"6": {"idtipoCategoria": 9, "nomtipoCategoria"	: "Blusas"		},
+							"7": {"idtipoCategoria": 10, "nomtipoCategoria"	: "Poleras"		},
+							"8": {"idtipoCategoria": 11, "nomtipoCategoria"	: "Ropa InterIo"},
+							"9": {"idtipoCategoria": 12, "nomtipoCategoria"	: "Bijouteria"	}
+						});
+					}, 500);
+				});
 				//Make all requests in parallel and wait for all of them
-				Promise.all([request1, request2, request3, request4, request5]).then(function(responses) {
+				Promise.all([request1, request2, request3, request4, request5, request6]).then(function(responses) {
 					//Al requests completed
 					var customers = responses[0];
 					var entity = responses[1];
 					var countries = responses[2];
 					var cities = responses[3];
 					var products = responses[4];
+					var categories = responses[5];
 					res.render('entity/app/index', {
 						app: req.app.get('config'),
 						entity: entity,
@@ -210,7 +238,8 @@ module.exports = {
 						customers: customers,
 						countries: countries,
 						cities: cities,
-						products: products
+						products: products,
+						categories: categories
 					});
 				});
 			}

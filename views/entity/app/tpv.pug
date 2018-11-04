@@ -31,8 +31,16 @@
                 span Inicio
             .col.s12.m4
                 a.waves-effect.waves-light.btn.app-button Otros productos
-        .row
+        .row.product-options
             .input-field.col.s12.m3
                 input#tpv-ean.validate(type='text')
                 label(for='tpv-ean') Nombre o EAN
-    
+            .col.s12.m5.categories
+                each category in categories
+                    .col.s12.m3
+                        span.waves-effect.waves-light.btn.app-button.category=category.nomtipoCategoria
+            .col.s1.m1.category-controls
+                a.waves-effect.waves-light.btn.app-button.category-control(data-go="up")
+                    i.material-icons keyboard_arrow_up
+                a.waves-effect.waves-light.btn.app-button.category-control(data-go="down")
+                    i.material-icons keyboard_arrow_down
