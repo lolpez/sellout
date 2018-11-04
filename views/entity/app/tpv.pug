@@ -2,10 +2,14 @@
     #product-list.col.s11.m8.products
         include products
     .col.s1.m1.product-controls
-        a.waves-effect.waves-light.btn.app-button.product-control(data-go="up")
+        a.waves-effect.waves-light.btn.app-button.product-control(data-type="scroll", data-value="up")
             i.material-icons keyboard_arrow_up
-        a.waves-effect.waves-light.btn.app-button.product-control(data-go="down")
+        a.waves-effect.waves-light.btn.app-button.product-control(data-type="scroll", data-value="down")
             i.material-icons keyboard_arrow_down
+        a.waves-effect.waves-light.btn.app-button.product-control(data-type="filter", data-value="text")
+            i.material-icons text_fields
+        a.waves-effect.waves-light.btn.app-button.product-control(data-type="filter",  data-value="img")
+            i.material-icons insert_photo
     .col.s12.m3
         a#product-app-refresh.waves-effect.waves-light.btn.app-button.block Productos
         a.waves-effect.waves-light.btn.app-button.block Servicios

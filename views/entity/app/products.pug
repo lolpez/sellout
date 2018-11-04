@@ -1,9 +1,6 @@
 each product in products
-    .col.s12.m3.product(
-        data-id=product.idtipoProducto,
-        data-name=product.nomtipoProducto,
-        data-barcode=product.bartipoProducto
-    )
-        img(src=product.imgtipoProducto)
-        br
-        span=product.nomtipoProducto
+    .col.s12.m3
+        .product(class=`${(product.imgtipoProducto) ? "" : "valign-wrapper"}`, data-title=product.nomtipoProducto, data-id=product.idtipoProducto, data-name=product.nomtipoProducto, data-barcode=product.bartipoProducto)
+            img.product-img(src=product.imgtipoProducto, style=`display: ${(product.imgtipoProducto) ? "" : "none"}`, data-img=`${(product.imgtipoProducto) ? "true" : "false"}`)
+            br
+            span.product-name=product.nomtipoProducto

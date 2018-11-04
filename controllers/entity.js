@@ -194,12 +194,12 @@ module.exports = {
 					setTimeout(() => {
 						resolve({
 							"0": {"idtipoProducto": 0, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 1", "bartipoProducto": 123},
-							"1": {"idtipoProducto": 1, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 2", "bartipoProducto": 456},
+							"1": {"idtipoProducto": 1, "imgtipoProducto": "", 					"nomtipoProducto": "product 2", "bartipoProducto": 456},
 							"2": {"idtipoProducto": 2, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 3", "bartipoProducto": 789},
-							"3": {"idtipoProducto": 3, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 4", "bartipoProducto": 065}, 
+							"3": {"idtipoProducto": 3, "imgtipoProducto": "", 					"nomtipoProducto": "product 4", "bartipoProducto": 065}, 
 							"4": {"idtipoProducto": 4, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 5", "bartipoProducto": 128},
 							"5": {"idtipoProducto": 5, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 6", "bartipoProducto": 127},
-							"6": {"idtipoProducto": 6, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 7", "bartipoProducto": 124},
+							"6": {"idtipoProducto": 6, "imgtipoProducto": "", 					"nomtipoProducto": "product 7", "bartipoProducto": 124},
 							"7": {"idtipoProducto": 7, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 8", "bartipoProducto": 129},
 							"8": {"idtipoProducto": 8, "imgtipoProducto": "/img/starbucks.png", "nomtipoProducto": "product 9", "bartipoProducto": 126}
 						});

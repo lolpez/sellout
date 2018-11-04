@@ -18,13 +18,53 @@
     var cart = new Cart("table");
 
     productControls.forEach(productControl => productControl.addEventListener("click", function() {
-        var go = this.dataset.go;
-        if (go == "down"){
-            productList.scrollTop += 50;
-        }else{
-            productList.scrollTop -= 50;
+        var type = this.dataset.type;
+        var value = this.dataset.value;
+        switch(type){
+            case "scroll":            
+                if (value == "down"){
+                    productList.scrollTop += 50;
+                }else{
+                    productList.scrollTop -= 50;
+                }
+            break;
+            case "filter":
+                if (value == "img"){
+                    displayProductImages(true);
+                    displayProductNames(false);
+                    
+                }else{
+                    displayProductImages(false);
+                    displayProductNames(true);
+                }
+            break;
         }
     }));
+
+    function displayProductNames(show){
+        var products = productList.getElementsByClassName('product');
+        for (i = 0; i < products.length; i++) {
+            var product = products[i];
+            var text = product.getElementsByClassName('product-name')[0];
+            var img = product.getElementsByClassName('product-img')[0];
+            if (img.dataset.img == "true"){
+                (show) ? product.classList.add("valign-wrapper") : product.classList.remove("valign-wrapper");            
+                text.style.display = (show) ? "block" : "none";
+            }
+        }
+    }
+
+    function displayProductImages(show){
+        var products = productList.getElementsByClassName('product');
+        for (i = 0; i < products.length; i++) {
+            var product = products[i];
+            var img = product.getElementsByClassName('product-img')[0];
+            if (img.dataset.img == "true"){
+                img.style.display = (show) ? "block" : "none";
+                (show) ? img.classList.add("product-full-img") : img.classList.remove("product-full-img");
+            }
+        }
+    }
 
     categoryControls.forEach(categoryControl => categoryControl.addEventListener("click", function() {
         var go = this.dataset.go;
