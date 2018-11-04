@@ -10,7 +10,7 @@
     var nameSpan = document.getElementById(`${modelApp}-name`);
     var priceSpan = document.getElementById(`${modelApp}-price`);
     var stockSpan = document.getElementById(`${modelApp}-stock`);
-
+    var productSearchInput = document.getElementById(`${modelApp}-search`);
     var categoryList = document.getElementById('category-list');
     var categoryItems = document.querySelectorAll('.category');    
     var categoryControls = document.querySelectorAll('.category-control');
@@ -109,4 +109,19 @@
             });
         }));
     }
+    
+    productSearchInput.addEventListener('keyup', () => {
+        var filter = document.getElementById(`${modelApp}-search`).value.toUpperCase();
+        var products = productList.getElementsByClassName("product");
+        for (i = 0; i < products.length; i++) {
+            var product = products[i];
+            if (product.dataset.name.toUpperCase().indexOf(filter) > -1) {
+                product.style.display = "";      
+            } else if (product.dataset.barcode.toUpperCase().indexOf(filter) > -1) {
+                product.style.display = "";                
+            }else{
+                product.style.display = "none";
+            }
+        }
+    });
 })();

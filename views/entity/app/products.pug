@@ -1,5 +1,9 @@
 each product in products
-    .col.s12.m3.product(data-id=product.idtipoProducto)
+    .col.s12.m3.product(
+        data-id=product.idtipoProducto,
+        data-name=product.nomtipoProducto,
+        data-barcode=product.bartipoProducto
+    )
         img(src=product.imgtipoProducto)
         br
         span=product.nomtipoProducto
