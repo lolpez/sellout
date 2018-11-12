@@ -5,6 +5,7 @@
     var tabs = document.getElementById('tabs');
     var drops = document.querySelectorAll('.dropdown-trigger');
     var datepickers = document.querySelectorAll('.datepicker');
+    var selects = document.querySelectorAll('select');
     M.Modal.init(modals, {
         dismissible: false
     });
@@ -16,6 +17,7 @@
     });
     M.Dropdown.init(drops, { constrainWidth: false });
     M.Datepicker.init(datepickers, {format: 'dd/mm/yyyy', maxDate: new Date(), container: document.body});
+    M.FormSelect.init(selects);
     var id = window.location.hash.replace(/^#!/, '');
     if (id) M.Tabs.getInstance(tabs).select(id);
 

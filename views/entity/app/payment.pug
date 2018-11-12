@@ -1,15 +1,22 @@
 #payment-app-modal.modal.modal-fixed-footer
 	.modal-content
 		.row
-			h4 Modal Header
-			p Detalle de compra
-			.col.s12.m4(style="height: 30vh; overflow: auto")
+			h4 Pagar
+			.col.s12.m4
+				-var selected = true;
+				label Empleado
+				select#employee-modal-select
+					each employee in employees
+						option(value=JSON.stringify({id:employee.idEmpleado, nombreEmpleado:employee.nombreEmpleado}), selected=selected)=employee.nombreEmpleado
+						-selected = false
 				.row
-					.col.s12
+					.col.s12(style="height: 30vh; overflow: auto")
+						h6 Detalle de compra
 						table.highlight#payment-app-modal-table
 							thead
 								tr
-									th Nombre
+									th Empleado
+									th Item
 									th Tipo
 									th Cantidad
 									th Precio Unitario

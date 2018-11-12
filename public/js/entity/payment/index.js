@@ -21,13 +21,13 @@ Cart.prototype.addProduct = function(product) {
     };
     var row = this.table.insertRow(-1);
     row.id = `row-${id}`;
-    var nameCell = row.insertCell(0);
+    var itemCell = row.insertCell(0);
     var typeCell = row.insertCell(1);
     var quantityCell = row.insertCell(2);
     var priceCell = row.insertCell(3);
     var totalCell = row.insertCell(4);
     totalCell.id = `product-total-${id}`;
-    nameCell.innerHTML = this.products[id].name;
+    itemCell.innerHTML = this.products[id].name;
     typeCell.innerHTML = "producto";
     //quantityCell.innerHTML = this.products[id].quantity;
     var quantityText = document.createElement("span");
@@ -125,18 +125,22 @@ Cart.prototype.updatePaymentTotal = function() {
 }
 
 Cart.prototype.updateModalTable = function() {
+    var employeeSelect = M.FormSelect.getInstance(document.getElementById('employee-modal-select'));
+    var employeeName = JSON.parse(employeeSelect.getSelectedValues()[0]).nombreEmpleado;
     for(var i = this.tableModal.rows.length - 1; i > 0; i--)
     {
         this.tableModal.deleteRow(i);
     }
     for (var id in this.products) {
         var row = this.tableModal.getElementsByTagName('tbody')[0].insertRow(-1);
-        var nameCell = row.insertCell(0);
-        var typeCell = row.insertCell(1);
-        var quantityCell = row.insertCell(2);
-        var priceCell = row.insertCell(3);
-        var totalCell = row.insertCell(4);
-        nameCell.innerHTML = this.products[id].name;
+        var employeeCell = row.insertCell(0);
+        var itemCell = row.insertCell(1);
+        var typeCell = row.insertCell(2);
+        var quantityCell = row.insertCell(3);
+        var priceCell = row.insertCell(4);
+        var totalCell = row.insertCell(5);
+        employeeCell.innerHTML = employeeName;
+        itemCell.innerHTML = this.products[id].name;
         typeCell.innerHTML = "producto";
         var quantityText = document.createElement("span");
         quantityText.innerHTML = this.products[id].quantity;

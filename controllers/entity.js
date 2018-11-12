@@ -101,8 +101,20 @@ module.exports = {
 					idtipoEntidad: entityId
 				})
 			});
+			/*//Get Employees
+			var requestEmployee = rp({
+                method: 'POST',
+                uri: req.app.get('webServices').employee.get,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+					idUsuario : 1,
+					idtipoEntidad: entityId
+				})
+			});*/
             //Make all requests in parallel and wait for all of them
-			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory]).then(function(responses) {
+			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory /*, requestEmployee */]).then(function(responses) {
 				//Al requests completed
 				var customers	= 	JSON.parse(responses[0]).response;
 				var entity 		=	JSON.parse(responses[1]).response;
@@ -110,6 +122,7 @@ module.exports = {
 				var cities 		=	JSON.parse(responses[3]).response;
                 var products 	=	JSON.parse(responses[4]).response;
                 var categories	=	JSON.parse(responses[5]).response;
+                /*var employees	=	JSON.parse(responses[6]).response;*/
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
 					entity: {
@@ -121,7 +134,8 @@ module.exports = {
 					countries: countries,
 					cities: cities,
 					products: products,
-					categories: categories
+					categories: categories,
+					/*employees: employees*/
 				});
 			}).catch(function (err) {
 				//Show error
@@ -222,8 +236,22 @@ module.exports = {
 						});
 					}, 500);
 				});
+				//Request for get Employees takes 0.5 seconds
+				var request7 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							"0": {"idEmpleado": 2, 	"nombreEmpleado"	: "luis"	},
+							"1": {"idEmpleado": 3, 	"nombreEmpleado"	: "jose"	},
+							"2": {"idEmpleado": 5, 	"nombreEmpleado"	: "maria"	},
+							"3": {"idEmpleado": 6, 	"nombreEmpleado"	: "julio"	},
+							"4": {"idEmpleado": 7, 	"nombreEmpleado"	: "rosa"	},
+							"5": {"idEmpleado": 8, 	"nombreEmpleado"	: "daniela"	},
+							"6": {"idEmpleado": 9, 	"nombreEmpleado"	: "gg"		}
+						});
+					}, 500);
+				});
 				//Make all requests in parallel and wait for all of them
-				Promise.all([request1, request2, request3, request4, request5, request6]).then(function(responses) {
+				Promise.all([request1, request2, request3, request4, request5, request6, request7]).then(function(responses) {
 					//Al requests completed
 					var customers = responses[0];
 					var entity = responses[1];
@@ -231,6 +259,7 @@ module.exports = {
 					var cities = responses[3];
 					var products = responses[4];
 					var categories = responses[5];
+					var employees = responses[6];
 					res.render('entity/app/index', {
 						app: req.app.get('config'),
 						entity: entity,
@@ -239,7 +268,8 @@ module.exports = {
 						countries: countries,
 						cities: cities,
 						products: products,
-						categories: categories
+						categories: categories,
+						employees: employees
 					});
 				});
 			}
