@@ -31,6 +31,9 @@
                 },
                 "category":{
                     "get": "get_categorias"
+                },                
+                "paymentMethod":{
+                    "get": "get_tipos_pagos"
                 },
                 "employee":{
                     "get": "get_empleados"

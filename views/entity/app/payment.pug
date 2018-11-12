@@ -2,16 +2,16 @@
 	.modal-content
 		.row
 			h4 Pagar
-			.col.s12.m4
+			.col.s12.m6
 				-var selected = true;
-				label Empleado
+				h5 Empleado
 				select#employee-modal-select
 					each employee in employees
 						option(value=JSON.stringify({id:employee.idEmpleado, nombreEmpleado:employee.nombreEmpleado}), selected=selected)=employee.nombreEmpleado
 						-selected = false
 				.row
 					.col.s12(style="height: 30vh; overflow: auto")
-						h6 Detalle de compra
+						h5 Detalle de compra
 						table.highlight#payment-app-modal-table
 							thead
 								tr
@@ -23,8 +23,19 @@
 									th Precio Total
 							tbody
 					.col.s12
-						h6 Formas de pago
-			.col.s12.m8
-				
+						h5 Formas de pago
+						.row
+							each paymentMethod in paymentMethods
+								.col.s12.m3
+									span.waves-effect.waves-light.btn.app-button(data-id=paymentMethod.idtipoPago, title=paymentMethod.nomtipoPago)=paymentMethod.nomtipoPago
+			.col.s12.m6
+				.row
+					.col.s12
+						h5 Cliente
+						h6=user.name
+					.col.s12
+						h5 Tipos de decuentos
+						button Tipos de descuentos
 	.modal-footer
-		a.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree
+		a.modal-close.waves-effect.waves-green.btn-flat(href='#!') Salir
+		a.modal-close.waves-effect.waves-green.btn-flat(href='#!') Aceptar

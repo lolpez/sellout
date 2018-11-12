@@ -112,9 +112,21 @@ module.exports = {
 					idUsuario : 1,
 					idtipoEntidad: entityId
 				})
+			});
+			//Get Payment Methods
+			var requestPaymentMethod = rp({
+                method: 'POST',
+                uri: req.app.get('webServices').paymentMethod.get,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+					idUsuario : 1,
+					idtipoEntidad: entityId
+				})
 			});*/
             //Make all requests in parallel and wait for all of them
-			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory /*, requestEmployee */]).then(function(responses) {
+			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory /*, requestEmployee, requestPaymentMethod */]).then(function(responses) {
 				//Al requests completed
 				var customers	= 	JSON.parse(responses[0]).response;
 				var entity 		=	JSON.parse(responses[1]).response;
@@ -122,7 +134,10 @@ module.exports = {
 				var cities 		=	JSON.parse(responses[3]).response;
                 var products 	=	JSON.parse(responses[4]).response;
                 var categories	=	JSON.parse(responses[5]).response;
-                /*var employees	=	JSON.parse(responses[6]).response;*/
+				/*
+				var employees	=	JSON.parse(responses[6]).response;
+				var paymentMethods = JSON.parse(responses[7]).response;
+				*/
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
 					entity: {
@@ -135,7 +150,10 @@ module.exports = {
 					cities: cities,
 					products: products,
 					categories: categories,
-					/*employees: employees*/
+					/*
+					employees: employees,
+					paymentMethods: paymentMethods
+					*/
 				});
 			}).catch(function (err) {
 				//Show error
@@ -250,8 +268,20 @@ module.exports = {
 						});
 					}, 500);
 				});
+				//Request for get Payment Methods takes 0.5 seconds
+				var request8 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							"0": {"idtipoPago": 2, 	"nomtipoPago"	: "credito"	},
+							"1": {"idtipoPago": 3, 	"nomtipoPago"	: "contado"	},
+							"2": {"idtipoPago": 5, 	"nomtipoPago"	: "cupon"	},
+							"3": {"idtipoPago": 6, 	"nomtipoPago"	: "regalia"	},
+							"4": {"idtipoPago": 7, 	"nomtipoPago"	: "gg"		},
+						});
+					}, 500);
+				});
 				//Make all requests in parallel and wait for all of them
-				Promise.all([request1, request2, request3, request4, request5, request6, request7]).then(function(responses) {
+				Promise.all([request1, request2, request3, request4, request5, request6, request7, request8]).then(function(responses) {
 					//Al requests completed
 					var customers = responses[0];
 					var entity = responses[1];
@@ -260,6 +290,7 @@ module.exports = {
 					var products = responses[4];
 					var categories = responses[5];
 					var employees = responses[6];
+					var paymentMethods = responses[7];
 					res.render('entity/app/index', {
 						app: req.app.get('config'),
 						entity: entity,
@@ -269,7 +300,8 @@ module.exports = {
 						cities: cities,
 						products: products,
 						categories: categories,
-						employees: employees
+						employees: employees,
+						paymentMethods: paymentMethods
 					});
 				});
 			}
