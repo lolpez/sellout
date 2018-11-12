@@ -14,7 +14,6 @@
     var categoryList = document.getElementById('category-list');
     var categoryItems = document.querySelectorAll('.category');    
     var categoryControls = document.querySelectorAll('.category-control');
-
     var cart = new Cart("table");
 
     productControls.forEach(productControl => productControl.addEventListener("click", function() {
@@ -163,5 +162,14 @@
                 product.style.display = "none";
             }
         }
+    });
+
+    //Payment
+    var paymentModal = document.getElementById('payment-app-modal')
+    var paymentOpenModalButton = document.getElementById('product-app-payment');
+    paymentOpenModalButton.addEventListener('click', () => {
+
+        
+        M.Modal.getInstance(paymentModal).open();
     });
 })();

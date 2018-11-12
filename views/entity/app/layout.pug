@@ -116,7 +116,8 @@ html
 						.col.s12.total#payment-total
 					.row
 						.col.s12.m12
-							a.waves-effect.waves-light.btn.app-button.block.green Pagar
+							a#product-app-payment.waves-effect.waves-light.btn.app-button.block.green Pagar
+		include payment
 		script.
 			var entityId = #{entity.id};
 		script(src='/js/materialize.min.js')

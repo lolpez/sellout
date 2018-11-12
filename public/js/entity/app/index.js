@@ -5,7 +5,9 @@
     var tabs = document.getElementById('tabs');
     var drops = document.querySelectorAll('.dropdown-trigger');
     var datepickers = document.querySelectorAll('.datepicker');
-    M.Modal.init(modals);
+    M.Modal.init(modals, {
+        dismissible: false
+    });
     M.Sidenav.init(navs, {});
     M.Tabs.init(tabs, {
         onShow: function(tab) {
@@ -23,9 +25,6 @@
    
     function startTime() {
         var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
         var dateTime = `${checkZero(today.getUTCDate())}/${checkZero(today.getUTCMonth())}/${today.getFullYear()} ${checkZero(today.getHours())}:${checkZero(today.getMinutes())}:${checkZero(today.getSeconds())}`
         for (i = 0; i < timeLabels.length; i++) {
             timeLabels[i].innerHTML = dateTime;
