@@ -1,6 +1,7 @@
 function Cart(tableId) {
     this.model = "payment-app";
     this.table = document.getElementById(`${this.model}-${tableId}`);
+    this.tableModal = document.getElementById(`${this.model}-modal-${tableId}`);
     this.controlButtonClass = "waves-effect waves-light btn app-button";
     this.products = {};
     this.total = 0;
@@ -121,4 +122,27 @@ Cart.prototype.updatePaymentTotal = function() {
         total += this.products[id].price * this.products[id].quantity;
     }
     paymentTotal.innerHTML = total;
+}
+
+Cart.prototype.updateModalTable = function() {
+    for(var i = this.tableModal.rows.length - 1; i > 0; i--)
+    {
+        this.tableModal.deleteRow(i);
+    }
+    for (var id in this.products) {
+        var row = this.tableModal.insertRow(-1);
+        var nameCell = row.insertCell(0);
+        var typeCell = row.insertCell(1);
+        var quantityCell = row.insertCell(2);
+        var priceCell = row.insertCell(3);
+        var totalCell = row.insertCell(4);
+        nameCell.innerHTML = this.products[id].name;
+        typeCell.innerHTML = "producto";
+        var quantityText = document.createElement("span");
+        quantityText.innerHTML = this.products[id].quantity;
+        quantityText.id = `quantity-${id}`;
+        quantityCell.appendChild(quantityText);
+        priceCell.innerHTML = this.products[id].price;
+        totalCell.innerHTML = this.products[id].price * this.products[id].quantity;
+    }
 }
