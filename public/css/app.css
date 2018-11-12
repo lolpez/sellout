@@ -180,3 +180,5 @@ a {
 .dropdown-content.select-dropdown{
     max-height: 260px
 }
+
+.modal { width: 90% !important ; height: 80% !important ; } 

@@ -121,7 +121,7 @@ Cart.prototype.updatePaymentTotal = function() {
     for (var id in this.products) {
         total += this.products[id].price * this.products[id].quantity;
     }
-    paymentTotal.innerHTML = total;
+    paymentTotal.innerHTML = `Bs. ${total}`;
 }
 
 Cart.prototype.updateModalTable = function() {
@@ -130,7 +130,7 @@ Cart.prototype.updateModalTable = function() {
         this.tableModal.deleteRow(i);
     }
     for (var id in this.products) {
-        var row = this.tableModal.insertRow(-1);
+        var row = this.tableModal.getElementsByTagName('tbody')[0].insertRow(-1);
         var nameCell = row.insertCell(0);
         var typeCell = row.insertCell(1);
         var quantityCell = row.insertCell(2);
