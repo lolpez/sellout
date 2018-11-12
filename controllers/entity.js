@@ -101,7 +101,7 @@ module.exports = {
 					idtipoEntidad: entityId
 				})
 			});
-			/*//Get Employees
+			//Get Employees
 			var requestEmployee = rp({
                 method: 'POST',
                 uri: req.app.get('webServices').employee.get,
@@ -124,9 +124,9 @@ module.exports = {
 					idUsuario : 1,
 					idtipoEntidad: entityId
 				})
-			});*/
+			});
             //Make all requests in parallel and wait for all of them
-			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory /*, requestEmployee, requestPaymentMethod */]).then(function(responses) {
+			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory , requestEmployee, requestPaymentMethod]).then(function(responses) {
 				//Al requests completed
 				var customers	= 	JSON.parse(responses[0]).response;
 				var entity 		=	JSON.parse(responses[1]).response;
@@ -134,10 +134,9 @@ module.exports = {
 				var cities 		=	JSON.parse(responses[3]).response;
                 var products 	=	JSON.parse(responses[4]).response;
                 var categories	=	JSON.parse(responses[5]).response;
-				/*
 				var employees	=	JSON.parse(responses[6]).response;
 				var paymentMethods = JSON.parse(responses[7]).response;
-				*/
+
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
 					entity: {
@@ -150,10 +149,8 @@ module.exports = {
 					cities: cities,
 					products: products,
 					categories: categories,
-					/*
 					employees: employees,
 					paymentMethods: paymentMethods
-					*/
 				});
 			}).catch(function (err) {
 				//Show error
