@@ -135,7 +135,7 @@
         });
     }));
 
-    /*City  Get Information*/    
+    /*City  Get Information*/
     selectCountry.onchange = function(){
         var id = this.value;
         fetch(`/city/get`, {

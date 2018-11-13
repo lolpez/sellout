@@ -16,7 +16,7 @@
 		.row.modal-row
 			.col.s12
 				h5.modal-subtitle Detalle de compra
-				div(style="height: 25vh; overflow: auto")
+				div(style="height: 30vh; overflow: auto")
 					table.highlight#payment-app-modal-table
 						thead
 							tr
@@ -28,11 +28,6 @@
 								th Precio Total
 						tbody
 				-var selected = true;
-				h5 Empleado
-				select#employee-modal-select
-					each employee in employees
-						option(value=JSON.stringify({id:employee.idEmpleado, nombreEmpleado:employee.nombreEmpleado}), selected=selected)=employee.nombreEmpleado
-						-selected = false
 				.row
 					.col.s12.m4
 						h5.modal-subtitle Formas de pago
