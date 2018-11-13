@@ -181,7 +181,7 @@ Cart.prototype.getPaymentData = function() {
         items.push({
             employeeId: document.getElementById(`employee-${id}`).value,
             itemTypeName: "product",
-            itemTypeId: 1,
+            itemTypeId: id,
             cuantity: this.products[id].quantity,
             enttipoItem: 15,
             price: this.products[id].price,
