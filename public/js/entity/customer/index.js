@@ -28,7 +28,7 @@
         ciCliente       : {ele: `${model}-ciCliente`                            , value: "value",    selector: "getElementById"  ,required: false   }
     }
 
-   /* M.Autocomplete.init(document[form.idtipoDpto.selector](form.idtipoDpto.ele), {
+    /* M.Autocomplete.init(document[form.idtipoDpto.selector](form.idtipoDpto.ele), {
         data: {
             "Beni": null, "Chuquisaca": null, "Cochabamba": null, "La Paz": null, "Oruro": null, "Pando": null, "Potosí": null, "Santa Cruz": null, "Tarija": null
         },

@@ -36,19 +36,29 @@
 				.row
 					.col.s12.m4
 						h5.modal-subtitle Formas de pago
-						.row
+						.row(style="height: 21vh; overflow-y: auto")
 							each paymentMethod in paymentMethods
 								.col.s12.m3
 									span.waves-effect.waves-light.btn.app-button.payment-method(data-id=paymentMethod.idtipoPago, title=paymentMethod.nomtipoPago)=paymentMethod.nomtipoPago
 					.col.s12.m4
 						ul.collection
-							li.collection-item Descuento
-							li.collection-item DTO. CLIENTE
-							li.collection-item REC. EQ. (RE)
-							li.collection-item TOTAL
-							li.collection-item Recibido Pendiente
+							li.collection-item
+								button.waves-effect.waves-light.btn.app-button Descuento
+								span.secondary-content
+							li.collection-item
+								span DTO. CLIENTE
+								span.secondary-content
+							li.collection-item
+								span REC. EQ. (RE)
+								span.secondary-content
+							li.collection-item
+								span TOTAL
+								span.secondary-content BS. 38
+							li.collection-item
+								span Recibido BS. 0
+								span.secondary-content Pendiente BS. 38
 					.col.s12.m4
-						h5 Pagar
+						button.waves-effect.waves-light.btn.app-button.block.green Ticket + Ticket Regalo
+						button.waves-effect.waves-light.btn.app-button.block.green Pagar
 	.modal-footer
-		a.modal-close.waves-effect.waves-green.btn-flat(href='#!') Salir
-		a.modal-close.waves-effect.waves-green.btn-flat(href='#!') Aceptar
+		a.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancelar
