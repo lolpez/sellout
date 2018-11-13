@@ -35,6 +35,7 @@ var entityRouter = require('./routes/entity');
 var customerRouter = require('./routes/customer');
 var cityRouter = require('./routes/city');
 var productRouter = require('./routes/product');
+var paymentRouter = require('./routes/payment');
 
 var app = express();
 
@@ -74,6 +75,7 @@ app.use('/entity', entityRouter);
 app.use('/customer', customerRouter);
 app.use('/city', cityRouter);
 app.use('/product', productRouter);
+app.use('/payment', paymentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

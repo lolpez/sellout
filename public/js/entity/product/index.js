@@ -167,6 +167,8 @@
     //Payment
     var paymentModal = document.getElementById('payment-app-modal')
     var paymentOpenModalButton = document.getElementById('product-app-payment');
+    var paymentPayButton = document.getElementById('payment-modal-pay');
+    
     paymentOpenModalButton.addEventListener('click', () => {
         if (selectedCustomer) { 
             cart.updateModalTable();
@@ -174,5 +176,29 @@
         }else{
             alert("Por favor, seleccione un cliente.");
         }
+    });
+
+    paymentOpenModalButton.addEventListener('click', () => {
+        if (selectedCustomer) { 
+            cart.updateModalTable();
+            M.Modal.getInstance(paymentModal).open();
+        }else{
+            alert("Por favor, seleccione un cliente.");
+        }
+    });
+
+    paymentPayButton.addEventListener('click', () => {
+        fetch("/payment", {
+            method: 'POST',
+            body: JSON.stringify(cart.getPaymentData()),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .then((response) => {
+            console.log(response)
+        }).catch((error) => {
+            alert(error)
+        });
     });
 })();
