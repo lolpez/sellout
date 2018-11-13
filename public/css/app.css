@@ -181,4 +181,28 @@ a {
     max-height: 260px
 }
 
-.modal { width: 90% !important ; height: 80% !important ; } 
+.modal {
+    top: 5% !important;
+    width: 90vw !important;
+    height: 90vh !important;
+    max-height: 90vh !important;
+}
+
+.modal .modal-content {
+    padding: 15px 15px 0px 15px !important;
+}
+
+.modal-subtitle{
+    margin: 0 0 5px 0;
+}
+
+.modal-row{
+    margin-bottom: 10px !important;
+}
+
+.payment-method{
+    margin: auto;
+    width: 100%;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+}

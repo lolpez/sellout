@@ -37,6 +37,9 @@
                 },
                 "employee":{
                     "get": "get_empleados"
+                },
+                "discount":{
+                    "get": "get_descuentos"
                 }
             }
         }

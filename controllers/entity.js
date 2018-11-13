@@ -125,17 +125,30 @@ module.exports = {
 					idtipoEntidad: entityId
 				})
 			});
+			//Get Discounts
+			var requestDiscount = rp({
+                method: 'POST',
+                uri: req.app.get('webServices').discount.get,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+					idUsuario : 1,
+					idtipoEntidad: entityId
+				})
+			});
             //Make all requests in parallel and wait for all of them
-			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory , requestEmployee, requestPaymentMethod]).then(function(responses) {
+			Promise.all([requestCustomer, requestEntity, requestCountry, requestCity, requestProduct, requestCategory , requestEmployee, requestPaymentMethod, requestDiscount]).then(function(responses) {
 				//Al requests completed
-				var customers	= 	JSON.parse(responses[0]).response;
-				var entity 		=	JSON.parse(responses[1]).response;
-				var countries 	= 	JSON.parse(responses[2]).response;
-				var cities 		=	JSON.parse(responses[3]).response;
-                var products 	=	JSON.parse(responses[4]).response;
-                var categories	=	JSON.parse(responses[5]).response;
-				var employees	=	JSON.parse(responses[6]).response;
-				var paymentMethods = JSON.parse(responses[7]).response;
+				var customers		= 	JSON.parse(responses[0]).response;
+				var entity 			=	JSON.parse(responses[1]).response;
+				var countries 		= 	JSON.parse(responses[2]).response;
+				var cities 			=	JSON.parse(responses[3]).response;
+                var products 		=	JSON.parse(responses[4]).response;
+                var categories		=	JSON.parse(responses[5]).response;
+				var employees		=	JSON.parse(responses[6]).response;
+				var paymentMethods 	= 	JSON.parse(responses[7]).response;
+				var discounts 		= 	JSON.parse(responses[8]).response;
 
 				res.render('entity/app/index', {
 					app: req.app.get('config'),
@@ -150,7 +163,8 @@ module.exports = {
 					products: products,
 					categories: categories,
 					employees: employees,
-					paymentMethods: paymentMethods
+					paymentMethods: paymentMethods,
+					discounts: discounts
 				});
 			}).catch(function (err) {
 				//Show error
@@ -277,8 +291,20 @@ module.exports = {
 						});
 					}, 500);
 				});
+				//Request for get Discounts takes 0.5 seconds
+				var request9 = new Promise(function(resolve, reject) {
+					setTimeout(() => {
+						resolve({
+							"0": {"idtipoDescuento": 2, "nomtipoDescuento": "10%"},
+							"1": {"idtipoDescuento": 3, "nomtipoDescuento": "20%"},
+							"2": {"idtipoDescuento": 5, "nomtipoDescuento": "30%"},
+							"3": {"idtipoDescuento": 6, "nomtipoDescuento": "40%"},
+							"4": {"idtipoDescuento": 7, "nomtipoDescuento": "50%"},
+						});
+					}, 500);
+				});
 				//Make all requests in parallel and wait for all of them
-				Promise.all([request1, request2, request3, request4, request5, request6, request7, request8]).then(function(responses) {
+				Promise.all([request1, request2, request3, request4, request5, request6, request7, request8, request9]).then(function(responses) {
 					//Al requests completed
 					var customers = responses[0];
 					var entity = responses[1];
@@ -288,6 +314,7 @@ module.exports = {
 					var categories = responses[5];
 					var employees = responses[6];
 					var paymentMethods = responses[7];
+					var discounts = responses[8];
 					res.render('entity/app/index', {
 						app: req.app.get('config'),
 						entity: entity,
@@ -298,7 +325,8 @@ module.exports = {
 						products: products,
 						categories: categories,
 						employees: employees,
-						paymentMethods: paymentMethods
+						paymentMethods: paymentMethods,
+						discounts: discounts
 					});
 				});
 			}

@@ -1,8 +1,32 @@
 #payment-app-modal.modal.modal-fixed-footer
 	.modal-content
-		.row
-			h4 Pago de ticket
-			.col.s12.m6
+		.row.modal-row
+			.col.s12.m12
+				h3 Pago de ticket
+		.row.modal-row
+			.col.s12.m8
+				h5.modal-subtitle Nombre del cliente
+				h6=user.name
+			.col.s12.m4
+				.row.modal-row
+					.col.s12.m6
+						button.waves-effect.waves-light.btn.app-button.block Historial
+					.col.s12.m6
+						button.waves-effect.waves-light.btn.app-button.block Ficha del cliente
+		.row.modal-row
+			.col.s12
+				h5.modal-subtitle Detalle de compra
+				div(style="height: 25vh; overflow: auto")
+					table.highlight#payment-app-modal-table
+						thead
+							tr
+								th Empleado
+								th Item
+								th Tipo
+								th Cantidad
+								th Precio Unitario
+								th Precio Total
+						tbody
 				-var selected = true;
 				h5 Empleado
 				select#employee-modal-select
@@ -10,32 +34,21 @@
 						option(value=JSON.stringify({id:employee.idEmpleado, nombreEmpleado:employee.nombreEmpleado}), selected=selected)=employee.nombreEmpleado
 						-selected = false
 				.row
-					.col.s12(style="height: 30vh; overflow: auto")
-						h5 Detalle de compra
-						table.highlight#payment-app-modal-table
-							thead
-								tr
-									th Empleado
-									th Item
-									th Tipo
-									th Cantidad
-									th Precio Unitario
-									th Precio Total
-							tbody
-					.col.s12
-						h5 Formas de pago
+					.col.s12.m4
+						h5.modal-subtitle Formas de pago
 						.row
 							each paymentMethod in paymentMethods
 								.col.s12.m3
-									span.waves-effect.waves-light.btn.app-button(data-id=paymentMethod.idtipoPago, title=paymentMethod.nomtipoPago)=paymentMethod.nomtipoPago
-			.col.s12.m6
-				.row
-					.col.s12
-						h5 Cliente
-						h6=user.name
-					.col.s12
-						h5 Tipos de decuentos
-						button Tipos de descuentos
+									span.waves-effect.waves-light.btn.app-button.payment-method(data-id=paymentMethod.idtipoPago, title=paymentMethod.nomtipoPago)=paymentMethod.nomtipoPago
+					.col.s12.m4
+						ul.collection
+							li.collection-item Descuento
+							li.collection-item DTO. CLIENTE
+							li.collection-item REC. EQ. (RE)
+							li.collection-item TOTAL
+							li.collection-item Recibido Pendiente
+					.col.s12.m4
+						h5 Pagar
 	.modal-footer
 		a.modal-close.waves-effect.waves-green.btn-flat(href='#!') Salir
 		a.modal-close.waves-effect.waves-green.btn-flat(href='#!') Aceptar
