@@ -168,7 +168,11 @@
     var paymentModal = document.getElementById('payment-app-modal')
     var paymentOpenModalButton = document.getElementById('product-app-payment');
     paymentOpenModalButton.addEventListener('click', () => {
-        cart.updateModalTable();
-        M.Modal.getInstance(paymentModal).open();
+        if (selectedCustomer) { 
+            cart.updateModalTable();
+            M.Modal.getInstance(paymentModal).open();
+        }else{
+            alert("Por favor, seleccione un cliente.");
+        }
     });
 })();

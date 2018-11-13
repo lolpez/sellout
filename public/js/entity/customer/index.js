@@ -112,7 +112,6 @@
 
     /*Customer Get Information*/
     var modelApp = "customer-app";
-    var selectedCustomer =  null;
     customerTableRows.forEach(customerTableRow => customerTableRow.addEventListener("click", function() {
         fetch("/customer/get", {
             method: 'POST',

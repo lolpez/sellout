@@ -120,6 +120,7 @@ html
 		include payment
 		script.
 			var entityId = #{entity.id};
+			var selectedCustomer = false;
 			var employees = !{JSON.stringify(employees).replace(/<\//g, '<\\/')};
 		script(src='/js/materialize.min.js')
 		script(src='/js/entity/app/index.js')

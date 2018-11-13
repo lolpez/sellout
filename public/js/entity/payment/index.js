@@ -10,7 +10,7 @@ function Cart(tableId) {
 Cart.prototype.addProduct = function(product) {
     var id = product.idtipoProducto;
     if (this.products[id]) { 
-        alert("Producto Seleccionado, modifique la cantidad");
+        alert("Producto Seleccionado, modifique la cantidad.");
         return;
     }
     this.products[id] = {
@@ -130,12 +130,11 @@ Cart.prototype.updateModalTable = function() {
     for(var i = this.tableModal.rows.length - 1; i > 0; i--)
     {
         this.tableModal.deleteRow(i);
-    }    
+    }
     for (var id in employees) {
         var option = document.createElement("option");
         option.value = employees[id].idEmpleado;
         option.text = employees[id].nombreEmpleado;
-        option.selected = selected;
         employeeSelect.appendChild(option);
     }
     for (var id in this.products) {
@@ -158,6 +157,7 @@ Cart.prototype.updateModalTable = function() {
         priceCell.innerHTML = this.products[id].price;
         totalCell.innerHTML = this.products[id].price * this.products[id].quantity;
     }
+    document.getElementById('payment-modal-customer').innerHTML = `${selectedCustomer.nomCliente} ${selectedCustomer.patCliente} ${selectedCustomer.matCliente}`;
     var selects = document.querySelectorAll('select');
     M.FormSelect.init(selects);
 }
