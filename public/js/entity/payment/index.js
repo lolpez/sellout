@@ -126,21 +126,30 @@ Cart.prototype.updatePaymentTotal = function() {
 }
 
 Cart.prototype.updateModalTable = function() {
-    var employeeSelect = document.createElement("select");
-    employeeSelect.className = "employee-select";
+    
     for(var i = this.tableModal.rows.length - 1; i > 0; i--)
     {
         this.tableModal.deleteRow(i);
     }
-    for (var id in employees) {
+   /* for (var id in employees) {
         var option = document.createElement("option");
         option.value = employees[id].idEmpleado;
         option.text = employees[id].nombreEmpleado;
         employeeSelect.appendChild(option);
-    }
+    }*/
     for (var id in this.products) {
-        var employeeSelectClon = employeeSelect.cloneNode(true);
-        employeeSelectClon.id = `employee-${id}`;
+        //var employeeSelectClon = employeeSelect.cloneNode(true);
+        //employeeSelectClon.id = `employee-${id}`;
+
+        var employeeSelect = document.createElement("select");
+        employeeSelect.id = `employee-${id}`;
+        employeeSelect.className = "employee-select";
+        for (var employeeId in employees) {
+            var option = document.createElement("option");
+            option.value = employees[employeeId].idEmpleado;
+            option.text = employees[employeeId].nombreEmpleado;
+            employeeSelect.appendChild(option);
+        }
         var row = this.tableModal.getElementsByTagName('tbody')[0].insertRow(-1);
         var employeeCell = row.insertCell(0);
         var itemCell = row.insertCell(1);
@@ -148,7 +157,7 @@ Cart.prototype.updateModalTable = function() {
         var quantityCell = row.insertCell(3);
         var priceCell = row.insertCell(4);
         var totalCell = row.insertCell(5);
-        employeeCell.appendChild(employeeSelectClon);
+        employeeCell.appendChild(employeeSelect);
         itemCell.innerHTML = this.products[id].name;
         typeCell.innerHTML = "producto";
         var quantityText = document.createElement("span");
@@ -169,9 +178,8 @@ Cart.prototype.updateModalTable = function() {
 Cart.prototype.getPaymentData = function() {
     var items = [];
     for (var id in this.products) {
-        var employeeSelect =  M.FormSelect.getInstance(document.getElementById(`employee-${id}`));
         items.push({
-            employeeId: employeeSelect.getSelectedValues()[0],
+            employeeId: document.getElementById(`employee-${id}`).value,
             itemTypeName: "product",
             itemTypeId: 1,
             cuantity: this.products[id].quantity,

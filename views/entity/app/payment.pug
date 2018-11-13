@@ -5,7 +5,7 @@
 				h3 Pago de ticket
 		.row.modal-row
 			.col.s12.m8
-				h5.modal-subtitle Nombre del cliente
+				h5 Nombre del cliente
 				h6#payment-modal-customer
 			.col.s12.m4
 				.row.modal-row
@@ -15,7 +15,7 @@
 						button.waves-effect.waves-light.btn.app-button.block Ficha del cliente
 		.row.modal-row
 			.col.s12
-				h5.modal-subtitle Detalle de compra
+				h5 Detalle de compra
 				div(style="height: 30vh; overflow: auto")
 					table.highlight#payment-app-modal-table
 						thead
@@ -27,15 +27,15 @@
 								th Precio Unitario
 								th Precio Total
 						tbody
-				.row
+				.row(style="margin-bottom: 0;")
 					.col.s12.m4
-						h5.modal-subtitle Formas de pago
+						h5 Formas de pago
 						.row(style="height: 21vh; overflow-y: auto")
 							each paymentMethod in paymentMethods
 								.col.s12.m3
 									span.waves-effect.waves-light.btn.app-button.payment-method(data-id=paymentMethod.idtipoPago, title=paymentMethod.nomtipoPago)=paymentMethod.nomtipoPago
 					.col.s12.m4
-						ul.collection
+						ul.collection.payment-collection
 							li.collection-item
 								button.waves-effect.waves-light.btn.app-button Descuento
 								span.secondary-content
