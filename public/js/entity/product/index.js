@@ -178,15 +178,6 @@
         }
     });
 
-    paymentOpenModalButton.addEventListener('click', () => {
-        if (selectedCustomer) { 
-            cart.updateModalTable();
-            M.Modal.getInstance(paymentModal).open();
-        }else{
-            alert("Por favor, seleccione un cliente.");
-        }
-    });
-
     paymentPayButton.addEventListener('click', () => {
         fetch("/payment", {
             method: 'POST',
@@ -196,6 +187,7 @@
             }
         }).then(res => res.json())
         .then((response) => {
+            alert(response.message);
             console.log(response)
         }).catch((error) => {
             alert(error)

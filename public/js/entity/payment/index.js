@@ -140,7 +140,7 @@ Cart.prototype.updateModalTable = function() {
     }
     for (var id in this.products) {
         var employeeSelectClon = employeeSelect.cloneNode(true);
-        employeeSelectClon.dataset.id = id;
+        employeeSelectClon.id = `employee-${id}`;
         var row = this.tableModal.getElementsByTagName('tbody')[0].insertRow(-1);
         var employeeCell = row.insertCell(0);
         var itemCell = row.insertCell(1);
@@ -163,4 +163,31 @@ Cart.prototype.updateModalTable = function() {
     document.getElementById('payment-modal-pendent').innerHTML = this.total;
     var selects = document.querySelectorAll('select');
     M.FormSelect.init(selects);
+}
+
+
+Cart.prototype.getPaymentData = function() {
+    var items = [];
+    for (var id in this.products) {
+        var employeeSelect =  M.FormSelect.getInstance(document.getElementById(`employee-${id}`));
+        items.push({
+            employeeId: employeeSelect.getSelectedValues()[0],
+            itemTypeName: "product",
+            itemTypeId: 1,
+            cuantity: this.products[id].quantity,
+            enttipoItem: 15,
+            price: this.products[id].price,
+            destipoItem: 52
+        })
+    }
+    return {
+        customerId: selectedCustomer.id,
+        entityId: entityId,
+        discount: 0,
+        items: items,
+        paymentMethods: [
+            {"idformaPago": 1, "monformaPago": 100},
+            {"idformaPago": 2, "monformaPago": 81}
+        ]               
+    }
 }

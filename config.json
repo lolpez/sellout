@@ -40,6 +40,9 @@
                 },
                 "discount":{
                     "get": "get_descuentos"
+                },
+                "payment":{
+                    "pay" : "add_ventas"
                 }
             }
         }
