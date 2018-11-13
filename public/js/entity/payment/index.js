@@ -121,7 +121,8 @@ Cart.prototype.updatePaymentTotal = function() {
     for (var id in this.products) {
         total += this.products[id].price * this.products[id].quantity;
     }
-    paymentTotal.innerHTML = `Bs. ${total}`;
+    this.total = total;
+    paymentTotal.innerHTML = `Bs. ${this.total}`;
 }
 
 Cart.prototype.updateModalTable = function() {
@@ -158,6 +159,8 @@ Cart.prototype.updateModalTable = function() {
         totalCell.innerHTML = this.products[id].price * this.products[id].quantity;
     }
     document.getElementById('payment-modal-customer').innerHTML = `${selectedCustomer.nomCliente} ${selectedCustomer.patCliente} ${selectedCustomer.matCliente}`;
+    document.getElementById('payment-modal-total').innerHTML = this.total;
+    document.getElementById('payment-modal-pendent').innerHTML = this.total;
     var selects = document.querySelectorAll('select');
     M.FormSelect.init(selects);
 }
